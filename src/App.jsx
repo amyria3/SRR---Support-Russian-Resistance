@@ -1,12 +1,11 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
     <>
-      <NavBar/>
+      <NavBar />
       <section className="splash"></section>
+
       <section className="search"></section>
       <section className="cards"></section>
       <section className="footer"></section>
