@@ -6,6 +6,8 @@ export default function Document() {
       <Head />
       <body>
         <Main />
+
+        {/*This adds next.js props to react: */}
         <NextScript />
       </body>
     </Html>
