@@ -1,9 +1,0 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer components {
-    .navLink {
-      @apply text-typo text-base  bg-interactive-default hover:bg-interactive-hover hover:text-interactive-hover;
-    }
-}
