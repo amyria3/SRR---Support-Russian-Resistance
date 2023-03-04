@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -11,23 +13,19 @@ module.exports = {
         card: "rgba(255, 255, 255, 1)",
       },
       interactive: {
-        default: "rgba(0, 85, 212, 0.5)",
+        DEFAULT: "rgba(0, 85, 212, 0.25)",
         hover: "rgba(0, 85, 212, 1)",
       },
       line: "rgba(37, 37, 37, 0.5)",
       typo: {
         DEFAULT: "rgba(37, 37, 37, 1)",
       },
-    },
-    fontFamily: {
-      DEFAULT: ["Inter"],
-      serif: ["Italiana"],
-    },
-    dropShadow: {
-      default: "2px 2px 0px #0055D5",
+      fontFamily: {
+        Inter: ['"Inter"', ...defaultTheme.fontFamily.sans]
+      },
     },
   },
-};
+}
 
 //TO-DO:
 //// own padding-options - spacing?
