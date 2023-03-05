@@ -13,6 +13,9 @@
 
 @layer components {
     .shadow-default {
-        box-shadow: 2px 2px rgba(0, 85, 212, 1);
+        box-shadow: 2px 2px 0px 0px rgba(0, 85, 212, 1);
+    }
+    .shadow-transparent {
+        box-shadow: 2px 2px 0px 0px rgba(0, 85, 212, 0.5);
     }
 }

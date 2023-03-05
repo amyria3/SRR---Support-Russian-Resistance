@@ -1,14 +1,17 @@
 import NavBar from "./components/NavBar";
+// import Splash from "./components/Splash";
+import Button from "./components/Button";
+// import default_css_style from "./components/Button";
 
 function App() {
   return (
     <>
-      <NavBar />
-      <section className="splash"></section>
+    <Button
+    function={()=>{}}
+    label = "GO!">
 
-      <section className="search"></section>
-      <section className="cards"></section>
-      <section className="footer"></section>
+      </Button>
+      <NavBar />
     </>
   );
 }
