@@ -11,9 +11,9 @@ function NavBar() {
           <NavLink to="/" label="About us"/>
         </div>
         <div id="right_side_wrapper">
-          <NavLink to="/" label="Ru" language="true"/>
-          <NavLink to="/" label="De" language="true"/>
-          <NavLink to="/" label="En" language="true"/>
+          <NavLink to="/" label="Ru" language="true" hide="true"/>
+          <NavLink to="/" label="De" language="true" hide="true"/>
+          <NavLink to="/" label="En" language="true" hide="true"/>
           <div id="toggle_theme_wrapper"></div>
         </div>
       </div>
