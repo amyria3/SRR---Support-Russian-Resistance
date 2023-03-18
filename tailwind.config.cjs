@@ -1,6 +1,3 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
-
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./index.html",
@@ -9,7 +6,7 @@ module.exports = {
   theme: {
     colors: {
       white: {
-        DEFAULT: "rgba(250, 250, 250, 1)",
+        DEFAULT: "rgba(240, 240, 240, 1)",
         card: "rgba(255, 255, 255, 1)",
       },
       interactive: {
@@ -20,14 +17,15 @@ module.exports = {
       typo: {
         DEFAULT: "rgba(37, 37, 37, 1)",
       },
-      fontFamily: {
-        Inter: ['"Inter"', ...defaultTheme.fontFamily.sans]
-      },
     },
+  },
+  fontFamily: {
+    'inter': ['Inter', 'sans-serif'],
+    'italiana': ['Italiana', 'serif'],
+  },
+  extend: {
   },
 }
 
-//TO-DO:
-//// own padding-options - spacing?
 //ISSUES:
 ////fonts don't work

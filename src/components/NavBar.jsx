@@ -3,7 +3,7 @@ import NavLink from "./NavBarElements";
 function NavBar() {
   return (
     <>
-      <div className="mt-0 ml-0 mr-0 w-full px-8 pt-7 pb-6 flex justify-between">
+      <div className="mt-0 ml-0 bg-white mr-0 w-full px-8 pt-6 pb-0 flex justify-between fixed top-0 left-0 right-0">
         <div id="left_side_wrapper">
           <NavLink to="/" label="Welcome"/>
           <NavLink to="/" label="Search"/>
