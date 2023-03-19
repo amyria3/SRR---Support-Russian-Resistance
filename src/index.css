@@ -18,6 +18,7 @@
     overflow-x: hidden;
     overflow-y: scroll;
     @apply flex flex-col items-start pt-12 gap-[30px];
+    box-sizing: box-border;
   }
 }
 
@@ -27,5 +28,15 @@
   }
   .shadow-transparent {
     box-shadow: 3px 3px 0px 0px rgba(0, 85, 212, 0.5);
+  }
+
+  /* .icon:hover{
+    fill: rgba(0, 85, 212, 1);
+  } */
+
+  .parent:hover .child {
+    fill: rgba(0, 85, 212, 1);
+    color: rgba(0, 85, 212, 1);
+    text-decoration: underline;
   }
 }

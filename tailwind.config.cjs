@@ -11,6 +11,7 @@ module.exports = {
       },
       interactive: {
         DEFAULT: "rgba(0, 85, 212, 0.25)",
+        mid: "rgba(0, 85, 212, 0.5)",
         hover: "rgba(0, 85, 212, 1)",
       },
       line: "rgba(37, 37, 37, 0.5)",
