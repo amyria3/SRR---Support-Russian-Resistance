@@ -10,11 +10,9 @@ const Card = ({ id, ngo_name, ngo_description, img_url, resources }) => {
     <div
       key={id}
       onMouseEnter={() => {
-        console.log("we entered the div");
         setImgIsHidden(true);
       }}
       onMouseLeave={() => {
-        console.log("we entered the div");
         setImgIsHidden(false);
       }}
       className="h-[480px] min-w-[360px] bg-white-card text-typo text-sm font-light card-text p-[1px] hover:p-0 flex flex-col content-between border-none hover:border-solid border-interactive-hover border-[1px] hover:shadow-transparent"

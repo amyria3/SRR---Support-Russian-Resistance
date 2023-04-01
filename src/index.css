@@ -39,4 +39,8 @@
     color: rgba(0, 85, 212, 1);
     text-decoration: underline;
   }
+
+  path:hover {
+    fill: rgba(0, 85, 212, 1);
+  }
 }

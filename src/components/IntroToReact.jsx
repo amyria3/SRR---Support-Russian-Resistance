@@ -18,7 +18,6 @@ function Basics() {
 //to reuse HTML Code with different values easier.
 function AdaptableCode() {
   const replacableText = "Hello, I am Your pretty Function Component!";
-  const replacebleText2 = "And this is another Option"
   return <h1>{replacableText}</h1>;
 }
 
