@@ -9,16 +9,23 @@
   * {
     box-sizing: box-border;
   }
-  #wrapper {
-    @apply text-typo;
-    @apply bg-white;
-    padding: 82px 30px 30px 30px;
-    margin: 0 0 0 0;
+
+  #html {
+    @apply bg-white
+  }
+
+  #root {
     width: 100vw;
+    margin: 0;
+    padding: 82px 30px 30px 30px;
+    @apply bg-white dark:bg-dt-background;
     overflow-x: hidden;
     overflow-y: scroll;
-    @apply flex flex-col items-start pt-12 gap-[30px];
     box-sizing: box-border;
+  }
+
+  #wrapper {
+    @apply flex flex-col items-start pt-12 gap-[30px];
   }
 }
 

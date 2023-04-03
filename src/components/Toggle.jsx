@@ -1,6 +1,6 @@
 import clsx from "clsx";
-import { themeSwitch } from "../../darkmode";
-
+import { userTheme } from "../App";
+import root from "../App";
 //This function takes as props:
 //setDarkmodeFunction: a setFunction
 //darkmodeIsOn: and a boolean that is to be set
@@ -17,7 +17,7 @@ export default function Toggle(props) {
     >
       <button
         onClick={() => {
-          themeSwitch(props.darkmode, props.darkModeToggleFunction);
+          themeSwitch(props.darkmodeBoolean, props.darkModeToggleFunction);
         }}
         id="theme-toggle"
       >
@@ -29,18 +29,20 @@ export default function Toggle(props) {
   );
 }
 
-export function themeSwitch() {
-  if (document.documentElement.classList.contains("dark")) {
-    console.log("we are here" + document.documentElement)
-    document.documentElement.classList.remove("dark");
+export function themeSwitch(aBoolean, setBoolean) {
+  console.log("theme is set to :  " + userTheme)
+  //if darkmode === true
+  if (aBoolean === true) {
     localStorage.setItem("theme", "light");
-    console.log("CLICK");
-    console.log(localStorage);
-    props.darkModeToggleFunction(true)
+    setBoolean(false);
+    root.classList.contains("dark") && root.classList.remove("dark");
   }
-  if (!document.documentElement.classList.contains("dark")) {
-    document.documentElement.classList.add("dark");
+  //if darkmode === false
+  if (aBoolean === false) {
     localStorage.setItem("theme", "dark");
-    console.log("CLICK");
+    setBoolean(true);
+    !root.classList.contains("dark") && root.classList.add("dark");
+  } else {
+    console.log("nothing works");
   }
 }
