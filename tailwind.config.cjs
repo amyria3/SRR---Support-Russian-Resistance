@@ -3,6 +3,7 @@ module.exports = {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     colors: {
       white: {
@@ -18,11 +19,23 @@ module.exports = {
       typo: {
         DEFAULT: "rgba(37, 37, 37, 1)",
       },
+      dt: {
+        typo: {
+          DEFAULT: "rgba(250, 250, 250, 1)"
+        },
+        background: {
+          DEFAULT: "rgba(37, 37, 37, 1)",
+          input: "gba(250, 250, 250, 0.15)",
+          card: "rgba(0, 0, 0, 0.1)"
+        },
+        interactive: {
+          DEFAULT: "rgba(96, 165, 250, 1)"
+        },
+      },
+      yellow: {
+        DEFAULT: "rgba(255, 230, 0, 1)"
+      },
     },
-  },
-  fontFamily: {
-    'inter': ['Inter', 'sans-serif'],
-    'italiana': ['Italiana', 'serif'],
   },
   extend: {
   },
