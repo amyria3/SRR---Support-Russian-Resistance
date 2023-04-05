@@ -5,6 +5,7 @@ import Button from "./components/Button";
 import Splash from "./components/Splash";
 import Cards from "./components/Cards";
 import Toggle from "./components/Toggle";
+import Search from "./components/Search";
 import { cards_data } from "./assets/DummyData";
 import GetCards from ".././Endpoint/getCards"
 
@@ -22,6 +23,7 @@ function App() {
       setBoolean(true);
     }
   }
+  themeCheck()
 
   //write an onClick function for the toggle
   //it will
@@ -53,6 +55,7 @@ function App() {
         <Button function={() => {}} label="GO!" />
       </section>
       <Cards cards_data={cards_data} />
+      <Search />
     </div>
   );
 }

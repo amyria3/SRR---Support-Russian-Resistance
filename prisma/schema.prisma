@@ -8,28 +8,47 @@ datasource db {
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
-model NGO {
-  id          String @id @default(cuid())
-  name        String @unique
-  description String
-  img_url     String
+model TypesOfRessource {
+  name            String              @unique
+  allRessources   Ressource[]
 }
 
-model Keyword {
-  keyword String @unique
+model Ngo {
+  id                String            @id
+  name              String            @unique
+  description       String
+  img_url           String
+  allRessources     Ressource[]
+  allLinkedKeywords UsedKeyword[]
+
+  @@map("Ngos")
 }
 
 model Ressource {
-  url         String @unique
-  description String
+  id                  String          @unique
+  url                 String          @unique
+  description         String
+  ngo                 String
+  typeOfRessourceName String
+  Ngo                 Ngo              @relation(fields: [ngo], references: [id])
+  TypeOfRessource     TypesOfRessource @relation(fields: [typeOfRessourceName], references: [name])
+
+  @@map("Used Resources")
 }
 
-model Elements {
-  AtomicNumber Int     @id
-  Element      String?
-  Symbol       String?
+model UsedKeyword {
+  keyword                  String         @unique
+  ngoId                    String?
+  protoKeywordProtoKeyword String
+  ngo                      Ngo?           @relation(fields: [ngoId], references: [id])
+  protoKeywords            ProtoKeyword   @relation(fields: [protoKeywordProtoKeyword], references: [protoKeyword])
+
+  @@map("Used Keyword")
 }
 
-model TypeOfRessource {
-  name String @unique
+model ProtoKeyword {
+  protoKeyword    String                  @unique
+  allUsedKeywords UsedKeyword[]
+
+  @@map("Prototype Keyword")
 }
