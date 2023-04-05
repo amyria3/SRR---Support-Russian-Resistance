@@ -1,0 +1,22 @@
+.App {
+  font-family: sans-serif;
+  /* text-align: center; */
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.section-name {
+  font-size: 16px;
+}
+
+.section-content {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.67)
+}
+
+mark.highlight {
+  background-color: rgba(255, 230, 0, 1);
+}
