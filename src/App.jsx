@@ -5,9 +5,7 @@ import Button from "./components/Button";
 import Splash from "./components/Splash";
 import Cards from "./components/Cards";
 import Toggle from "./components/Toggle";
-import Search from "./components/Search";
 import { cards_data } from "./assets/DummyData";
-import GetCards from ".././Endpoint/getCards"
 
 function App() {
   const root = document.getElementById("root");
@@ -40,8 +38,8 @@ function App() {
     }
   }
 
-  const returnData = GetCards()
-  console.log(returnData)
+  // const returnData = GetCards()
+  // console.log(returnData)
 
   return (
     <div id="wrapper">
@@ -55,7 +53,6 @@ function App() {
         <Button function={() => {}} label="GO!" />
       </section>
       <Cards cards_data={cards_data} />
-      <Search />
     </div>
   );
 }

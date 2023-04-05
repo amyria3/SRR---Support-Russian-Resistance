@@ -19,7 +19,7 @@ export default function Search() {
       includeScore: true,
       // threshold: 0.3,
       useExtendedSearch: true,
-      keys: ["name", "description", "allResources"],
+      keys: ["name", "description"],
       //"allLinkedKeywords"
     });
   };
@@ -55,10 +55,10 @@ export default function Search() {
   };
 
   const renderResult = (res) => {
-    const resList = res.map((item) => {
+    const resList = res.map((cardData) => {
       // console.log(item);
 
-      return <Card {...item} />;
+      return <Card {...cardData} />;
     });
 
     return resList;
@@ -71,72 +71,82 @@ export default function Search() {
       </div>
       <div>
         {Array.isArray(searchResult) && searchResult.length !== 0
-          ? renderResult(searchResult)
-          : renderResult(cards_data)}
+          ? (searchResult)
+          : console.log("no data found")}
       </div>
     </div>
   );
 }
 
 const searchHighlight = (res, queryStr) => {
-  const filteredRes = JSON.parse(JSON.stringify(res)).map((cards_data) => {
+  const filteredRes = JSON.parse(JSON.stringify(res)).map((element) => {
+
+    console.log(element)
+
     const searchText = queryStr.toLowerCase().trim();
 
-    if ((cards_data.item.name.toLowerCase()).includes(searchText)) {
-      const regExp = new RegExp(searchText, "ig");
+    // let ngoName = element.name
+    // let ngoDescription = element.description
+    // let resources = element.allResources
 
-      cards_data.item.name = cards_data.item.name.replace(
-        regExp,
-        "<mark class='highlight'>$&</mark>"
-      );
-    }
+    // if ((ngoName.toLowerCase()).includes(searchText)) {
+    //   const regExp = new RegExp(searchText, "ig");
 
-    cards_data.item.allResources = cards_data.item.allResources.filter((resource) => {
-      let flag = false;
+    //   ngoName = ngoName.replace(
+    //     regExp,
+    //     "<mark class='highlight'>$&</mark>"
+    //   );
+    // }
 
-      if (resource.description.toLowerCase().includes(searchText)) {
-        const matchSnippetObject = getMatchSnippet(resource.description, searchText);
+    // resources = resources.filter((resource) => {
+    //   let flag = false;
+    //   let resourceDescription = resource.description
+    //   let resourceName = resource.name
 
-        if (matchSnippetObject) {
-          const { isToLeftEnd, isToRightEnd, snippet } = matchSnippetObject;
-          const regExp = new RegExp(searchText, "ig");
 
-          const highlightContent = snippet.replace(
-            regExp,
-            "<mark class='highlight'>$&</mark>"
-          );
+    //   if (resourceDescription.toLowerCase().includes(searchText)) {
+    //     const matchSnippetObject = getMatchSnippet(resourceDescription, searchText);
 
-          if (isToLeftEnd && isToRightEnd) {
-            resource.description = highlightContent;
-          } else if (!isToLeftEnd && isToRightEnd) {
-            resource.description = `...${highlightContent}`;
-          } else if (isToLeftEnd && !isToRightEnd) {
-            resource.description = `${highlightContent}...`;
-          } else {
-            resource.description = `...${highlightContent}...`;
-          }
-        }
+    //     if (matchSnippetObject) {
+    //       const { isToLeftEnd, isToRightEnd, snippet } = matchSnippetObject;
+    //       const regExp = new RegExp(searchText, "ig");
 
-        flag = true;
-      } else {
-        resource.description = "";
-      }
+    //       const highlightContent = snippet.replace(
+    //         regExp,
+    //         "<mark class='highlight'>$&</mark>"
+    //       );
 
-      if (resource.name.toLowerCase().includes(searchText)) {
-        const regExp = new RegExp(searchText, "ig");
+    //       if (isToLeftEnd && isToRightEnd) {
+    //         resourceDescription = highlightContent;
+    //       } else if (!isToLeftEnd && isToRightEnd) {
+    //         resourceDescription = `...${highlightContent}`;
+    //       } else if (isToLeftEnd && !isToRightEnd) {
+    //         resourceDescription = `${highlightContent}...`;
+    //       } else {
+    //         resourceDescription = `...${highlightContent}...`;
+    //       }
+    //     }
 
-        resource.name = resource.name.replace(
-          regExp,
-          "<mark class='highlight'>$&</mark>"
-        );
+    //     flag = true;
+    //   } else {
+    //     resourceDescription = "";
+    //   }
 
-        flag = true;
-      }
+    //   if (resourceName.toLowerCase().includes(searchText)) {
+    //     const regExp = new RegExp(searchText, "ig");
 
-      return flag;
-    });
+    //     resourceName = resourceName.replace(
+    //       regExp,
+    //       "<mark class='highlight'>$&</mark>"
+    //     );
 
-    return cards_data.item;
+    //     flag = true;
+    //   }
+
+    //   return flag;
+    // });
+
+    // return cards_data.item;
   });
 
   return filteredRes;

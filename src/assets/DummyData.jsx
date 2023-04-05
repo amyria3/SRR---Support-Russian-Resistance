@@ -1,4 +1,4 @@
-const card_data = {
+export const card_data = {
   id: "plahjre",
   name: "First Ngo",
   description:

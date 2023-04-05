@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Link from "./Link";
+import { Links } from "./Links";
 
 //width should grow breakpoint: 360px * 2 + margin-x + gap
 const Card = ({ id, name, description, img_url, allResources }) => {
@@ -23,16 +23,8 @@ const Card = ({ id, name, description, img_url, allResources }) => {
       </div>
 
       <div id="bottom_frame" className="h-[250px] flex flex-row">
-        {imgIsHidden && (<div
-          id="links"
-          className="px-[26px] pt-[26px] pb-9 flex flex-col justify-end gap-4 w-full z-99"
-        >
-          {allResources
-            ? allResources.map((element) => {
-                return <Link {...element} />;
-              })
-            : {}}
-        </div>)}
+        {imgIsHidden &&
+            Links(allResources, imgIsHidden, id)}
         {!imgIsHidden && (
           <img
             src={img_url}
