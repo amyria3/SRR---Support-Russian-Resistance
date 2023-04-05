@@ -5,6 +5,7 @@ export const card_data = {
       "Lorem Ipsum sastempul i halus dramed-ta po doperil status propeller",
     img_url:
       "https://media.npr.org/assets/img/2022/02/26/gettyimages-1238773862_custom-3837b001d35396e6b816b54d1b06f1b3315cead5-s1600-c85.webp",
+    keywords: ["human rights"],
     resources: [
       {
         id: "jksjda",

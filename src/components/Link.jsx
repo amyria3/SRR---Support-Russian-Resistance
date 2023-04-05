@@ -35,20 +35,21 @@ const Link = ({ id, link_keyword, link_url, link_text }) => {
   };
 
   return (
-    <div id="link_wrapper" key={id}
-    className="flex flex-row justify-between w-full py-1 h-[30px] border-none">
+    <div
+      id="link_wrapper"
+      key={id}
+      className="flex flex-row justify-between w-full py-2 h-[30px] border-none"
+    >
       <a
+        target="_blank"
+        rel="noopener noreferrer"
         href={link_url}
-        className="flex flex-row justify-between w-full py-1 h-[30px] border-none cursor-pointer parent"
+        className="flex flex-row justify-between w-full py-1 h-[34px] my-1 border-none cursor-pointer parent"
       >
         <div id="icon_wrapper" className="w-6 h-6 child">
           <Icon link_keyword={link_keyword} />
         </div>
-        <div
-          className="mt-1 hover:underline child"
-        >
-          {link_text}
-        </div>
+        <div className="mt-1 text-base hover:underline child">{link_text}</div>
       </a>
     </div>
   );

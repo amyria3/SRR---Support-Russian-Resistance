@@ -4,7 +4,6 @@ import Link from "./Link";
 //width should grow breakpoint: 360px * 2 + margin-x + gap
 const Card = ({ id, ngo_name, ngo_description, img_url, resources }) => {
   const [imgIsHidden, setImgIsHidden] = useState(false);
-  console.log(imgIsHidden);
 
   return (
     <div
@@ -15,7 +14,7 @@ const Card = ({ id, ngo_name, ngo_description, img_url, resources }) => {
       onMouseLeave={() => {
         setImgIsHidden(false);
       }}
-      className="h-[480px] min-w-[360px] bg-white-card text-typo text-sm font-light card-text p-[1px] hover:p-0 flex flex-col content-between border-none hover:border-solid border-interactive-hover border-[1px] hover:shadow-transparent"
+      className="h-[480px] min-w-[360px] bg-white-card dark:bg-dt-background-card text-typo dark:text-dt-typo text-sm font-light dark:font-extralight card-text p-[1px] hover:p-0 flex flex-col content-between border-none hover:border-solid border-interactive-hover dark:border-dt-interactive border-[1px] hover:shadow-transparent hover:shadow-dt-transparent"
     >
       <div id="top" className="flex grow flex-col py-10 px-7 gap-5">
         <h3 className="text-base font-semibold">{ngo_name}</h3>
@@ -25,7 +24,7 @@ const Card = ({ id, ngo_name, ngo_description, img_url, resources }) => {
       <div id="bottom_frame" className="h-[250px] flex flex-row">
         {imgIsHidden && (<div
           id="links"
-          className="px-[26px] pt-[26px] pb-7 flex flex-col justify-end gap-2 w-full z-99"
+          className="px-[26px] pt-[26px] pb-9 flex flex-col justify-end gap-4 w-full z-99"
         >
           {resources
             ? resources.map((element) => {

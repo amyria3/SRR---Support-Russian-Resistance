@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Italiana&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Italiana&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -11,21 +11,23 @@
   }
 
   #html {
-    @apply bg-white
+    @apply bg-dt-background;
+    @apply w-full h-full;
+    overflow-y: auto;
   }
 
   #root {
-    width: 100vw;
-    margin: 0;
-    padding: 82px 30px 30px 30px;
-    @apply bg-white dark:bg-dt-background;
     overflow-x: hidden;
-    overflow-y: scroll;
     box-sizing: box-border;
+    overflow-y: auto;
   }
 
   #wrapper {
+    @apply w-full m-0 pt-[82px] px-2 md:px-6 lg:px-10 xl:px-14;
+    @apply bg-white dark:bg-dt-background;
     @apply flex flex-col items-start pt-12 gap-[30px];
+    @apply text-typo dark:text-dt-typo;
+    overflow-y: auto;
   }
 }
 
@@ -36,18 +38,27 @@
   .shadow-transparent {
     box-shadow: 3px 3px 0px 0px rgba(0, 85, 212, 0.5);
   }
+  .shadow-dt-transparent {
+    box-shadow: 2px 2px 0px 0px rgba(96, 165, 250, 0.5);
+  }
 
-  /* .icon:hover{
-    fill: rgba(0, 85, 212, 1);
-  } */
+  .fillIcon {
+   fill: rgba(0, 85, 212, 0.65);
+  }
 
   .parent:hover .child {
-    fill: rgba(0, 85, 212, 1);
-    color: rgba(0, 85, 212, 1);
+    fill: rgb(0, 102, 255);
+    color: rgb(0, 102, 255);
     text-decoration: underline;
   }
 
-  path:hover {
-    fill: rgba(0, 85, 212, 1);
-  }
+  .dark .fillIcon {
+    fill: rgba(96, 165, 250, 0.65);
+   }
+
+  .dark .parent:hover .child {
+     fill: rgb(0, 115, 255);
+     color: rgba(96, 165, 250, 1);
+     text-decoration: underline;
+   }
 }
