@@ -3,7 +3,7 @@ export default function getCards(){
     method: 'GET',
     headers: {
       accept: 'application/json',
-      authorization: 'Bearer p0ye0rf7npro4fo4ngk37hfz1qqxuvplq1laoyub8fv532lf5prijx2h8a9p610g'
+      authorization: 'p0ye0rf7npro4fo4ngk37hfz1qqxuvplq1laoyub8fv532lf5prijx2h8a9p610g'
     }
   };
 
@@ -11,6 +11,4 @@ export default function getCards(){
     .then(response => response.json())
     .then(response => console.log(response))
     .catch(err => console.error(err));}
-
-    getResponse()
 }
