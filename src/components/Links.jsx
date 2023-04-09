@@ -68,7 +68,7 @@ const LinksDiv = ({resources, hidden, cardId}) => {
     <div
       id="links"
       key={"links of " + cardId}
-      className={clsx("px-[26px] pt-[26px] pb-9 flex-col justify-end gap-4 w-full z-99", (!hidden ? "flex" : "hidden"))}
+      className={clsx("pl-[26px] pr-10 pt-[26px] pb-9 flex-col justify-end gap-4 w-full z-99", (!hidden ? "flex" : "hidden"))}
     >
       {(resources).map((element) => {
           console.log("this should become a link" + element);

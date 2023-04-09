@@ -41,8 +41,8 @@ module.exports = {
         },
         background: {
           DEFAULT: "rgba(37, 37, 37, 1)",
-          input: "gba(250, 250, 250, 0.15)",
-          card: "rgba(0, 0, 0, 0.1)"
+          input: "rgba(250, 250, 250, 0.15)",
+          card: "rgba(250, 250, 250, 0.05)"
         },
         interactive: {
           DEFAULT: "rgba(96, 165, 250, 1)"

@@ -66,8 +66,19 @@ export default function Search() {
 
   return (
     <div className="App">
-      <div>
-        <input type="search" onChange={(e) => handleSearch(e)} />
+      <div id="search">
+        <input
+        className="h-12 rounded-lg border w-full flex pl-8
+        border-line dark:border-none dark:hover:border-solid dark:hover:border-[1px]
+        hover:border-interactive-hover focus:border-interactive dark:border-dt-interactive
+        bg-none hover:bg-interactive dark:bg-dt-background-input
+        text-typo dark:text-dt-typo
+        font-extralight
+        hover:shadow-default focus:shadow-default dark:shadow-none
+        placeholder:text-xl placeholder:text-line dark:placeholder:text-dt-typo
+        appearance-none focus:outline-none
+        "
+        type="search" onChange={(e) => handleSearch(e)} placeholder="Search" />
       </div>
       <div>
         {Array.isArray(searchResult) && searchResult.length !== 0

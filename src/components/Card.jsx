@@ -15,7 +15,14 @@ const Card = ({ id, name, description, img_url, allResources }) => {
       onMouseLeave={() => {
         setImgIsHidden(false);
       }}
-      className="h-[480px] min-w-[360px] bg-white-card dark:bg-dt-background-card text-typo dark:text-dt-typo text-sm font-light dark:font-extralight card-text p-[1px] hover:p-0 flex flex-col content-between border-none hover:border-solid border-interactive-hover dark:border-dt-interactive border-[1px] hover:shadow-transparent hover:shadow-dt-transparent"
+      className="h-[480px] min-w-[360px]
+      p-0 flex flex-col content-between
+      bg-white-card dark:bg-dt-background-card
+      text-typo dark:text-dt-typo
+      text-sm
+      font-light dark:font-extralight
+      border-solid dark:border-none dark:hover:border-solid rounded-md border-line hover:border-interactive-hover dark:border-dt-interactive border-[1px]
+      hover:shadow-default hover:shadow-default dark:hover:shadow-none"
     >
       <div id="top" className="flex grow flex-col py-10 px-7 gap-5">
         <h3 className="text-base font-semibold">{name}</h3>
