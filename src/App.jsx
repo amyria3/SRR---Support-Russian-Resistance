@@ -6,7 +6,7 @@ import Cards from "./components/Cards";
 import Toggle from "./components/Toggle";
 import { cards_data } from "./assets/DummyData";
 import Search from "./components/Search";
-import { FunctionComponent } from "./functionComponent";
+import { FunctionComponent } from "./assets/ScrollFunctions";
 // import all from "../query"; not to be run in fronend
 
 const App = () => {
@@ -29,8 +29,8 @@ const App = () => {
 
   themeCheck();
 
-  const response = getDataFromServer()
-  console.log("response : " + response)
+  // const response = getDataFromServer()
+  // console.log("response : " + response)
 
   function themeSwitch(aBoolean, setBoolean) {
     if (aBoolean) {

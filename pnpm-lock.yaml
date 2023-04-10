@@ -10,6 +10,7 @@ specifiers:
   clsx: ^1.2.1
   fuse: ^0.4.0
   fuse.js: ^6.6.2
+  latest: ^0.2.0
   lodash.debounce: ^4.0.8
   postcss: ^8.4.21
   prisma: ^4.12.0
@@ -17,7 +18,7 @@ specifiers:
   react: ^18.2.0
   react-dom: ^18.2.0
   tailwindcss: ^3.2.7
-  vite: ^4.1.0
+  vite: ^4.1.4
 
 dependencies:
   '@next/font': 13.2.4
@@ -25,6 +26,7 @@ dependencies:
   clsx: 1.2.1
   fuse: 0.4.0
   fuse.js: 6.6.2
+  latest: 0.2.0
   lodash.debounce: 4.0.8
   psql: 0.0.1
   react: 18.2.0
@@ -1144,6 +1146,13 @@ packages:
     hasBin: true
     dev: true
 
+  /latest/0.2.0:
+    resolution: {integrity: sha512-nsIM/FjwLcsKZ1KDAw5CivnM26zzMs3zGBL4SdjYXHI5tMcOWjGhFDMBKIum4WNAkZmeVw7zU1jR2H2UiKoQVA==}
+    hasBin: true
+    dependencies:
+      npm: 2.15.12
+    dev: false
+
   /lilconfig/2.1.0:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}
     engines: {node: '>=10'}
@@ -1270,6 +1279,83 @@ packages:
     resolution: {integrity: sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /npm/2.15.12:
+    resolution: {integrity: sha512-WMoAJ518W0vHjWy1abYnTeyG9YQpSoYGPxAx7d0C0L7U7Jo44bZsrvTjccmDohCJGxpasdKfqsKsl6o/RUPx6A==}
+    hasBin: true
+    dev: false
+    bundledDependencies:
+      - abbrev
+      - ansi
+      - ansi-regex
+      - ansicolors
+      - ansistyles
+      - archy
+      - async-some
+      - block-stream
+      - char-spinner
+      - chmodr
+      - chownr
+      - cmd-shim
+      - columnify
+      - config-chain
+      - dezalgo
+      - editor
+      - fs-vacuum
+      - fs-write-stream-atomic
+      - fstream
+      - fstream-npm
+      - github-url-from-git
+      - github-url-from-username-repo
+      - glob
+      - graceful-fs
+      - hosted-git-info
+      - imurmurhash
+      - inflight
+      - inherits
+      - ini
+      - init-package-json
+      - lockfile
+      - lru-cache
+      - minimatch
+      - mkdirp
+      - node-gyp
+      - nopt
+      - normalize-git-url
+      - normalize-package-data
+      - npm-cache-filename
+      - npm-install-checks
+      - npm-package-arg
+      - npm-registry-client
+      - npm-user-validate
+      - npmlog
+      - once
+      - opener
+      - osenv
+      - path-is-inside
+      - read
+      - read-installed
+      - read-package-json
+      - readable-stream
+      - realize-package-specifier
+      - request
+      - retry
+      - rimraf
+      - semver
+      - sha
+      - slide
+      - sorted-object
+      - spdx-license-ids
+      - strip-ansi
+      - tar
+      - text-table
+      - uid-number
+      - umask
+      - validate-npm-package-license
+      - validate-npm-package-name
+      - which
+      - wrappy
+      - write-file-atomic
 
   /oauth-sign/0.2.0:
     resolution: {integrity: sha512-4DtiD64CwPJ5vZ636j/KtM7DxWbX1KlkqwbqbEAxI3BCpBrQdrKOv8vC/36U6gfm1CVapy6QmcVxPnXPPQApTA==}
