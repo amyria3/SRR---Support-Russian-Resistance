@@ -29,6 +29,9 @@ const App = () => {
 
   themeCheck();
 
+  const response = getDataFromServer()
+  console.log("response : " + response)
+
   function themeSwitch(aBoolean, setBoolean) {
     if (aBoolean) {
       root.classList.remove("dark");
