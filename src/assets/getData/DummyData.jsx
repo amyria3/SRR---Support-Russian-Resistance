@@ -1,3 +1,5 @@
+//used to test Fronend without Backend
+
 export const card_data = {
   id: "plahjre",
   name: "First Ngo",
@@ -34,4 +36,5 @@ export const card_data = {
   ],
 };
 
-export const cards_data = [card_data];
+const cards_data = [card_data];
+export default cards_data;

@@ -1,35 +1,32 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model TypesOfRessource {
-  name            String              @unique
-  allRessources   Ressource[]
+  name          String      @unique
+  allRessources Resource[]
 }
 
 model Ngo {
-  id                String            @id
-  name              String            @unique
+  id                String        @id @default(uuid())
+  name              String        @unique
   description       String
   img_url           String
-  allRessources     Ressource[]
   allLinkedKeywords UsedKeyword[]
+  allRessources     Resource[]
 
   @@map("Ngos")
 }
 
-model Ressource {
-  id                  String          @unique
-  url                 String          @unique
+model Resource {
+  id                  String           @id @default(uuid())
+  url                 String           @unique
   description         String
   ngo                 String
   typeOfRessourceName String
@@ -40,17 +37,17 @@ model Ressource {
 }
 
 model UsedKeyword {
-  keyword                  String         @unique
-  ngoId                    String?
-  protoKeywordProtoKeyword String
-  ngo                      Ngo?           @relation(fields: [ngoId], references: [id])
-  protoKeywords            ProtoKeyword   @relation(fields: [protoKeywordProtoKeyword], references: [protoKeyword])
+  ngoId         String?
+  protoKeyword  String
+  id            String       @id @default(uuid())
+  ngo           Ngo?         @relation(fields: [ngoId], references: [id])
+  protoKeywords ProtoKeyword @relation(fields: [protoKeyword], references: [name])
 
   @@map("Used Keyword")
 }
 
 model ProtoKeyword {
-  protoKeyword    String                  @unique
+  name            String        @unique
   allUsedKeywords UsedKeyword[]
 
   @@map("Prototype Keyword")

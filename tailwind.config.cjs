@@ -56,6 +56,3 @@ module.exports = {
   extend: {
   },
 }
-
-//ISSUES:
-////fonts don't work

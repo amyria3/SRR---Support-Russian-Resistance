@@ -1,0 +1,5 @@
+To run the server:
+node --experimental-modules src/server/server.mjs
+
+To run devServer:
+pnpm run dev

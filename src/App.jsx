@@ -1,15 +1,14 @@
-import React from "react";
+// import { useEffect } from "react";
 import { useState } from "react";
+
 import NavBar from "./components/NavBar";
 import Splash from "./components/Splash";
 import Cards from "./components/Cards";
 import Toggle from "./components/Toggle";
-import { cards_data } from "./assets/DummyData";
-import Search from "./components/Search";
-import { FunctionComponent } from "./assets/ScrollFunctions";
-// import all from "../query"; not to be run in fronend
+// import Search from "./components/Search";
+// import cards_data from "./assets/getData/DummyData";
 
-const App = () => {
+const App = ({cards_data}) => {
 
   const root = document.getElementById("root");
   const userTheme = localStorage.getItem("theme");
@@ -28,9 +27,6 @@ const App = () => {
   }
 
   themeCheck();
-
-  // const response = getDataFromServer()
-  // console.log("response : " + response)
 
   function themeSwitch(aBoolean, setBoolean) {
     if (aBoolean) {
@@ -61,11 +57,10 @@ const App = () => {
         className="w-full flex flex-col col-start-1 col-end-4 gap-[30px]"
       >
         <div className="h-[1px] bg-line w-full"></div>
-        <Search />
+        {/* <Search /> */}
         <div className="h-[1px] bg-line w-full"></div>
       </section>
       <Cards cards_data={cards_data} />
-      <FunctionComponent />
     </div>
   );
 };

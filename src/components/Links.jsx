@@ -1,11 +1,11 @@
 import clsx from "clsx";
-import Bitcoin from "./icons/Bitcoin";
-import Creditcard from "./icons/Creditcard";
-import Facebook from "./icons/Facebook";
-import Instagram from "./icons/Instagram";
-import Paypal from "./icons/Paypal";
-import Telegram from "./icons/Telegram";
-import Webpage from "./icons/Webpage";
+import Bitcoin from "../assets/icons/Bitcoin";
+import Creditcard from "../assets/icons/Creditcard";
+import Facebook from "../assets/icons/Facebook";
+import Instagram from "../assets/icons/Instagram";
+import Paypal from "../assets/icons/Paypal";
+import Telegram from "../assets/icons/Telegram";
+import Webpage from "../assets/icons/Webpage";
 // import { useState } from "react";
 
 const Link = ({ id, url, keyword, description }) => {
