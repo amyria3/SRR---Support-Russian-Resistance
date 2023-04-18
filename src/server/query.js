@@ -8,11 +8,10 @@ async function askPrisma() {
       id: 'asc'
     },
     include: {
-      allRessources: true,
+      allResources: true,
       allLinkedKeywords: true
     }
   });
-  console.log("query.js, line 15" + typeof(elements) + JSON.stringify(elements))
   return elements;
 }
 

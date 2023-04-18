@@ -1,9 +1,21 @@
 import { useState } from "react";
 import { Links } from "./Links";
 
+//Type:
+// {
+  //allLinkedKeywords: [{…}]
+// allResources: [{…}]
+// description: ""
+// id:""
+// img_url: ""
+// name: ""
+//}
+
 //width should grow breakpoint: 360px * 2 + margin-x + gap
 const Card = ({ id, name, description, img_url, allResources }) => {
   const [imgIsHidden, setImgIsHidden] = useState(false);
+
+  console.log(JSON.stringify(allResources))
 
   return (
     <div

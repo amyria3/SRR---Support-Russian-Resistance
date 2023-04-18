@@ -8,18 +8,13 @@ datasource db {
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
-model TypesOfRessource {
-  name          String      @unique
-  allRessources Resource[]
-}
-
 model Ngo {
   id                String        @id @default(uuid())
   name              String        @unique
   description       String
   img_url           String
   allLinkedKeywords UsedKeyword[]
-  allRessources     Resource[]
+  allResources      Resource[]
 
   @@map("Ngos")
 }
@@ -29,9 +24,9 @@ model Resource {
   url                 String           @unique
   description         String
   ngo                 String
-  typeOfRessourceName String
+  typeOfResourceName String
   Ngo                 Ngo              @relation(fields: [ngo], references: [id])
-  TypeOfRessource     TypesOfRessource @relation(fields: [typeOfRessourceName], references: [name])
+  TypesOfResource    TypesOfResource @relation(fields: [typeOfResourceName], references: [name])
 
   @@map("Used Resources")
 }
@@ -51,4 +46,9 @@ model ProtoKeyword {
   allUsedKeywords UsedKeyword[]
 
   @@map("Prototype Keyword")
+}
+
+model TypesOfResource {
+  name           String     @unique
+  Used_Resources Resource[]
 }

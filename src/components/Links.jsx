@@ -8,31 +8,31 @@ import Telegram from "../assets/icons/Telegram";
 import Webpage from "../assets/icons/Webpage";
 // import { useState } from "react";
 
-const Link = ({ id, url, keyword, description }) => {
+//Type:
+// {typeOfResourceNames: [{…}]
 
-  console.log("rendering Link")
-  // const [hover, setHover] = useState(false)
+const Link = ({ id, url, typeOfResourceName, description }) => {
 
-  const Icon = ({ keyword }) => {
-    if (keyword === "bitcoin") {
+  const Icon = ({ typeOfResourceName }) => {
+    if (typeOfResourceName === "Bitcoin") {
       return <Bitcoin />;
     }
-    if (keyword === "creditcard") {
+    if (typeOfResourceName === "Credit card") {
       return <Creditcard />;
     }
-    if (keyword === "facebook") {
+    if (typeOfResourceName === "Facebook") {
       return <Facebook />;
     }
-    if (keyword === "instagram") {
+    if (typeOfResourceName === "Instagram") {
       return <Instagram />;
     }
-    if (keyword === "paypal") {
+    if (typeOfResourceName === "PayPal") {
       return <Paypal />;
     }
-    if (keyword === "telegram") {
+    if (typeOfResourceName === "Telegram") {
       return <Telegram />;
     }
-    if (keyword === "webpage") {
+    if (typeOfResourceName === "Webpage") {
       return <Webpage />;
     }
   };
@@ -40,7 +40,7 @@ const Link = ({ id, url, keyword, description }) => {
   return (
     <div
       id="link_wrapper"
-      key={id}
+      key={id + "/" + typeOfResourceName}
       className="flex flex-row justify-between w-full py-2 h-[30px] border-none"
     >
       <a
@@ -50,7 +50,7 @@ const Link = ({ id, url, keyword, description }) => {
         className="flex flex-row justify-between w-full py-1 h-[34px] my-1 border-none cursor-pointer parent"
       >
         <div id="icon_wrapper" className="w-6 h-6 child">
-          <Icon keyword={keyword} />
+          <Icon typeOfResourceName={typeOfResourceName} />
         </div>
         <div className="mt-1 text-base hover:underline child">{description}</div>
       </a>
@@ -58,19 +58,19 @@ const Link = ({ id, url, keyword, description }) => {
   );
 };
 
-const Links = (resources, hidden, cardId) => {
-  return <LinksDiv resources={resources} hidden={false} cardId={"00000000"}/>
+const Links = (allResources, hidden, cardId) => {
+  return <LinksDiv allResources={allResources} hidden={false} cardId={"00000000"}/>
 };
 
-const LinksDiv = ({resources, hidden, cardId}) => {
-  console.log(resources)
+const LinksDiv = ({allResources, hidden, cardId: key}) => {
+  console.log(JSON.stringify(allResources))
   return (
     <div
       id="links"
-      key={"links of " + cardId}
+      key={"links of " + key}
       className={clsx("pl-[26px] pr-10 pt-[26px] pb-9 flex-col justify-end gap-4 w-full z-99", (!hidden ? "flex" : "hidden"))}
     >
-      {(resources).map((element) => {
+      {(allResources).map((element) => {
           console.log("this should become a link" + element);
           return <Link {...element} />;
         })}

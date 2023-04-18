@@ -1,16 +1,6 @@
 import Card from "./Card";
-import { useState, useEffect } from "react";
 
 const Cards = ({ cards_data }) => {
-  const [cardsData, setCardsData] = useState([]);
-
-  useEffect(() => {
-    // getData()
-    setCardsData(cardsData)
-  }, []);
-
-  // console.log(cardsData);
-
   return (
     <div
       id="cards"
