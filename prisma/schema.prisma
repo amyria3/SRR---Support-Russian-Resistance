@@ -23,10 +23,10 @@ model Resource {
   id                  String           @id @default(uuid())
   url                 String           @unique
   description         String?
-  ngo                 String
-  typeOfResourceName  String
-  Ngo                 Ngo              @relation(fields: [ngo], references: [id])
-  TypesOfResource     TypesOfResource @relation(fields: [typeOfResourceName], references: [name])
+  ngoId               String
+  resourceType        String
+  ngo                 Ngo              @relation(fields: [ngoId], references: [id])
+  TypesOfResource     TypesOfResource @relation(fields: [resourceType], references: [name])
 
   @@map("Used Resources")
 }

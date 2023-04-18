@@ -23,25 +23,34 @@ export default async function seedNgos() {
           img_url: entry.img_url,
         },
       });
+      ngoCreated && console.log(ngoCreated.name + " created.");
+      console.log(entry.name + " created");
+    }
+  }
+  for (const entry of rawData) {
+    const existingEntry = await prisma.Ngo.findUnique({
+      where: { name: entry.name },
+    });
+    console.log("HERE => " + JSON.stringify(existingEntry));
+    if (existingEntry) {
 
-      ngoCreated&&console.log(ngoCreated.name + " created.")
+      console.log(entry.name + " already exists.");
 
-      for (const resource of entry.resources) {
-        console.log(entry.resources)
-        const resourceCreated = await prisma.Resource.create({
+      for (const ngoResource of entry.resources) {
+
+        console.log(entry.name + " already exists.");
+        console.log("HALLO BENI!" + ngoResource.resourceType, typeof(ngoResource.resourceType))
+
+        const resourceCreated = await prisma.resource.create({
           data: {
-            url: resource.url,
-            ngo: ngoCreated.id,
-            typeOfResourceName: resource.typeOfResourceName,
+            ngoId: existingEntry.id,
+            url: ngoResource.url,
+            resourceType: ngoResource.resourceType,
           },
         });
       }
-      //const resourcesAdded = await prisma.resource.create({
-        //   map over resources and create them
-        //   use createMany
-      //});
-
-      console.log(entry.name + " created");
+    } else if (!existingEntry) {
+      console.log("pass");
     }
   }
 }

@@ -10,17 +10,17 @@ export const NowayaGazeta = {
     {
       url: 'https://novayagazeta.ru/',
       description: 'Web publishing',
-      typeOfResourceName: 'Website',
+      resourceType: 'Webpage',
     },
     {
       url: 'https://www.instagram.com/novayagazeta/',
       description: 'Infographics & Merchandise',
-      typeOfResourceName: 'Instagram',
+      resourceType: 'Instagram',
     },
     {
       url: 'https://t.me/novaya_pishet',
       description: 'Telegram channel',
-      typeOfResourceName: 'Telegram',
+      resourceType: 'Telegram',
     },
   ],
 };
