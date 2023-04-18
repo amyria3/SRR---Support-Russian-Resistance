@@ -13,7 +13,10 @@ export default async function seedNgos() {
     });
     if (existingEntry) {
       console.log(entry.name + " already exists.");
+      //if yes, UPDATE
+      //update img_url & description
     } else if (!existingEntry) {
+
       console.log(entry.name + " is not there yet. Creating now: ");
 
       const ngoCreated = await prisma.Ngo.create({
@@ -28,19 +31,21 @@ export default async function seedNgos() {
     }
   }
   for (const entry of rawData) {
+
+    //check if entry exists
     const existingEntry = await prisma.Ngo.findUnique({
       where: { name: entry.name },
     });
     console.log("HERE => " + JSON.stringify(existingEntry));
+
     if (existingEntry) {
 
       console.log(entry.name + " already exists.");
 
       for (const ngoResource of entry.resources) {
 
-        console.log(entry.name + " already exists.");
-        console.log("HALLO BENI!" + ngoResource.resourceType, typeof(ngoResource.resourceType))
-
+        console.log(entry.name + " exists.");
+        //go resource by resource, create
         const resourceCreated = await prisma.resource.create({
           data: {
             ngoId: existingEntry.id,
@@ -49,15 +54,10 @@ export default async function seedNgos() {
           },
         });
       }
-    } else if (!existingEntry) {
-      console.log("pass");
     }
+      //else if (!existingEntry) {
+      //do nothing
+
   }
 }
 
-//if NO, create
-
-//if yes, UPDATE
-//update img_url & description
-////go into allResources
-////
