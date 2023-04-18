@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function askPrisma() {
-  console.log("asking Prisma");
+  console.log("query.js, asking Prisma");
   const elements = await prisma.ngo.findMany({
     orderBy: {
       id: 'asc'
@@ -12,7 +12,7 @@ async function askPrisma() {
       allLinkedKeywords: true
     }
   });
-  console.log("asked Prisma");
+  console.log("query.js, line 15" + typeof(elements) + JSON.stringify(elements))
   return elements;
 }
 
