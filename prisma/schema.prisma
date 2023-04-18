@@ -11,7 +11,7 @@ datasource db {
 model Ngo {
   id                String        @id @default(uuid())
   name              String        @unique
-  description       String
+  description       String?
   img_url           String
   allLinkedKeywords UsedKeyword[]
   allResources      Resource[]
@@ -22,11 +22,11 @@ model Ngo {
 model Resource {
   id                  String           @id @default(uuid())
   url                 String           @unique
-  description         String
+  description         String?
   ngo                 String
-  typeOfResourceName String
+  typeOfResourceName  String
   Ngo                 Ngo              @relation(fields: [ngo], references: [id])
-  TypesOfResource    TypesOfResource @relation(fields: [typeOfResourceName], references: [name])
+  TypesOfResource     TypesOfResource @relation(fields: [typeOfResourceName], references: [name])
 
   @@map("Used Resources")
 }

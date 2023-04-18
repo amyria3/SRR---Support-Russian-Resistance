@@ -10,19 +10,19 @@ export const NowayaGazeta = {
     {
       url: 'https://novayagazeta.ru/',
       description: 'Web publishing',
-      typeOfRessourceName: 'Website',
+      typeOfResourceName: 'Website',
     },
     {
       url: 'https://www.instagram.com/novayagazeta/',
       description: 'Infographics & Merchandise',
-      typeOfRessourceName: 'Instagram',
+      typeOfResourceName: 'Instagram',
     },
     {
       url: 'https://t.me/novaya_pishet',
       description: 'Telegram channel',
-      typeOfRessourceName: 'Telegram',
+      typeOfResourceName: 'Telegram',
     },
   ],
 };
 
-export const rawData = [NowayaGazeta,];
+export const rawData = [NowayaGazeta];
