@@ -31,11 +31,11 @@ const App = ({cards_data}) => {
   function themeSwitch(aBoolean, setBoolean) {
     if (aBoolean) {
       root.classList.remove("dark");
-      userTheme.at("light");
+      userTheme && userTheme.at("light");
       setBoolean(false);
     } else if (!aBoolean) {
       root.classList.add("dark");
-      userTheme.at("dark");
+      userTheme && userTheme.at("light");
       setBoolean(true);
     }
   }
