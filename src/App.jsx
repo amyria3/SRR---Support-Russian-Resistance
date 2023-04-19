@@ -7,6 +7,8 @@ import Cards from "./components/Cards";
 import Toggle from "./components/Toggle";
 // import Search from "./components/Search";
 // import cards_data from "./assets/getData/DummyData";
+import { Links, LinksDiv } from "./components/Links"
+import { rawData }  from "./../seedDocs/rawData.js"
 
 const App = ({cards_data}) => {
 
@@ -41,7 +43,7 @@ const App = ({cards_data}) => {
   }
 
   return (
-    <div id="wrapper">
+    <div id="wrapper" className="px-2 ssm-px-8 sm:px-12 md:px-14 lg:px-20 xl:px-28">
       <NavBar
         children={
           <Toggle

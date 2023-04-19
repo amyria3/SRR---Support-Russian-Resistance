@@ -3,7 +3,7 @@ import NavLink from "./NavBarElements";
 function NavBar(props) {
   return (
     <>
-      <div className="bg-white dark:bg-dt-background px-2 md:px-6 md:pt-6 lg:p-10 xl:p-14 flex justify-between w-full fixed top-0 left-0 right-0">
+      <div className="bg-white dark:bg-dt-background z-50 px-2 ssm-px-8 sm:px-12 md:px-14 lg:px-20 xl:px-28 flex justify-between w-full fixed top-0 left-0 right-0">
         <div id="left_side_wrapper">
           <NavLink id="#link_splash" to="#splash" label="Welcome" />
           <NavLink id="#link_search" to="" label="Search" onClick={(e)=>{e.preventDefault()}}/>
