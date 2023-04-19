@@ -6,33 +6,29 @@ import Instagram from "../assets/icons/Instagram";
 import Paypal from "../assets/icons/Paypal";
 import Telegram from "../assets/icons/Telegram";
 import Webpage from "../assets/icons/Webpage";
-// import { useState } from "react";
 
-//Type:
-// {typeOfResourceNames: [{…}]
+const Link = ({ id, url, resourceType, description }) => {
 
-const Link = ({ id, url, typeOfResourceName, description }) => {
-
-  const Icon = ({ typeOfResourceName }) => {
-    if (typeOfResourceName === "Bitcoin") {
+  const Icon = ({ resourceType }) => {
+    if (resourceType === "Bitcoin") {
       return <Bitcoin />;
     }
-    if (typeOfResourceName === "Credit card") {
+    if (resourceType === "Credit card") {
       return <Creditcard />;
     }
-    if (typeOfResourceName === "Facebook") {
+    if (resourceType === "Facebook") {
       return <Facebook />;
     }
-    if (typeOfResourceName === "Instagram") {
+    if (resourceType === "Instagram") {
       return <Instagram />;
     }
-    if (typeOfResourceName === "PayPal") {
+    if (resourceType === "PayPal") {
       return <Paypal />;
     }
-    if (typeOfResourceName === "Telegram") {
+    if (resourceType === "Telegram") {
       return <Telegram />;
     }
-    if (typeOfResourceName === "Webpage") {
+    if (resourceType === "Webpage") {
       return <Webpage />;
     }
   };
@@ -40,7 +36,7 @@ const Link = ({ id, url, typeOfResourceName, description }) => {
   return (
     <div
       id="link_wrapper"
-      key={id + "/" + typeOfResourceName}
+      key={id + "/" + resourceType}
       className="flex flex-row justify-between w-full py-2 h-[30px] border-none"
     >
       <a
@@ -50,9 +46,9 @@ const Link = ({ id, url, typeOfResourceName, description }) => {
         className="flex flex-row justify-between w-full py-1 h-[34px] my-1 border-none cursor-pointer parent"
       >
         <div id="icon_wrapper" className="w-6 h-6 child">
-          <Icon typeOfResourceName={typeOfResourceName} />
+          <Icon resourceType={resourceType} />
         </div>
-        <div className="mt-1 text-base hover:underline child">{description}</div>
+        <div className="mt-1 text-base hover:underline child">{description? description : resourceType}</div>
       </a>
     </div>
   );
@@ -62,12 +58,11 @@ const Links = (allResources, hidden, cardId) => {
   return <LinksDiv allResources={allResources} hidden={false} cardId={"00000000"}/>
 };
 
-const LinksDiv = ({allResources, hidden, cardId: key}) => {
+const LinksDiv = ({allResources, hidden, cardId}) => {
   console.log(JSON.stringify(allResources))
   return (
     <div
-      id="links"
-      key={"links of " + key}
+      key={"links of " + cardId}
       className={clsx("pl-[26px] pr-10 pt-[26px] pb-9 flex-col justify-end gap-4 w-full z-99", (!hidden ? "flex" : "hidden"))}
     >
       {(allResources).map((element) => {

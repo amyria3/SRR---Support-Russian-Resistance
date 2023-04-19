@@ -27,7 +27,7 @@ const Card = ({ id, name, description, img_url, allResources }) => {
       onMouseLeave={() => {
         setImgIsHidden(false);
       }}
-      className="h-[480px] min-w-[360px]
+      className="h-[480px] lg:min-w-[320px] lg:max-w-[400px]
       p-0 flex flex-col content-between
       bg-white-card dark:bg-dt-background-card
       text-typo dark:text-dt-typo

@@ -1,21 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-const inputDataKeywords = [
-  { name: "Human rights" },
-  { name: "Women's rights" },
-  { name: "Migration and Refugee" },
-  { name: "Legal assistance" },
-  { name: "Emotional assistance" },
-  { name: "LGTBi" },
-  { name: "Anti-war movement" },
-  { name: "Freedom of speech" },
-  { name: "Medical aid" },
-  { name: "Transparency" },
-];
-
-export default async function seedKeywords() {
-  for (const entry of inputDataKeywords) {
+export default async function seedKeywords(data) {
+  for (const entry of data) {
     console.log(entry)
     const existingEntry = await prisma.ProtoKeyword.findUnique({
       where: { name: entry.name },

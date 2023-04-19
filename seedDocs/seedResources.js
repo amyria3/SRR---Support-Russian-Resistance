@@ -1,18 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-const inputResourceType = [
-  { name: "Facebook" },
-  { name: "Instagram" },
-  { name: "Telegram" },
-  { name: "Bitcoin" },
-  { name: "Credit card" },
-  { name: "Webpage" },
-  { name: "PayPal" },
-];
-
-export default async function seedResourceKeywords() {
-  for (const entry of inputResourceType) {
+export default async function seedResourceKeywords(data) {
+  for (const entry of data) {
     const existingEntry = await prisma.TypesOfResource.findUnique({
       where: { name: entry.name },
     });

@@ -23,7 +23,7 @@
   }
 
   #wrapper {
-    @apply w-full m-0 pt-[82px] px-2 md:px-6 lg:px-10 xl:px-14;
+    @apply w-full m-0 pt-[82px];
     @apply bg-white dark:bg-dt-background;
     @apply flex flex-col items-start pt-12 gap-[30px];
     @apply text-typo dark:text-dt-typo;

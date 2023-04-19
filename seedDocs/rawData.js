@@ -8,16 +8,19 @@ export const NowayaGazeta = {
   keywords: ['Freedom of speech', 'Anti-war movement', 'Transparancy'],
   resources: [
     {
+      id: "hardCodedId1",
       url: 'https://novayagazeta.ru/',
       description: 'Web publishing',
       resourceType: 'Webpage',
     },
     {
+      id: "hardCodedId2",
       url: 'https://www.instagram.com/novayagazeta/',
       description: 'Infographics & Merchandise',
       resourceType: 'Instagram',
     },
     {
+      id: "hardCodedId3",
       url: 'https://t.me/novaya_pishet',
       description: 'Telegram channel',
       resourceType: 'Telegram',
