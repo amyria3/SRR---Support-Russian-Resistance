@@ -5,13 +5,9 @@ import NavBar from "./components/NavBar";
 import Splash from "./components/Splash";
 import Cards from "./components/Cards";
 import Toggle from "./components/Toggle";
-// import Search from "./components/Search";
-// import cards_data from "./assets/getData/DummyData";
-import { Links, LinksDiv } from "./components/Links"
-import { rawData }  from "./../seedDocs/rawData.js"
+import SearchBar from "./components/SearchBar";
 
-const App = ({cards_data}) => {
-
+const App = ({ cards_data }) => {
   const root = document.getElementById("root");
   const userTheme = localStorage.getItem("theme");
   const systemThemeIsDark = window.matchMedia(
@@ -43,7 +39,10 @@ const App = ({cards_data}) => {
   }
 
   return (
-    <div id="wrapper" className="px-2 ssm-px-8 sm:px-12 md:px-14 lg:px-20 xl:px-28">
+    <div
+      id="wrapper"
+      className="px-2 ssm-px-8 sm:px-12 md:px-14 lg:px-20 xl:px-28"
+    >
       <NavBar
         children={
           <Toggle
@@ -59,8 +58,7 @@ const App = ({cards_data}) => {
         className="w-full flex flex-col col-start-1 col-end-4 gap-[30px]"
       >
         <div className="h-[1px] bg-line w-full"></div>
-        {/* <Search /> */}
-        <div className="h-[1px] bg-line w-full"></div>
+        <SearchBar />
       </section>
       <Cards cards_data={cards_data} />
     </div>

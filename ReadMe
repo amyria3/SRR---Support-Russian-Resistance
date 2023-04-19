@@ -1,5 +1,11 @@
 To run the server:
 node --experimental-modules src/server/server.mjs
+&&
+set "type": "module" in package.json
+
+To use the flexSearch package, we would need to set the "type": "commonjs", what would break the server.
+
+To-do: fix the server so that it can run without the experimental flag
 
 To run devServer:
 pnpm run dev
