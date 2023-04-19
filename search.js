@@ -1,40 +1,13 @@
-import lunr from 'lunr';
+import lunr from "lunr";
+import { rawData } from "./seedDocs/rawData.js";
 
-export const NowayaGazeta = {
-    name: 'Nowaya Gazeta',
-    description:
-      'Novaya Gazeta is an independent investigative newspaper. It is published in Moscow, in regions within Russia, and in some foreign countries. (Wikipedia, 14.04.2023)',
-    img_url: '',
-    keywords: ['Freedom of speech', 'Anti-war movement', 'Transparancy'],
-    resources: [
-      {
-        id: "hardCodedId1",
-        url: 'https://novayagazeta.ru/',
-        description: 'Web publishing',
-        resourceType: 'Webpage',
-      },
-      {
-        id: "hardCodedId2",
-        url: 'https://www.instagram.com/novayagazeta/',
-        description: 'Infographics & Merchandise',
-        resourceType: 'Instagram',
-      },
-      {
-        id: "hardCodedId3",
-        url: 'https://t.me/novaya_pishet',
-        description: 'Telegram channel',
-        resourceType: 'Telegram',
-      },
-    ],
-  };
-
-  export const documents = [NowayaGazeta];
+const documents = rawData;
 
 // Create a lunr index for the top-level fields
 const idx = lunr(function () {
-  this.ref('name');
-  this.field('description');
-  this.field('keywords');
+  this.ref("name");
+  this.field("description");
+  this.field("keywords");
 
   documents.forEach(function (doc) {
     this.add(doc);
@@ -43,11 +16,11 @@ const idx = lunr(function () {
 
 // Create a separate lunr index for the resources array
 const resourceIdx = lunr(function () {
-  this.ref('id');
-  this.field('description');
+  this.ref("id");
+  this.field("description");
 
-  documents.forEach(function (doc) {
-    doc.resources.forEach(function (resource) {
+  documents.forEach(function (entry) {
+    entry.resources.forEach(function (resource) {
       this.add(resource);
     }, this);
   }, this);
@@ -55,14 +28,13 @@ const resourceIdx = lunr(function () {
 
 // Combine the search results from both indexes
 
+function Result(myTerm) {
+  const combinedResults = [
+    ...idx.search(myTerm),
+    ...resourceIdx.search(myTerm),
+  ];
 
-function Result (myTerm){
-    const combinedResults = [
-        ...idx.search('Gazeta'),
-        ...resourceIdx.search('Gazeta'),
-      ];
-
-      return combinedResults
+  return combinedResults;
 }
 
-console.log(Result("nowaja"))
+console.log(Result("Nowaja"));
