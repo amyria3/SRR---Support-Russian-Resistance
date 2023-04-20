@@ -1,6 +1,7 @@
 //used to seed the DB
 
 export const NowayaGazeta = {
+  id: "fakeId",
   name: 'Nowaya Gazeta',
   description:
     'Novaya Gazeta is an independent investigative newspaper. It is published in Moscow, in regions within Russia, and in some foreign countries. (Wikipedia, 14.04.2023)',

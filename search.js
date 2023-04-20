@@ -5,7 +5,8 @@ const documents = rawData;
 
 // Create a lunr index for the top-level fields
 const idx = lunr(function () {
-  this.ref("name");
+  this.ref("id");
+  this.field("name")
   this.field("description");
   this.field("keywords");
 
@@ -37,4 +38,4 @@ function Result(myTerm) {
   return combinedResults;
 }
 
-console.log(Result("Nowaja"));
+console.log(Result("Nowaya"));
