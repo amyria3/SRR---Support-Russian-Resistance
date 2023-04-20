@@ -7,8 +7,6 @@ import Cards from "./components/Cards";
 import Toggle from "./components/Toggle";
 // import Search from "./components/Search";
 // import cards_data from "./assets/getData/DummyData";
-import { Links, LinksDiv } from "./components/Links"
-import { rawData }  from "./../seedDocs/rawData.js"
 
 const App = ({cards_data}) => {
 

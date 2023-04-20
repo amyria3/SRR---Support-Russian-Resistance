@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -13,6 +12,7 @@
     "@prisma/client": "^4.13.0",
     "clsx": "^1.2.1",
     "express": "^4.18.2",
+    "lunr": "^2.3.9",
     "prisma": "^4.13.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

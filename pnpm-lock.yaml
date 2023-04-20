@@ -8,6 +8,7 @@ specifiers:
   autoprefixer: ^10.4.14
   clsx: ^1.2.1
   express: ^4.18.2
+  lunr: ^2.3.9
   postcss: ^8.4.22
   prisma: ^4.13.0
   react: ^18.2.0
@@ -19,6 +20,7 @@ dependencies:
   '@prisma/client': 4.13.0_prisma@4.13.0
   clsx: 1.2.1
   express: 4.18.2
+  lunr: 2.3.9
   prisma: 4.13.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -1162,6 +1164,10 @@ packages:
     dependencies:
       yallist: 3.1.1
     dev: true
+
+  /lunr/2.3.9:
+    resolution: {integrity: sha512-zTU3DaZaF3Rt9rhN3uBMGQD3dD2/vFQqnvZCDv4dl5iOzq2IZQqTxu90r4E5J+nP70J3ilqVCrbho2eWaeW8Ow==}
+    dev: false
 
   /magic-string/0.27.0:
     resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}

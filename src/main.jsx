@@ -26,6 +26,7 @@ function AppWrapper() {
     <>
       {loading ? <Loader /> : (
         <React.StrictMode>
+          {console.log(JSON.stringify(cardsData))}
           <App cards_data={cardsData} />
         </React.StrictMode>
       )}

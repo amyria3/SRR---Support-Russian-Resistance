@@ -1,6 +1,9 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
+import data from "./rawData.json" assert { type: "json" };
+
+
 //take ngos's name & ask Prisma, if already exists
 export default async function seedNgos(localDb) {
   for (const entry of localDb) {
@@ -29,7 +32,7 @@ export default async function seedNgos(localDb) {
         where: { name: entry.name },
       });
       if (existingEntry) {
-        for (const ngoResource of entry.resources) {
+        for (const ngoResource of entry.allResources) {
           console.log(" " + entry.name + " exists. Updating resources : ");
 
           const upsertResource = await prisma.resource.upsert({
@@ -52,3 +55,5 @@ export default async function seedNgos(localDb) {
     }
   }
 }
+
+console.log(seedNgos(data))
