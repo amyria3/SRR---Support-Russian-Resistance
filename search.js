@@ -6,7 +6,7 @@ const documents = rawData;
 // Create a lunr index for the top-level fields
 const idx = lunr(function () {
   this.ref("id");
-  this.field("name")
+  this.field("name");
   this.field("description");
   this.field("keywords");
 
@@ -19,6 +19,8 @@ const idx = lunr(function () {
 const resourceIdx = lunr(function () {
   this.ref("id");
   this.field("description");
+  this.field("url");
+  this.field("resourceType");
 
   documents.forEach(function (entry) {
     entry.resources.forEach(function (resource) {
@@ -30,12 +32,53 @@ const resourceIdx = lunr(function () {
 // Combine the search results from both indexes
 
 function Result(myTerm) {
-  const combinedResults = [
-    ...idx.search(myTerm),
-    ...resourceIdx.search(myTerm),
+  const idxResults = idx.search(myTerm);
+  const resourceIdxResults = resourceIdx.search(myTerm);
+
+  // Get the IDs of the matched documents from both indexes
+  const matchedIds = [
+    ...idxResults.map((result) => result.ref),
+    ...resourceIdxResults.map((result) => result.ref),
   ];
 
-  return combinedResults;
+  // Filter the original documents array to get the matching objects
+  const matchedDocs = documents.filter((doc) => matchedIds.includes(doc.id));
+
+  // Replace the matched term with the term wrapped in a <mark> tag
+  const markedDocs = matchedDocs.map((doc) => {
+    const markedName = doc.name.replace(
+      new RegExp(myTerm, "gi"),
+      `<mark>${myTerm}</mark>`
+    );
+    const markedDescription = doc.description.replace(
+      new RegExp(myTerm, "gi"),
+      `<mark>${myTerm}</mark>`
+    );
+    const markedKeywords = doc.keywords
+      .map((keyword) =>
+        keyword.toLowerCase().includes(myTerm.toLowerCase())
+          ? `<mark>${keyword}</mark>`
+          : keyword
+      )
+      .join(", ");
+    const markedResources = doc.resources.map((resource) => ({
+      ...resource,
+      description: resource.description.replace(
+        new RegExp(myTerm, "gi"),
+        `<mark>${myTerm}</mark>`
+      ),
+    }));
+
+    return {
+      ...doc,
+      name: markedName,
+      description: markedDescription,
+      keywords: markedKeywords,
+      resources: markedResources,
+    };
+  });
+
+  return markedDocs;
 }
 
-console.log(Result("Nowaya"));
+console.log(Result("Freedom"));
