@@ -76,7 +76,7 @@ function strictSearch(documents, query) {
 }
 
 // Example usage:
-import rawData from "./seedDocs/rawData.js";
-console.log(JSON.stringify(strictSearch(rawData, "Gazeta")));
+// import rawData from "./seedDocs/rawData.js";
+// console.log(JSON.stringify(strictSearch(rawData, "Gazeta")));
 
 export default strictSearch

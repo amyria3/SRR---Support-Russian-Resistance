@@ -10,8 +10,8 @@
     box-sizing: box-border;
   }
 
-  #html {
-    @apply bg-dt-background;
+  html {
+    @apply bg-white dark:bg-dt-background;
     @apply w-full h-full;
     overflow-y: auto;
   }
@@ -32,6 +32,9 @@
 }
 
 @layer components {
+  .bg-transparent {
+    background-color: rgba(0, 0, 0, 0);
+  }
   .shadow-default {
     box-shadow: 3px 3px 0px 0px rgba(0, 85, 212, 1);
   }
@@ -41,24 +44,20 @@
   .shadow-dt-transparent {
     box-shadow: 2px 2px 0px 0px rgba(96, 165, 250, 0.5);
   }
-
   .fillIcon {
-   fill: rgba(0, 85, 212, 0.65);
+    fill: rgba(0, 85, 212, 0.65);
   }
-
   .parent:hover .child {
     fill: rgb(0, 102, 255);
     color: rgb(0, 102, 255);
     text-decoration: underline;
   }
-
   .dark .fillIcon {
     fill: rgba(96, 165, 250, 0.65);
-   }
-
+  }
   .dark .parent:hover .child {
-     fill: rgb(0, 115, 255);
-     color: rgba(96, 165, 250, 1);
-     text-decoration: underline;
-   }
+    fill: rgb(0, 115, 255);
+    color: rgba(96, 165, 250, 1);
+    text-decoration: underline;
+  }
 }
