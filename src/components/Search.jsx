@@ -6,7 +6,7 @@ const Search = ({
   setNotSearching,
   currentInput,
   setterFunctionInput,
-  setterFunctionSearchResults,
+  setterFunctionResults,
   data,
 }) => {
   function handleInputChange(event) {
@@ -15,13 +15,13 @@ const Search = ({
     //make current Input available to <App /> by using setCurrentInput useState binding that is defined in <App />
     setterFunctionInput(currentInput);
     const currentData = strictSearch(data, currentInput);
-    console.log(currentData)
+    console.log(currentData);
     //make current Input available to <App /> by using setSearchReasults useState binding that is defined in <App />
-    setterFunctionSearchResults(currentData);
+    setterFunctionResults(currentData);
   }
   function handleResetClick() {
     setterFunctionInput("");
-    setterFunctionSearchResults(undefined);
+    setterFunctionResults(undefined);
     setNotSearching(true);
   }
 
@@ -59,7 +59,7 @@ const Search = ({
         {currentInput && (
           <Button
             className="absolute top-0 right-0"
-            onClick={handleResetClick}
+            onClick={()=>{handleResetClick()}}
             label="Reset search"
           />
         )}

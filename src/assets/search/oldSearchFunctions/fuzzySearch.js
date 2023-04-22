@@ -1,6 +1,10 @@
 import lunr from "lunr";
 
-function fuzzySearch(data, term) {
+function search(data, term) {
+
+  if (term.length < 2) {
+    return [];
+  }
   // Create a lunr index for the top-level fields
   const idx = lunr(function () {
     this.ref("id");
@@ -44,7 +48,8 @@ function fuzzySearch(data, term) {
     const idxResults = idx.query(function (q) {
       q.term(lunr.tokenizer(query), {
         boost: 10,
-        editDistance: 2,
+        editDistance: 3,
+        prefix: query.length
       });
     });
     idxResults.forEach((result) => {
@@ -54,8 +59,9 @@ function fuzzySearch(data, term) {
     // Search resources
     const resourceResults = resourceIdx.query(function (q) {
       q.term(lunr.tokenizer(query), {
-        boost: 5,
+        boost: 3,
         editDistance: 2,
+        prefix: query.length
       });
     });
     resourceResults.forEach((result) => {
@@ -71,8 +77,9 @@ function fuzzySearch(data, term) {
     // Search keywords
     const keywordResults = keywordIdx.query(function (q) {
       q.term(lunr.tokenizer(query), {
-        boost: 5,
+        boost: 7,
         editDistance: 2,
+        prefix: query.length
       });
     });
     keywordResults.forEach((result) => {
@@ -97,4 +104,4 @@ function fuzzySearch(data, term) {
 // Example usage:
 //console.log(JSON.stringify(currentSearch(rawData, "novay")));
 
-export default fuzzySearch
+export default search

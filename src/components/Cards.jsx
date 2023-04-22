@@ -1,13 +1,6 @@
-import { useEffect, useState } from "react";
 import Card from "./Card";
 
-const Cards = ({ data, searchIsInactive }) => {
-
-  useEffect(() => {
-    // code to run when searchIsInactive updates
-    console.log("Currently searching : ", !searchIsInactive);
-  }, [searchIsInactive]); // specify the state variable to listen for updates
-
+const Cards = ({ data, notSearching }) => {
   return (
     <div
       id="cards"
@@ -19,22 +12,23 @@ const Cards = ({ data, searchIsInactive }) => {
         // a. cards_data are missing anf the user is not typing
         // b. cards_data are missing anf the user is typing
       }
-      {(data && searchIsInactive) ? (
+      {data ? (
+        data !== [] &&
         data.map((element) => {
           return <Card {...element} />;
         })
-      ) : (!data && searchIsInactive) ? (
+      ) : !data && notSearching ? (
         <div className="w-full h-full flex justify-center items-center">
           Maybe there is a server problem, or maybe data is not loaded yet.
         </div>
       ) : (
-        (!data && !searchIsInactive) && (
+        data == [] &&
+        !notSearching && (
           <div className="w-full h-full flex justify-center items-center">
             Please try another search term.
           </div>
         )
-      )
-      }
+      )}
     </div>
   );
 };

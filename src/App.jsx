@@ -17,6 +17,7 @@ const App = ({ cards_data }) => {
   const [currentUserInput, setCurrentUserInput] = useState("");
 
   const [searchResults, setSearchResults] = useState(undefined);
+  console.log(searchResults)
 
   const root = document.getElementById("root");
   const userTheme = localStorage.getItem("theme");
@@ -72,15 +73,15 @@ const App = ({ cards_data }) => {
           setNotSearching={setNotSearching} //to control input-fields UI-behavior & to control, if cards render with searchResults or normal data
           currentInput={currentUserInput} //const[...] must be at App-lavel to be accessable by Cards & Search
           setterFunctionInput={setCurrentUserInput} //const[...] must be at App-lavel to be accessable by Cards & Search
-          setterFunctionSearchResults={setSearchResults} //to render cards according to search results
+          setterFunctionResults={setSearchResults} //to render cards according to search results
           data={cards_data} //to search through
         />
         <div className="h-[1px] bg-line w-full"></div>
       </section>
-      {!notSearching ? (
-        <Cards searchIsInactive={notSearching} data={searchResults} />
+      {notSearching ? (
+        <Cards notSearching={notSearching} data={cards_data} />
       ) : (
-        <Cards searchIsInactive={notSearching} data={cards_data} />
+        <Cards notSearching={notSearching} data={searchResults} /> //passing searchResults into Component to render it with searchResults not working. searchResults ARE there (see console.logs)
       )}
     </div>
   );
