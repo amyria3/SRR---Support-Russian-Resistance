@@ -3,3 +3,12 @@ node --experimental-modules src/server/server.mjs
 
 To run devServer:
 pnpm run dev
+
+
+To-do:
+
+show an adequate error message when no data
+fix reset when no character in search
+populate DB
+add keywords to indexation
+fix card

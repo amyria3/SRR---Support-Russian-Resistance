@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-import data from "./rawData.json" assert { type: "json" };
+import updateData from "./updateData.js"
 
 
 //take ngos's name & ask Prisma, if already exists
@@ -56,4 +56,4 @@ export default async function seedNgos(localDb) {
   }
 }
 
-console.log(seedNgos(data))
+console.log(seedNgos(updateData))

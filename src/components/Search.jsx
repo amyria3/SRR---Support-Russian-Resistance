@@ -16,18 +16,16 @@ const Search = ({
 
   function handleInputChange(event) {
     setNotSearching(false);
-    const currentInput = event.target.value;
-    //make current Input available to <App /> by using setCurrentInput useState binding that is defined in <App />
-    setterFunctionInput(currentInput);
+    const currentInput = event.target.value; //make current Input available to <App /> by using setCurrentInput useState binding that is defined in <App />    setterFunctionInput(currentInput);
     const filteredData = search(data, currentIndexa, currentInput);
-    //make current Input available to <App /> by using setSearchReasults useState binding that is defined in <App />
-    setterFunctionResults(filteredData);
+    setterFunctionResults(filteredData);  //make current searchResults available to <App /> as setSearchReasults is defined in <App />
+    currentInput===""&&setNotSearching(true) //reset search so that all cards are rendered
 
     //Test everything
-    console.log("data :" + JSON.stringify(data));
-    console.log("current indexa : " + JSON.stringify(currentIndexa));
-    console.log("filtered data : " + JSON.stringify(filteredData));
-    console.log("results : " + JSON.stringify(Result));
+    // console.log("data :" + JSON.stringify(data));
+    // console.log("current indexa : " + JSON.stringify(currentIndexa));
+    // console.log("filtered data : " + JSON.stringify(filteredData));
+    // console.log("results : " + JSON.stringify(Result));
   }
 
   function handleResetClick() {
