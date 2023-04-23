@@ -2,24 +2,23 @@ import { useContext } from "react";
 import search from "../assets/search/search.js";
 import Button from "./Button.jsx";
 import clsx from "clsx";
-import { contextBinding } from "../main.jsx";
-import { Result } from "postcss";
+import {
+  contextData,
+  currentIndexa,
+  setFilteredResults,
+} from "../main.jsx";
 
-const Search = ({
-  setNotSearching,
-  currentInput,
-  setterFunctionInput,
-  setterFunctionResults,
-  data,
-}) => {
-  const currentIndexa = useContext(contextBinding);
+const Search = ({ setNotSearching, currentInput, setterFunctionInput }) => {
+  const data = useContext(contextData);
+  const currentIndex = useContext(currentIndexa);
+  const setSearchResults = useContext(setFilteredResults);
 
   function handleInputChange(event) {
     setNotSearching(false);
     const currentInput = event.target.value; //make current Input available to <App /> by using setCurrentInput useState binding that is defined in <App />    setterFunctionInput(currentInput);
-    const filteredData = search(data, currentIndexa, currentInput);
-    setterFunctionResults(filteredData);  //make current searchResults available to <App /> as setSearchReasults is defined in <App />
-    currentInput===""&&setNotSearching(true) //reset search so that all cards are rendered
+    const filteredData = search(data, currentIndex, currentInput);
+    setSearchResults(filteredData); //make current searchResults available to <App /> as setSearchReasults is defined in <App />
+    currentInput === "" && setNotSearching(true); //reset search so that all cards are rendered
 
     //Test everything
     // console.log("data :" + JSON.stringify(data));
