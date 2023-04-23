@@ -38,7 +38,7 @@ const keywordIdx = lunr(function () {
 });
 
 const indexa = {idx, resourceIdx, keywordIdx}
-console.log("INDEXA : " + JSON.stringify(indexa))
+console.log("initialize.js / INDEXA created : " + JSON.stringify(indexa))
 return indexa
 }
 

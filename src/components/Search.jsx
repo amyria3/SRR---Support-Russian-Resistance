@@ -1,6 +1,9 @@
-import strictSearch from "../assets/search/strictSearch.js";
+import { useContext } from "react";
+import search from "../assets/search/search.js";
 import Button from "./Button.jsx";
 import clsx from "clsx";
+import { contextBinding } from "../main.jsx";
+import { Result } from "postcss";
 
 const Search = ({
   setNotSearching,
@@ -9,16 +12,24 @@ const Search = ({
   setterFunctionResults,
   data,
 }) => {
+  const currentIndexa = useContext(contextBinding);
+
   function handleInputChange(event) {
     setNotSearching(false);
     const currentInput = event.target.value;
     //make current Input available to <App /> by using setCurrentInput useState binding that is defined in <App />
     setterFunctionInput(currentInput);
-    const currentData = strictSearch(data, currentInput);
-    console.log(currentData);
+    const filteredData = search(data, currentIndexa, currentInput);
     //make current Input available to <App /> by using setSearchReasults useState binding that is defined in <App />
-    setterFunctionResults(currentData);
+    setterFunctionResults(filteredData);
+
+    //Test everything
+    console.log("data :" + JSON.stringify(data));
+    console.log("current indexa : " + JSON.stringify(currentIndexa));
+    console.log("filtered data : " + JSON.stringify(filteredData));
+    console.log("results : " + JSON.stringify(Result));
   }
+
   function handleResetClick() {
     setterFunctionInput("");
     setterFunctionResults(undefined);
@@ -59,7 +70,9 @@ const Search = ({
         {currentInput && (
           <Button
             className="absolute top-0 right-0"
-            onClick={()=>{handleResetClick()}}
+            onClick={() => {
+              handleResetClick();
+            }}
             label="Reset search"
           />
         )}

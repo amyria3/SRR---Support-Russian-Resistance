@@ -1,84 +1,56 @@
 import lunr from "lunr";
-import { rawData } from "./seedDocs/rawData.js";
 
-const documents = rawData;
+function search(data, indexa, term) {
+  const results = [];
 
-// Create a lunr index for the top-level fields
-const idx = lunr(function () {
-  this.ref("id");
-  this.field("name");
-  this.field("description");
-  this.field("keywords");
+  console.log("Testing search script : ");
+  console.log("Term " + term);
 
-  documents.forEach(function (doc) {
-    this.add(doc);
-  }, this);
-});
+  //PREFIX MATCHES
 
-// Create a separate lunr index for the resources array
-const resourceIdx = lunr(function () {
-  this.ref("id");
-  this.field("description");
-  this.field("url");
-  this.field("resourceType");
 
-  documents.forEach(function (entry) {
-    entry.resources.forEach(function (resource) {
-      this.add(resource);
-    }, this);
-  }, this);
-});
 
-// Combine the search results from both indexes
+  //EXACT MATCHES
+  ((data, indexa, term) => {
 
-function Result(myTerm) {
-  const idxResults = idx.search(myTerm);
-  const resourceIdxResults = resourceIdx.search(myTerm);
+    console.log("Inline function running.")
 
-  // Get the IDs of the matched documents from both indexes
-  const matchedIds = [
-    ...idxResults.map((result) => result.ref),
-    ...resourceIdxResults.map((result) => result.ref),
-  ];
+    const { idx, resourceIdx, keywordIdx } = indexa;
 
-  // Filter the original documents array to get the matching objects
-  const matchedDocs = documents.filter((doc) => matchedIds.includes(doc.id));
+    // Search top-level fields
+    const idxResults = idx.search(term);
+    idxResults.forEach((result) => {
+      results.push(data.find((doc) => doc.id === result.ref));
+    });
 
-  // Replace the matched term with the term wrapped in a <mark> tag
-  const markedDocs = matchedDocs.map((doc) => {
-    const markedName = doc.name.replace(
-      new RegExp(myTerm, "gi"),
-      `<mark>${myTerm}</mark>`
-    );
-    const markedDescription = doc.description.replace(
-      new RegExp(myTerm, "gi"),
-      `<mark>${myTerm}</mark>`
-    );
-    const markedKeywords = doc.keywords
-      .map((keyword) =>
-        keyword.toLowerCase().includes(myTerm.toLowerCase())
-          ? `<mark>${keyword}</mark>`
-          : keyword
-      )
-      .join(", ");
-    const markedResources = doc.resources.map((resource) => ({
-      ...resource,
-      description: resource.description.replace(
-        new RegExp(myTerm, "gi"),
-        `<mark>${myTerm}</mark>`
-      ),
-    }));
+    // Search resources
+    const resourceResults = resourceIdx.search(term);
+    resourceResults.forEach((result) => {
+      data.forEach((doc) => {
+        doc.allResources.forEach((resource) => {
+          if (resource.id === result.ref) {
+            results.push(doc);
+          }
+        });
+      });
+    });
 
-    return {
-      ...doc,
-      name: markedName,
-      description: markedDescription,
-      keywords: markedKeywords,
-      resources: markedResources,
-    };
-  });
+    // Search keywords
+    const keywordResults = keywordIdx.search(term);
+    keywordResults.forEach((result) => {
+      data.forEach((doc) => {
+        doc.allLinkedKeywords.forEach((keyword) => {
+          if (keyword.id === result.ref) {
+            results.push(doc);
+          }
+        });
+      });
+    });
+  })(data, indexa, term);
 
-  return markedDocs;
+  // Remove duplicate results
+  const uniqueResults = Array.from(new Set(results));
+  return uniqueResults;
 }
 
-console.log(Result("Freedom"));
+export default search;

@@ -17,7 +17,6 @@ const App = ({ cards_data }) => {
   const [currentUserInput, setCurrentUserInput] = useState("");
 
   const [searchResults, setSearchResults] = useState(undefined);
-  console.log(searchResults)
 
   const root = document.getElementById("root");
   const userTheme = localStorage.getItem("theme");
