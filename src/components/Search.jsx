@@ -6,30 +6,39 @@ import { useContext } from "react";
 import { contextData, currentIndexa } from "../main.jsx";
 
 const Search = ({ setNotSearching, setterResults }) => {
-
   const data = useContext(contextData);
   const currentIndex = useContext(currentIndexa);
-  const [currentInput, setCurrentInput] = useState("")
+  const [currentInput, setCurrentInput] = useState("");
 
-  function handleInputChange(event) {
-    setNotSearching(false);
-    const input = event.target.value;
-    setCurrentInput(input) //make current Input available to <App /> by using setCurrentInput useState binding that is defined in <App />    setterFunctionInput(currentInput);
-    const filteredData = search(data, currentIndex, currentInput);
-    setterResults(filteredData); //make current searchResults available to <App /> as setSearchReasults is defined in <App />
-    currentInput === "" && setNotSearching(true); //reset search so that all cards are rendered
-
-    //Test everything
-    // console.log("data :" + JSON.stringify(data));
-    // console.log("current indexa : " + JSON.stringify(currentIndexa));
-    // console.log("filtered data : " + JSON.stringify(filteredData));
-    // console.log("results : " + JSON.stringify(Result));
+  function handleReset() {
+    console.log("handleReset triggered");
+    setterResults(undefined);
+    setNotSearching(true);
   }
 
-  function handleResetClick() {
-    setterFunctionInput("");
-    setterFunctionResults(undefined);
-    setNotSearching(true);
+  function handleInputChange(input) {
+    //start typing (character-Index === 0):
+    if (currentInput.length === 0 && input.length === 1) {
+      setNotSearching(false)
+      setCurrentInput(input);
+      console.log("1. current Input : " + currentInput);
+      setterResults(search(data, currentIndex, currentInput));
+    }
+
+    //adding or deleting characters (character-Index >= 1):
+    if (currentInput.length > 0 && input.length > 0) {
+      setCurrentInput(input);
+      console.log("2. current Input : " + currentInput);
+      setterResults(search(data, currentIndex, currentInput));
+    }
+
+    //backspace (character-Index === 0):
+    if (currentInput.length === 1 && input.length === 0) {
+      setCurrentInput("");
+      console.log("3. current Input : " + currentInput);
+      console.log("Deleted last character");
+      handleReset();
+    }
   }
 
   return (
@@ -37,6 +46,7 @@ const Search = ({ setNotSearching, setterResults }) => {
       <div
         id="searchWrapper"
         className={clsx(
+          "sticky",
           "h-12 rounded-lg w-full flex",
           "border border-line dark:border-none",
           "dark:hover:border-solid dark:hover:border-[1px]",
@@ -59,17 +69,19 @@ const Search = ({ setNotSearching, setterResults }) => {
           form-control"
           type="search"
           placeholder="Search"
-          onInput={handleInputChange}
+          onInput={
+            event => handleInputChange(event.target.value)
+          }
           value={currentInput}
         />
 
-        {currentInput && (
+        {currentInput !== "" && (
           <Button
             className="absolute top-0 right-0"
             onClick={() => {
-              handleResetClick();
+              handleReset();
             }}
-            label="Reset search"
+            label="Reset"
           />
         )}
       </div>

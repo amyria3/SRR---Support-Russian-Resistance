@@ -15,7 +15,7 @@ import { Links } from "./Links";
 const Card = ({ id, name, description, img_url, allResources }) => {
   const [imgIsHidden, setImgIsHidden] = useState(false);
 
-  console.log(JSON.stringify(allResources))
+  // console.log(JSON.stringify(allResources))
 
   return (
     <div

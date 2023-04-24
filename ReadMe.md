@@ -30,10 +30,12 @@ b. setSearchResults to share them with cards.
 
 To-do:
 - fix seedNgo script √
+- prevent Search from chaotically jumping whenever I am typing √
 - ~~correct data may not have been provided to useContext, no index created~~
 - populate DB
 - add keywords to indexation
 - show an adequate error message when no data
+- fix payPal Icon
 - fix reset when no character in search (already done?)
 - fix card
 - update ResourceType should be an array, then update seed-scripts, card & indexation
