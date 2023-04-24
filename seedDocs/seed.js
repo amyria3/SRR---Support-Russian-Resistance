@@ -20,7 +20,7 @@ const ngoKeywords = [
     { name: "Facebook" },
     { name: "Instagram" },
     { name: "Telegram" },
-    { name: "Bitcoin" },
+    { name: "Crypro" },
     { name: "Credit card" },
     { name: "Webpage" },
     { name: "PayPal" },

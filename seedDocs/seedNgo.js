@@ -28,10 +28,10 @@ export default async function seedNgos(localDb) {
     //After all entries have been created or updated on the upper level
     //update or create resources:
     for (const entry of localDb) {
-      const existingEntry = await prisma.Ngo.findUnique({
+      const upsertEntry = await prisma.Ngo.findUnique({
         where: { name: entry.name },
       });
-      if (existingEntry) {
+      if (upsertEntry) {
         for (const ngoResource of entry.allResources) {
           console.log(" " + entry.name + " exists. Updating resources : ");
 
@@ -40,12 +40,12 @@ export default async function seedNgos(localDb) {
               url: ngoResource.url,
             },
             update: {
-              ngoId: existingEntry.id,
+              ngoId: upsertEntry.id,
               resourceType: ngoResource.resourceType,
             },
             create: {
               url: ngoResource.url,
-              ngoId: existingEntry.id,
+              ngoId: upsertEntry.id,
               resourceType: ngoResource.resourceType,
             },
           });

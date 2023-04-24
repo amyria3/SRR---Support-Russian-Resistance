@@ -3,6 +3,7 @@ import lunr from "lunr";
 function search(data, indexa, term) {
   const results = [];
   const { idx, resourceIdx, keywordIdx } = indexa;
+  console.log(idx, resourceIdx, keywordIdx)
 
   //PREFIX MATCHES
   if (term.length > 0 && term.length <= 5) {

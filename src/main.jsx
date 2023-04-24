@@ -9,7 +9,6 @@ function Loader() {
   return <div>Loading...</div>;
 }
 
-//initialize  context-variable
 export const contextData = React.createContext([]);
 export const currentIndexa = React.createContext({});
 
@@ -22,28 +21,24 @@ function AppWrapper() {
     async function fetchDataAsync() {
       const data = await fetchData();
       setCardsData(data);
-      setLoading(false);
       setIndexa(initialize(data));
-      console.log(setIndexa);
+      setLoading(false);
     }
     fetchDataAsync();
   }, []);
 
   return (
-    <>
-      {/* provide contextBinding with the value of indexa */}
-      <contextData.Provider value={cardsData}>
-        <currentIndexa.Provider value={indexa}>
-              {loading ? (
-                <Loader />
-              ) : (
-                <React.StrictMode>
-                  <App cards_data={cardsData} />
-                </React.StrictMode>
-              )}
-        </currentIndexa.Provider>
-      </contextData.Provider>
-    </>
+    <React.StrictMode>
+      {loading ? (
+        <Loader />
+      ) : (
+        <contextData.Provider value={cardsData}>
+          <currentIndexa.Provider value={indexa}>
+            <App />
+          </currentIndexa.Provider>
+        </contextData.Provider>
+      )}
+    </React.StrictMode>
   );
 }
 
