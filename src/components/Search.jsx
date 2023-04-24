@@ -1,23 +1,22 @@
-import { useContext } from "react";
+import { useState } from "react";
 import search from "../assets/search/search.js";
 import Button from "./Button.jsx";
 import clsx from "clsx";
-import {
-  contextData,
-  currentIndexa,
-  setFilteredResults,
-} from "../main.jsx";
+import { useContext } from "react";
+import { contextData, currentIndexa } from "../main.jsx";
 
-const Search = ({ setNotSearching, currentInput, setterFunctionInput }) => {
+const Search = ({ setNotSearching, setterResults }) => {
+
   const data = useContext(contextData);
   const currentIndex = useContext(currentIndexa);
-  const setSearchResults = useContext(setFilteredResults);
+  const [currentInput, setCurrentInput] = useState("")
 
   function handleInputChange(event) {
     setNotSearching(false);
-    const currentInput = event.target.value; //make current Input available to <App /> by using setCurrentInput useState binding that is defined in <App />    setterFunctionInput(currentInput);
+    const input = event.target.value;
+    setCurrentInput(input) //make current Input available to <App /> by using setCurrentInput useState binding that is defined in <App />    setterFunctionInput(currentInput);
     const filteredData = search(data, currentIndex, currentInput);
-    setSearchResults(filteredData); //make current searchResults available to <App /> as setSearchReasults is defined in <App />
+    setterResults(filteredData); //make current searchResults available to <App /> as setSearchReasults is defined in <App />
     currentInput === "" && setNotSearching(true); //reset search so that all cards are rendered
 
     //Test everything

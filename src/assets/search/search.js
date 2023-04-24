@@ -41,11 +41,11 @@ function search(data, indexa, term) {
 
   if (term.length > 4) {
     // Search top-level fields
-    const idxResults = idx.query(function (q) {
-      q.term(lunr.tokenizer(query), {
+    const idxResults = idx.term(function (q) {
+      q.term(lunr.tokenizer(term), {
         boost: 10,
         editDistance: 3,
-        prefix: query.length,
+        prefix: term.length,
       });
     });
     idxResults.forEach((result) => {
@@ -53,11 +53,11 @@ function search(data, indexa, term) {
     });
 
     // Search resources
-    const resourceResults = resourceIdx.query(function (q) {
-      q.term(lunr.tokenizer(query), {
+    const resourceResults = resourceIdx.term(function (q) {
+      q.term(lunr.tokenizer(term), {
         boost: 3,
         editDistance: 2,
-        prefix: query.length,
+        prefix: term.length,
       });
     });
     resourceResults.forEach((result) => {
@@ -71,11 +71,11 @@ function search(data, indexa, term) {
     });
 
     // Search keywords
-    const keywordResults = keywordIdx.query(function (q) {
-      q.term(lunr.tokenizer(query), {
+    const keywordResults = keywordIdx.term(function (q) {
+      q.term(lunr.tokenizer(term), {
         boost: 7,
         editDistance: 2,
-        prefix: query.length,
+        prefix: term.length,
       });
     });
     keywordResults.forEach((result) => {

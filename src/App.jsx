@@ -3,21 +3,11 @@ import { useState } from "react";
 
 import NavBar from "./components/NavBar";
 import Splash from "./components/Splash";
-import Cards from "./components/Cards";
+import Content from "./components/Content";
 import Toggle from "./components/Toggle";
-import Search from "./components/Search";
 // import cards_data from "./assets/getData/DummyData";
 
-const App = ({ cards_data }) => {
-  //Cards Component will render the cards from default data, if true,
-  //to implement: cards component must render cards from search-Scripts respond, if false.
-  const [notSearching, setNotSearching] = useState(true);
-
-  //Const to keep Track of what the user is typing over the whole App component.
-  const [currentUserInput, setCurrentUserInput] = useState("");
-
-  const [searchResults, setSearchResults] = useState(undefined);
-
+const App = () => {
   const root = document.getElementById("root");
   const userTheme = localStorage.getItem("theme");
   const systemThemeIsDark = window.matchMedia(
@@ -63,21 +53,8 @@ const App = ({ cards_data }) => {
         }
       />
       <Splash />
-      <section
-        id="SearchSection"
-        className="w-full flex flex-col col-start-1 col-end-4 gap-[30px]"
-      >
-        <div className="h-[1px] bg-line w-full"></div>
-        <Search
-          setNotSearching={setNotSearching} //to control input-fields UI-behavior & to control, if cards render with searchResults or normal data
-          currentInput={currentUserInput} //const[...] must be at App-lavel to be accessable by Cards & Search
-          setterFunctionInput={setCurrentUserInput} //const[...] must be at App-lavel to be accessable by Cards & Search
-        />
-        <div className="h-[1px] bg-line w-full"></div>
-      </section>
-      <section>
-        <Cards />
-      </section>
+      <Content /> {//gets data from useContext
+      }
     </div>
   );
 };
