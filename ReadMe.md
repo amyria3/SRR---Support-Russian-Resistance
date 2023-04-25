@@ -30,6 +30,7 @@ To-do:
 - prevent Search from chaotically jumping whenever I am typing √
 - remove x-for (reset-default Button by Chrome) √
 - cards behavior for mobile √
+- CHANGE ^no img on mobile, links on Tap, reset on scroll. Animate (?)
 - remove the same for other browsers
 - populate DB
 - add keywords to indexation
