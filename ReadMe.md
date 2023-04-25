@@ -29,6 +29,7 @@ To-do:
 - fix seedNgo script √
 - prevent Search from chaotically jumping whenever I am typing √
 - remove x-for (reset-default Button by Chrome) √
+- cards behavior for mobile √
 - remove the same for other browsers
 - populate DB
 - add keywords to indexation
