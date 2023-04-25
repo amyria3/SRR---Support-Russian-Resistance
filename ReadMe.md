@@ -25,19 +25,17 @@ export const currentIndexa = React.createContext({});
 a. setNotSearching useState setter Function, because errors when rendering Cards depenend on if the user is Searching
 b. setSearchResults to share them with cards.
 
-
-
-
 To-do:
 - fix seedNgo script √
 - prevent Search from chaotically jumping whenever I am typing √
-- ~~correct data may not have been provided to useContext, no index created~~
+- remove x-for (reset-default Button by Chrome) √
+- remove the same for other browsers
 - populate DB
 - add keywords to indexation
 - show an adequate error message when no data
 - fix payPal Icon
-- fix reset when no character in search (already done?)
-- fix card
+- fix reset when no character in search √
+- fix card √
 - update ResourceType should be an array, then update seed-scripts, card & indexation
 
 

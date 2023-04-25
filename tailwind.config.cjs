@@ -48,6 +48,9 @@ module.exports = {
       yellow: {
         DEFAULT: "rgba(255, 230, 0, 1)"
       },
+      red: {
+        DEFAULT: "rgba(255, 0, 0, 1)"
+      }
     },
   },
   extend: {
