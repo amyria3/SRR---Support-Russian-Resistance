@@ -20,8 +20,8 @@ module.exports = {
   theme: {
     colors: {
       white: {
-        DEFAULT: "rgba(240, 240, 240, 1)",
-        card: "rgba(255, 255, 255, 1)",
+        DEFAULT: "rgba(240, 239, 239, 1)",
+        card: "rgba(255, 255, 255, 0.5)",
       },
       interactive: {
         DEFAULT: "rgba(0, 85, 212, 0.25)",

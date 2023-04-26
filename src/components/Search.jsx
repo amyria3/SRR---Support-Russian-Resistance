@@ -51,13 +51,13 @@ const Search = ({ setNotSearching, setterResults }) => {
           "border border-line dark:border-none",
           "dark:hover:border-solid dark:hover:border-[1px]",
           "hover:border-interactive-hover dark:border-dt-interactive focus:border-interactive",
-          "bg-none hover:bg-interactive dark:bg-dt-background-input",
+          "bg-none hover:bg-interactive dark:bg-dt-background-card dark:hover:bg-dt-background-input",
           "text-typo dark:text-dt-typo",
           "font-extralight",
           "hover:shadow-default focus:shadow-default dark:shadow-none",
           "placeholder:text-xl placeholder:text-line dark:placeholder:text-dt-typo",
           (currentInput.length >= 1)
-            ? "border-interactive shadow-default bg-interactive dark:bg-dt-interactive dark:border-bg-dt-interactive dark:text-typo dark:font-light"
+            ? "border-interactive shadow-default bg-interactive dark:bg-dt-interactive dark:hover:bg-dt-interactive dark:border-bg-dt-interactive dark:text-typo dark:hover:text-typo dark:font-light"
             : null
         )}
       >

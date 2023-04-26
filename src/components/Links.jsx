@@ -54,19 +54,19 @@ const Link = ({ id, url, resourceType, description }) => {
   );
 };
 
-const Links = (allResources, hidden, cardId) => {
-  return <LinksDiv allResources={allResources} hidden={false} cardId={"00000000"}/>
+const Links = (allResources, hovered, cardId) => {
+  return <LinksDiv allResources={allResources} hovered={hovered} cardId={cardId}/>
 };
 
-const LinksDiv = ({allResources, hidden, cardId}) => {
-  console.log(JSON.stringify(allResources))
+const LinksDiv = ({allResources, hovered, cardId}) => {
+  // console.log(JSON.stringify(allResources))
   return (
     <div
       key={"links of " + cardId}
-      className={clsx("pl-[26px] pr-10 pt-[26px] pb-9 flex-col justify-end gap-4 w-full z-99", (!hidden ? "flex" : "hidden"))}
+      className={clsx("pl-[26px] pr-10 pt-[26px] pb-9 flex-col justify-end gap-4 w-full z-99", (hovered ? "flex" : "hidden"))}
     >
       {(allResources).map((element) => {
-          console.log("this should become a link" + element);
+          // console.log("this should become a link" + element);
           return <Link {...element} />;
         })}
     </div>

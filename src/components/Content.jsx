@@ -13,7 +13,7 @@ const Content = () => {
   const data = useContext(contextData)
 
 return (
-    <section id="content" className="flex flex-col gap-6 min-h-screen h-2/3  w-full"
+    <section id="content" className="flex flex-col gap-6 min-h-screen h-2/3 w-full"
     >
         <div className="h-[1px] bg-line w-full"></div>
         <Search
