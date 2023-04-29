@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 import { fetchData } from "./api";
+import updateData from "../seedDocs/updateData.js";
 import initialize from "./assets/search/initialize.js";
 
 function Loader() {
@@ -20,8 +21,14 @@ function AppWrapper() {
   useEffect(() => {
     async function fetchDataAsync() {
       const data = await fetchData();
-      setCardsData(data);
-      setIndexa(initialize(data));
+      if (data) {
+        setCardsData(data);
+        setIndexa(initialize(data));
+      }
+      if (!data || data === "Failed to fetch") {
+        setCardsData(updateData);
+        setIndexa(initialize(updateData));
+      }
       setLoading(false);
     }
     fetchDataAsync();

@@ -12,7 +12,7 @@
   }
 
   html {
-    @apply bg-white dark:bg-dt-background;
+    @apply bg-white dark:bg-dt-background font-extralight;
     @apply w-full h-full;
     overflow-y: auto;
   }
