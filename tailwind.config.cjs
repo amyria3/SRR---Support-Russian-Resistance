@@ -28,7 +28,8 @@ module.exports = {
         mid: "rgba(0, 85, 212, 0.5)",
         hover: "rgba(0, 85, 212, 1)",
       },
-      line: "rgba(37, 37, 37, 0.5)",
+      line: {DEFAULT: "rgba(37, 37, 37, 0.5)",
+      light: "rgba(37, 37, 37, 0.2)"},
       typo: {
         DEFAULT: "rgba(37, 37, 37, 1)",
       },

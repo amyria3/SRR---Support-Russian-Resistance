@@ -37,18 +37,19 @@ const Link = ({ id, url, resourceType, description }) => {
     <div
       id="link_wrapper"
       key={id + "/" + resourceType}
-      className="flex flex-row justify-between w-full py-2 h-[30px] border-none"
+      className="w-full py-2 h-[30px] border-none"
     >
       <a
         target="_blank"
         rel="noopener noreferrer"
         href={url}
-        className="flex flex-row justify-between w-full py-1 h-[34px] my-1 border-none cursor-pointer parent"
+        className="flex flex-row items-center w-full py-1 h-[34px] my-1 border-none cursor-pointer parent"
       >
         <div id="icon_wrapper" className="w-6 h-6 child">
           <Icon resourceType={resourceType} />
         </div>
-        <div className="mt-1 text-base hover:underline child">{description? description : resourceType}</div>
+        <div className={clsx("h-[1px] w-full bg-typo hover:bg-interactive-hover child ml-6 mr-3")}></div>
+        <div className="text-base hover:underline child">{description? description : resourceType}</div>
       </a>
     </div>
   );
@@ -59,14 +60,12 @@ const Links = (allResources, hovered, cardId) => {
 };
 
 const LinksDiv = ({allResources, hovered, cardId}) => {
-  // console.log(JSON.stringify(allResources))
   return (
     <div
       key={"links of " + cardId}
-      className={clsx("pl-[26px] pr-10 pt-[26px] pb-9 flex-col justify-end gap-4 w-full z-99", (hovered ? "flex" : "hidden"))}
+      className={clsx("pr-1 pb-3 flex-col justify-end gap-4 w-full z-99", (hovered ? "flex" : "hidden"))}
     >
       {(allResources).map((element) => {
-          // console.log("this should become a link" + element);
           return <Link {...element} />;
         })}
     </div>

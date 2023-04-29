@@ -23,7 +23,7 @@ const Svg = ({ color, colorOnHover, fillOnHover, isHover }) => {
   );
 };
 
-const ClapOut = ({ color, colorOnHover, fillOnHover }) => {
+const ClapOut = ({ color, colorOnHover, fillOnHover, setState, state }) => {
   const [isHover, setIsHover] = useState(false);
   return (
     <div
@@ -33,7 +33,8 @@ const ClapOut = ({ color, colorOnHover, fillOnHover }) => {
       onMouseLeave={() => {
         setIsHover(false);
       }}
-      className="flex w-10 h-5 justify-center items-center cursor-pointer"
+      onClick={()=>{state?setState(false):setState(true)}}
+      className="flex w-10 pb-2 h-5 pr-2 justify-center items-center cursor-pointer"
     >
       <Svg color={color} colorOnHover={colorOnHover} fillOnHover={fillOnHover} isHover={isHover} />
     </div>
