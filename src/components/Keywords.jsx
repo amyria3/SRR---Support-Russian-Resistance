@@ -10,18 +10,14 @@ const Keyword = ({ keyword }) => {
   );
 };
 
-
-const Keywords = ({data}) => {
-return (    <div id="keywords_wrapper">
-
-{data.map(element => (
-return <Keyword keyword={element.name}/>
-))}
-    </div>)
-
-
-
-}
-
+const Keywords = ({ keywordArray, ngoId }) => {
+  return (
+    <div id="keywords_wrapper">
+      {data.map((element) => {
+        return <Keyword key={ngoId + "/" + element} keyword={element.name} />;
+      })}
+    </div>
+  );
+};
 
 export default Keywords;
