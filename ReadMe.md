@@ -26,6 +26,11 @@ a. setNotSearching useState setter Function, because errors when rendering Cards
 b. setSearchResults to share them with cards.
 
 To-do:
+- redesign all the Icons
+- repair fetch, make project take local data when fetch fails
+- why is db instable
+- fix the card (why growing)
+- animate clap-out
 - fix seedNgo script √
 - prevent Search from chaotically jumping whenever I am typing √
 - remove x-for (reset-default Button by Chrome) √
@@ -33,7 +38,7 @@ To-do:
 - CHANGE ^no img on mobile, links on Tap, reset on scroll. Animate (?)
 - remove the same for other browsers
 - populate DB
-- add keywords to indexation
+- add keywords to seedDocs
 - show an adequate error message when no data
 - fix payPal Icon
 - fix reset when no character in search √
