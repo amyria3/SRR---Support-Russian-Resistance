@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import clsx from "clsx";
 import { Links } from "./Links";
 import { isMobile } from "react-device-detect";
@@ -6,24 +6,34 @@ import Keywords from "./Keywords.jsx";
 import ClapOut from "../assets/icons/ClapOut.jsx";
 
 const Card = ({ id, name, description, allLinkedKeywords, allResources }) => {
-  // console.log("RENDERING CARD : ", " id : ", id, " name : ", name, " allLinkedKeywords : ", JSON.stringify(allLinkedKeywords))
-
   const [isOpened, setIsOpened] = useState(false);
+  const cardRef = useRef(null);
+  const [cardHeight, setCardHeight] = useState(288);
 
-  console.log("isOpened : " + isOpened);
-  console.log("isMobile : " + isMobile);
+  useEffect(() => {
+    if (isOpened) {
+      const height = cardRef.current.getBoundingClientRect().height;
+      setCardHeight(height);
+    }
+  }, [isOpened]);
 
   return (
     <div
       key={id}
+      ref={cardRef}
       className={clsx(
-        "w-full min-w-[260px] max-w-[360px]",
+        "w-full",
         "flex-col gap-0 rounded-[10px]",
-        isOpened ? "h-auto py-10" : "min-h-[240px] max-h-[340px] pt-10 pb-0",
+        isOpened ? "h-auto py-10" : "h-72 pt-10 pb-0",
         "px-8",
         "bg-white-card dark:bg-dt-background-card",
         "relative",
-        "grow-0"
+        "col-span-1",
+        !isOpened? "row-span-8" : "auto-rows-max"
+
+        // `row-span-${
+        //   Math.ceil(cardHeight / 32)
+        // }`
       )}
     >
       <div
@@ -38,7 +48,7 @@ const Card = ({ id, name, description, allLinkedKeywords, allResources }) => {
             "mb-4"
           )}
         >
-          {description}
+          {description + "height : " + cardHeight}
         </p>
         <Keywords keywords={allLinkedKeywords} entryId={id} />
       </div>

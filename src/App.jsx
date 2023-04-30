@@ -53,8 +53,7 @@ const App = () => {
         }
       />
       <Splash />
-      <Content /> {//gets data from useContext
-      }
+      <Content />
     </div>
   );
 };
