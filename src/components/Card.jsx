@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import clsx from "clsx";
 import { Links } from "./Links";
-import { isMobile } from "react-device-detect";
 import Keywords from "./Keywords.jsx";
 import ClapOut from "../assets/icons/ClapOut.jsx";
 
@@ -22,15 +21,14 @@ const Card = ({ id, name, description, allLinkedKeywords, allResources }) => {
       key={id}
       ref={cardRef}
       className={clsx(
+        "card",
         "w-full",
-        "flex-col gap-0 rounded-[10px]",
+        "flex-col gap-0 rounded-[6px]",
         isOpened ? "h-auto py-10" : "h-72 pt-10 pb-0",
         "px-8",
         "bg-white-card dark:bg-dt-background-card",
         "relative",
-        "col-span-1",
-        !isOpened? "row-span-8" : "auto-rows-max"
-
+        // !isOpened? "row-span-8" : ""
         // `row-span-${
         //   Math.ceil(cardHeight / 32)
         // }`

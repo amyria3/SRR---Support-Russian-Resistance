@@ -1,20 +1,21 @@
 // import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import NavBar from "./components/NavBar";
 import Splash from "./components/Splash";
 import Content from "./components/Content";
 import Toggle from "./components/Toggle";
-// import cards_data from "./assets/getData/DummyData";
 
 const App = () => {
   const root = document.getElementById("root");
+
+  //DARKMODE THEME
   const userTheme = localStorage.getItem("theme");
   const systemThemeIsDark = window.matchMedia(
     "(prefers color-scheme: dark)"
   ).matches;
-  const [darkmode, setDarkmode] = useState(false);
 
+  const [darkmode, setDarkmode] = useState(false);
   function themeCheck(setBoolean) {
     //Update classList of #root depending on userTheme and sestemPreferences.
     if (userTheme === "dark" || (!userTheme && systemThemeIsDark)) {
@@ -23,6 +24,17 @@ const App = () => {
       setBoolean(true);
     }
   }
+
+
+
+  const [notSearching, setNotSearching] = useState(true);
+  const [searchResults, setSearchReasults] = useState(undefined);
+
+  // const cardsWrapper = document.getElementById("cardsWrapper")
+  // useEffect(()=>{
+  //   {notSearching&&renderCards(data)}
+  // },[cardsWrapper])
+
 
   themeCheck();
 
@@ -53,7 +65,12 @@ const App = () => {
         }
       />
       <Splash />
-      <Content />
+      <Content
+        notSearching={notSearching}
+        setNotSearching={setNotSearching}
+        searchResults={searchResults}
+        setSearchReasults={setSearchReasults}
+      />
     </div>
   );
 };

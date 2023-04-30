@@ -113,6 +113,99 @@ const updateData = [
       },
     ],
   },
+  {
+    id: 1,
+    name: "DOXA journal",
+    img_url: "",
+    description:
+      "DOXA is an independent Russian online magazine that deals with current social, political and cultural issues. DOXA was founded in 2017 by a group of students and has since gained a large number of followers. DOXA has been reporting consistently since the beginning of the war.",
+    allLinkedKeywords: [],
+    allResources: [
+      {
+        id: 1,
+        url: "https://www.patreon.com/doxajournal",
+        description: "",
+        ngoId: "",
+        resourceType: "PayPal",
+      },
+      {
+        id: 2,
+        url: "https://www.instagram.com/doxa_journal/",
+        description: "",
+        ngoId: "",
+        resourceType: "Instagram",
+      },
+      {
+        id: 3,
+        url: "https://t.me/doxajournal",
+        description: "",
+        ngoId: "",
+        resourceType: "Telegram",
+      },
+    ],
+  },
+  {
+    id: 1,
+    name: "DOXA journal",
+    img_url: "",
+    description:
+      "DOXA is an independent Russian online magazine that deals with current social, political and cultural issues. DOXA was founded in 2017 by a group of students and has since gained a large number of followers. DOXA has been reporting consistently since the beginning of the war.",
+    allLinkedKeywords: [],
+    allResources: [
+      {
+        id: 1,
+        url: "https://www.patreon.com/doxajournal",
+        description: "",
+        ngoId: "",
+        resourceType: "PayPal",
+      },
+      {
+        id: 2,
+        url: "https://www.instagram.com/doxa_journal/",
+        description: "",
+        ngoId: "",
+        resourceType: "Instagram",
+      },
+      {
+        id: 3,
+        url: "https://t.me/doxajournal",
+        description: "",
+        ngoId: "",
+        resourceType: "Telegram",
+      },
+    ],
+  },
+  {
+    id: 1,
+    name: "DOXA journal",
+    img_url: "",
+    description:
+      "DOXA is an independent Russian online magazine that deals with current social, political and cultural issues. DOXA was founded in 2017 by a group of students and has since gained a large number of followers. DOXA has been reporting consistently since the beginning of the war.",
+    allLinkedKeywords: [],
+    allResources: [
+      {
+        id: 1,
+        url: "https://www.patreon.com/doxajournal",
+        description: "",
+        ngoId: "",
+        resourceType: "PayPal",
+      },
+      {
+        id: 2,
+        url: "https://www.instagram.com/doxa_journal/",
+        description: "",
+        ngoId: "",
+        resourceType: "Instagram",
+      },
+      {
+        id: 3,
+        url: "https://t.me/doxajournal",
+        description: "",
+        ngoId: "",
+        resourceType: "Telegram",
+      },
+    ],
+  },
 ];
 
 export default updateData;
