@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { useContext } from "react";
 import { contextData, currentIndexa } from "../main.jsx";
 
-const Search = ({ setNotSearching, setterResults }) => {
+const Search = ({ setterNotSearching, setterResults }) => {
   const data = useContext(contextData);
   const currentIndex = useContext(currentIndexa);
   const [currentInput, setCurrentInput] = useState("");
@@ -13,13 +13,13 @@ const Search = ({ setNotSearching, setterResults }) => {
   function handleReset() {
     console.log("handleReset triggered");
     setterResults(undefined);
-    setNotSearching(true);
+    setterNotSearching(true);
   }
 
   function handleInputChange(input) {
     //start typing (character-Index === 0):
     if (currentInput.length === 0 && input.length === 1) {
-      setNotSearching(false);
+      setterNotSearching(false);
       setCurrentInput(input);
       // console.log("1. current Input : " + currentInput);
       setterResults(search(data, currentIndex, currentInput));

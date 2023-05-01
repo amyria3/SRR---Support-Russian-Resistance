@@ -1,4 +1,4 @@
-import renderCards from "./renderCards.jsx";
+import renderCards from "./RenderCards.jsx";
 
 const CardsWrapper = ({ data, colNumber }) => {
   return (
@@ -7,7 +7,7 @@ const CardsWrapper = ({ data, colNumber }) => {
       id="cardsWrapper"
       className="w-full"
     >
-      {renderCards(data, colNumber)}
+
     </div>
   );
 };

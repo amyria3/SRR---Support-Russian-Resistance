@@ -25,9 +25,6 @@ const App = () => {
     }
   }
 
-  const [notSearching, setNotSearching] = useState(true);
-  const [searchResults, setSearchResults] = useState(undefined);
-
   themeCheck();
 
   function themeSwitch(aBoolean, setBoolean) {
@@ -57,13 +54,7 @@ const App = () => {
         }
       />
       <Splash />
-      <Content
-        notSearching={notSearching}
-        setNotSearching={setNotSearching}
-        searchResults={searchResults}
-        setSearchResults={setSearchResults}
-        colNumber={3}
-      />
+      <Content colNumber={{ gridVar: 3 }} />
     </div>
   );
 };

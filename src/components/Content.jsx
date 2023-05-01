@@ -1,17 +1,16 @@
-import CardsWrapper from "./CardsWrapper.jsx";
 import Search from "./Search.jsx";
-import { useContext } from "react";
-import { contextData } from "../main.jsx";
+import { useState } from "react";
+import RenderCards from "./RenderCards.jsx";
 
-const Content = (
-  notSearching,
-  setNotSearching,
-  searchResults,
-  setSearchResults,
-  colNumber
-) => {
-  //GET DATA, handle data supply
-  const data = useContext(contextData);
+const Content = ({ gridVar }) => { // Destructure the "colNumber" object
+  //handle data supply
+  ////get data
+
+  // console.log("CONTENT COMPONENT, data : " + data);
+
+  ////get data
+  const [notSearching, setNotSearching] = useState(true);
+  const [searchResults, setSearchResults] = useState(undefined);
 
   return (
     <section
@@ -19,16 +18,13 @@ const Content = (
       className="flex flex-col gap-6 min-h-screen h-2/3 w-full"
     >
       <div className="h-[1px] bg-line w-full"></div>
+
       <Search
-        setNotSearching={setNotSearching} //to control input-fields UI-behavior & to control, if cards render with searchResults or normal data
-        setterResults={setSearchResults} //const[...] must be at App-lavel to be accessable by Cards & Search
+        setterNotSearching={setNotSearching}
+        setterResults={setSearchResults}
       />
 
-      {/* <CardsWrapper does not need any data */}
-      {notSearching && <CardsWrapper data={data} colNumber={colNumber} />}
-      {!notSearching && (
-        <CardsWrapper data={searchResults} colNumber={colNumber} />
-      )}
+      <RenderCards colNumber={3}/>
     </section>
   );
 };
