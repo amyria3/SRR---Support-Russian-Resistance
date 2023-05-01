@@ -2,11 +2,7 @@ import Search from "./Search.jsx";
 import { useState } from "react";
 import RenderCards from "./RenderCards.jsx";
 
-const Content = ({ gridVar }) => { // Destructure the "colNumber" object
-  //handle data supply
-  ////get data
-
-  // console.log("CONTENT COMPONENT, data : " + data);
+const Content = () => {
 
   ////get data
   const [notSearching, setNotSearching] = useState(true);
@@ -24,7 +20,7 @@ const Content = ({ gridVar }) => { // Destructure the "colNumber" object
         setterResults={setSearchResults}
       />
 
-      <RenderCards colNumber={3}/>
+      <RenderCards />
     </section>
   );
 };

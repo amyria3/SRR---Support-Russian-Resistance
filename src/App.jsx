@@ -54,7 +54,7 @@ const App = () => {
         }
       />
       <Splash />
-      <Content colNumber={{ gridVar: 3 }} />
+      <Content />
     </div>
   );
 };

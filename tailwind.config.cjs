@@ -3,18 +3,16 @@ module.exports = {
   darkMode: "class",
   theme: {
     screens: {
-      xl: { max: "1400px" },
+      xl: { min: "1400px" },
 
-      lg: { max: "992px" },
+      lg: { min: "992px" },
 
-      md: { max: "823px" },
+      md: { min: "823px" },
 
-      sm: { max: "768px" },
+      sm: { min: "768px" },
 
-      ssm: { max: "576px" },
+      ssm: { min: "576px" },
     },
-  },
-  theme: {
     colors: {
       white: {
         DEFAULT: "rgba(240, 239, 239, 1)",
