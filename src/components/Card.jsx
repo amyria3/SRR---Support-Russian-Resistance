@@ -27,18 +27,15 @@ const Card = ({ id, name, description, allLinkedKeywords, allResources }) => {
         isOpened ? "h-auto py-10" : "h-72 pt-10 pb-0",
         "px-8",
         "bg-white-card dark:bg-dt-background-card",
-        "relative",
-        // !isOpened? "row-span-8" : ""
-        // `row-span-${
-        //   Math.ceil(cardHeight / 32)
-        // }`
+        "relative"
       )}
+      onClick={()=>{isOpened?setIsOpened(false):setIsOpened(true)}}
     >
       <div
         id="top_wrapper"
         className="flex flex-col justify-start gap-[10px] mb-10"
       >
-        <h3 className="text-base font-semibold">{name}</h3>
+        <h3 className="text-base font-semibold mb-2">{name}</h3>
         <p
           className={clsx(
             !isOpened &&

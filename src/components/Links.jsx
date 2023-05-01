@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import Bitcoin from "../assets/icons/Bitcoin";
+import Crypto from "../assets/icons/Crypto";
 import Creditcard from "../assets/icons/Creditcard";
 import Facebook from "../assets/icons/Facebook";
 import Instagram from "../assets/icons/Instagram";
@@ -10,8 +10,8 @@ import Webpage from "../assets/icons/Webpage";
 const Link = ({ id, url, resourceType, description }) => {
 
   const Icon = ({ resourceType }) => {
-    if (resourceType === "Bitcoin") {
-      return <Bitcoin />;
+    if (resourceType === "Crypto") {
+      return <Crypto />;
     }
     if (resourceType === "Credit card") {
       return <Creditcard />;
@@ -35,7 +35,7 @@ const Link = ({ id, url, resourceType, description }) => {
 
   return (
     <div
-      id="link_wrapper"
+      class="link_wrapper"
       key={id + "/" + resourceType}
       className="w-full py-2 h-[30px] border-none"
     >
@@ -48,7 +48,7 @@ const Link = ({ id, url, resourceType, description }) => {
         <div id="icon_wrapper" className="w-6 h-6 child">
           <Icon resourceType={resourceType} />
         </div>
-        <div className={clsx("h-[1px] w-full bg-typo hover:bg-interactive-hover child ml-6 mr-3")}></div>
+        <div className={clsx("h-[1px] w-full bg-typo dark:bg-dt-typo child child ml-6 mr-3")}></div>
         <div className="text-base hover:underline child">{description? description : resourceType}</div>
       </a>
     </div>
