@@ -1,5 +1,5 @@
 // import { useEffect } from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import NavBar from "./components/NavBar";
 import Splash from "./components/Splash";
@@ -25,16 +25,8 @@ const App = () => {
     }
   }
 
-
-
   const [notSearching, setNotSearching] = useState(true);
-  const [searchResults, setSearchReasults] = useState(undefined);
-
-  // const cardsWrapper = document.getElementById("cardsWrapper")
-  // useEffect(()=>{
-  //   {notSearching&&renderCards(data)}
-  // },[cardsWrapper])
-
+  const [searchResults, setSearchResults] = useState(undefined);
 
   themeCheck();
 
@@ -69,25 +61,11 @@ const App = () => {
         notSearching={notSearching}
         setNotSearching={setNotSearching}
         searchResults={searchResults}
-        setSearchReasults={setSearchReasults}
+        setSearchResults={setSearchResults}
+        colNumber={3}
       />
     </div>
   );
 };
 
 export default App;
-
-//GENERAL IDEA:
-//its a one-pager with several Sections.
-
-//Functionality:
-
-// I am having a searchIsInactive prop in my <Cards />-Component.
-// I am rendering this component on a higher level in my <App /> component,
-// where I am passing to <Cards /> the useState Variable notSearching for the searchIsInactive prop.
-// Additionally, I am passing the setter Function setNotSearching and setCurrentUserInput
-// to the <Search /> Component, so that the <Search />-Component can change it.
-// It is supposed to update currentUserInput whenever the user is Typing, and it is supposed to
-// set notSearching to false, if there is any input typed in by user.
-// The <Cards>-Component then is supposed to render the Cards if there are cards-data passed.
-// Therefore, after the user typed in the first Character, no cards should be rendered.

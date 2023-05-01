@@ -1,13 +1,13 @@
 import renderCards from "./renderCards.jsx";
 
-const CardsWrapper = ({ data }) => {
+const CardsWrapper = ({ data, colNumber }) => {
   return (
     <div
       key="cardsWrapper"
       id="cardsWrapper"
       className="w-full"
     >
-      {renderCards(data)}
+      {renderCards(data, colNumber)}
     </div>
   );
 };

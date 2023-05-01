@@ -3,10 +3,15 @@ import Search from "./Search.jsx";
 import { useContext } from "react";
 import { contextData } from "../main.jsx";
 
-
-const Content = (setNotSearching, searchResults, setSearchReasults) => {
-    //GET DATA, handle data supply
-    const data = useContext(contextData);
+const Content = (
+  notSearching,
+  setNotSearching,
+  searchResults,
+  setSearchResults,
+  colNumber
+) => {
+  //GET DATA, handle data supply
+  const data = useContext(contextData);
 
   return (
     <section
@@ -16,13 +21,14 @@ const Content = (setNotSearching, searchResults, setSearchReasults) => {
       <div className="h-[1px] bg-line w-full"></div>
       <Search
         setNotSearching={setNotSearching} //to control input-fields UI-behavior & to control, if cards render with searchResults or normal data
-        setterResults={setSearchReasults} //const[...] must be at App-lavel to be accessable by Cards & Search
+        setterResults={setSearchResults} //const[...] must be at App-lavel to be accessable by Cards & Search
       />
 
       {/* <CardsWrapper does not need any data */}
-      <CardsWrapper
-        data={data}
-      />
+      {notSearching && <CardsWrapper data={data} colNumber={colNumber} />}
+      {!notSearching && (
+        <CardsWrapper data={searchResults} colNumber={colNumber} />
+      )}
     </section>
   );
 };
