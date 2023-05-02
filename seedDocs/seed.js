@@ -1,6 +1,6 @@
 import seedKeywords from "./seedKeys.js";
-import seedResourceKeywords from "./seedResources.js";
-import seedNgos from "./seedNgo.js";
+import seedResourceTags from "./seedResourceTags.js";
+// import seedNgos from "./seedNgo.js";
 
 //
 const ngoKeywords = [
@@ -16,7 +16,7 @@ const ngoKeywords = [
     { name: "Transparency" },
   ];
 
-  const resourceType = [
+  const resourceTag = [
     { name: "Facebook" },
     { name: "Instagram" },
     { name: "Telegram" },
@@ -26,8 +26,8 @@ const ngoKeywords = [
     { name: "PayPal" },
   ];
 //take an ngo from localDb
-import { rawData } from "./rawData.js";
+// import { rawData } from "./rawData.js";
 
 seedKeywords(ngoKeywords);
-seedResourceKeywords(resourceType);
-seedNgos(rawData)
+seedResourceTags(resourceTag);
+// seedNgos(rawData)

@@ -7,7 +7,7 @@ const port = process.env.PORT || 3001;
 
 app.use(cors());
 
-console.log("server.mjs, line 10")
+console.log("reading server.mjs, line 10")
 
 app.get('/api/ngo-data', async (req, res) => {
   console.log("server.mjs, line 13, going to ask Prisma")

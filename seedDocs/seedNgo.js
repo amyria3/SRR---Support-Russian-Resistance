@@ -1,8 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-import updateData from "./updateData.js"
-
+import updateData from "./updateData.js";
 
 //take ngos's name & ask Prisma, if already exists
 export default async function seedNgos(localDb) {
@@ -24,36 +23,51 @@ export default async function seedNgos(localDb) {
       },
     });
     console.log(entry.name + " Has been updated or created. ");
-
-    //After all entries have been created or updated on the upper level
-    //update or create resources:
-    for (const entry of localDb) {
-      const upsertEntry = await prisma.Ngo.findUnique({
-        where: { name: entry.name },
-      });
-      if (upsertEntry) {
-        for (const ngoResource of entry.allResources) {
-          console.log(" " + entry.name + " exists. Updating resources : ");
-
-          const upsertResource = await prisma.resource.upsert({
-            where: {
-              url: ngoResource.url,
-            },
-            update: {
-              ngoId: upsertEntry.id,
-              resourceType: ngoResource.resourceType,
-            },
-            create: {
-              url: ngoResource.url,
-              ngoId: upsertEntry.id,
-              resourceType: ngoResource.resourceType,
-            },
-          });
-          console.log(upsertResource.url + "Has been added or updated");
-        }
-      }
-    }
   }
 }
 
-console.log(seedNgos(updateData))
+const updatedResource = await prisma.resource.keywords.upsert({
+  where: { name: entry.resource.keyword.name },
+  create: {
+    data: { name: entry.resource.keyword.name }
+  }
+})
+
+// //After all entries have been created or updated on the upper level
+// //update or create resources:
+// for (const entry of localDb) {
+//   const upsertEntry = await prisma.Ngo.findUnique({
+//     where: { name: entry.name },
+//   });
+//   if (upsertEntry) {
+//     for (const ngoResource of entry.Resource) {
+//       console.log(" " + entry.name + " exists. Updating resources : ");
+
+//       const updatedResource = await prisma.resource.update({
+//         where: { id },
+//         data: { keywords: { set: keywords } }
+//       })
+//       console.log(updatedResource)
+
+// const upsertResource = await prisma.ngo.resource.upsert({
+//   where: {
+//     url: ngoResource.url,
+//   },
+//   update: {
+//     ngoId: upsertEntry.id,
+//     resourceType: ngoResource.resourceType,
+//   },
+//   create: {
+//     url: ngoResource.url,
+//     ngoId: upsertEntry.id,
+//     resourceType: ngoResource.resourceType,
+//   },
+// });
+//console.log(upsertResource.url + "Has been added or updated");
+//         }
+//       }
+//     }
+//   }
+// }
+
+console.log(seedNgos(updateData));

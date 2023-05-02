@@ -9,46 +9,40 @@ datasource db {
 }
 
 model Ngo {
-  id                String        @id @default(uuid())
-  name              String        @unique
-  description       String?
-  img_url           String
-  allLinkedKeywords UsedKeyword[]
-  allResources      Resource[]
+  id           String         @id @default(uuid())
+  name         String         @unique
+  description  String?
+  img_url      String
+  keywords     ProtoKeyword[]
+  allResources Resource[]
 
   @@map("Ngos")
 }
 
 model Resource {
-  id                  String           @id @default(uuid())
-  url                 String           @unique
-  description         String?
-  ngoId               String
-  resourceType        String
-  ngo                 Ngo              @relation(fields: [ngoId], references: [id])
-  TypesOfResource     TypesOfResource @relation(fields: [resourceType], references: [name])
+  id            String        @id @default(uuid())
+  url           String        @unique
+  description   String?
+  ngoId         String
+  resourceTypes String
+  ngo           Ngo           @relation(fields: [ngoId], references: [id])
+  tag           ResourceTag[]
 
   @@map("Used Resources")
 }
 
-model UsedKeyword {
-  ngoId         String?
-  protoKeyword  String
-  id            String       @id @default(uuid())
-  ngo           Ngo?         @relation(fields: [ngoId], references: [id])
-  protoKeywords ProtoKeyword @relation(fields: [protoKeyword], references: [name])
-
-  @@map("Used Keyword")
-}
-
 model ProtoKeyword {
-  name            String        @unique
-  allUsedKeywords UsedKeyword[]
+  id   String @id @default(uuid())
+  name String @unique
+  ngos Ngo[]
 
   @@map("Prototype Keyword")
 }
 
-model TypesOfResource {
-  name           String     @unique
-  Used_Resources Resource[]
+model ResourceTag {
+  id            String     @id @default(uuid())
+  name          String     @unique
+  UsedResources Resource[]
+
+  @@map("Tags of resources")
 }

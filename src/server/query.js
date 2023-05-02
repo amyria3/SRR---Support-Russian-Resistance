@@ -8,9 +8,12 @@ async function askPrisma() {
       id: 'asc'
     },
     include: {
+      id: true,
+      name: true,
+      description: true,
+      keywords: true,
       allResources: true,
-      allLinkedKeywords: true
-    }
+    },
   });
   return elements;
 }
