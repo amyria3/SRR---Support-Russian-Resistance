@@ -1,21 +1,25 @@
 import { PrismaClient } from "@prisma/client";
+
 const prisma = new PrismaClient();
 
+
 async function askPrisma() {
-  console.log("query.js, asking Prisma");
-  const elements = await prisma.ngo.findMany({
-    orderBy: {
-      id: 'asc'
-    },
-    include: {
-      id: true,
-      name: true,
-      description: true,
-      keywords: true,
-      allResources: true,
-    },
-  });
-  return elements;
+  try {
+    console.log("query.js, asking Prisma");
+    const dataArray = await prisma.ngo.findMany({
+      orderBy: {
+        id: 'asc'
+      },
+      include: {
+        keywords: true,
+        allResources: true,
+      },
+    });
+    return dataArray
+  } catch (error) {
+    console.log('Error occurred in askPrisma:', error);
+    throw error;
+  }
 }
 
 export default askPrisma;

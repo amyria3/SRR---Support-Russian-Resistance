@@ -4,7 +4,7 @@ import { Links } from "./Links";
 import Keywords from "./Keywords.jsx";
 import ClapOut from "../assets/icons/ClapOut.jsx";
 
-const Card = ({ id, name, description, allLinkedKeywords, allResources }) => {
+const Card = ({ id, name, description, keywords, allResources }) => {
   const [isOpened, setIsOpened] = useState(false);
   const cardRef = useRef(null);
   const [cardHeight, setCardHeight] = useState(288);
@@ -45,7 +45,7 @@ const Card = ({ id, name, description, allLinkedKeywords, allResources }) => {
         >
           {description + "height : " + cardHeight}
         </p>
-        <Keywords keywords={allLinkedKeywords} entryId={id} />
+        <Keywords keywords={keywords} entryId={id} />
       </div>
       <div
         key={"clapWrapper/" + id}

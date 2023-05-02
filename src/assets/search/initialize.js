@@ -8,8 +8,8 @@ const idx = lunr(function () {
   this.field("name");
   this.field("description");
 
-  data.forEach(function (doc) {
-    this.add(doc);
+  data.forEach(function (entry) {
+    this.add(entry);
   }, this);
 });
 
@@ -17,6 +17,7 @@ const idx = lunr(function () {
 const resourceIdx = lunr(function () {
   this.ref("id");
   this.field("description");
+  this.field("resourceTypes")
 
   data.forEach(function (entry) {
     entry.allResources.forEach(function (resource) {
@@ -31,7 +32,7 @@ const keywordIdx = lunr(function () {
   this.field("protoKeyword");
 
   data.forEach(function (entry) {
-    entry.allLinkedKeywords.forEach(function (keyword) {
+    entry.keywords.forEach(function (keyword) {
       this.add(keyword);
     }, this);
   }, this);

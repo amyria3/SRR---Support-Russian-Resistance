@@ -12,6 +12,7 @@ console.log("reading server.mjs, line 10")
 app.get('/api/ngo-data', async (req, res) => {
   console.log("server.mjs, line 13, going to ask Prisma")
   const data = await askPrisma();
+  console.log(data)
   console.log("server.mjs, line 15, just asked Prisma")
   res.json(data);
 });
