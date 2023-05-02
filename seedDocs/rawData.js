@@ -5,7 +5,7 @@ const radData = [
     description:
       "Nowaya Gazeta is an independent investigative newspaper. It is published in Moscow, in regions within Russia, and in some foreign countries. (Wikipedia, 14.04.2023)",
     img_url: "",
-    allResources: [
+    linkedResources: [
       {
         id: "ab7f868b-8db6-4cc3-9ad9-0d034e42e363",
         url: "https://nowayagazeta.ru/",
@@ -41,7 +41,7 @@ const radData = [
     name: "Another Dummy record",
     description: "Lorem Ipsum, 2001",
     img_url: "",
-    allResources: [],
+    linkedResources: [],
     allLinkedKeywords: [],
   },
   {
@@ -49,7 +49,7 @@ const radData = [
     name: "some name",
     description: null,
     img_url: "",
-    allResources: [],
+    linkedResources: [],
     allLinkedKeywords: [],
   },
 ];

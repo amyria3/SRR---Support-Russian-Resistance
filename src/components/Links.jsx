@@ -55,17 +55,17 @@ const Link = ({ id, url, resourceType, description }) => {
   );
 };
 
-const Links = (allResources, hovered, cardId) => {
-  return <LinksDiv allResources={allResources} hovered={hovered} cardId={cardId}/>
+const Links = (linkedResources, hovered, cardId) => {
+  return <LinksDiv linkedResources={linkedResources} hovered={hovered} cardId={cardId}/>
 };
 
-const LinksDiv = ({allResources, hovered, cardId}) => {
+const LinksDiv = ({linkedResources, hovered, cardId}) => {
   return (
     <div
       key={"links of " + cardId}
       className={clsx("pr-1 pb-3 flex-col justify-end gap-4 w-full z-99", (hovered ? "flex" : "hidden"))}
     >
-      {(allResources).map((element) => {
+      {(linkedResources).map((element) => {
           return <Link {...element} />;
         })}
     </div>

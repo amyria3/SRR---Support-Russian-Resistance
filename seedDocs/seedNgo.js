@@ -1,13 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-import updateData from "./updateData.js";
+import localDb from "./localDb.js";
 
-//take ngos's name & ask Prisma, if already exists
-export default async function seedNgos(localDb) {
-  for (const entry of localDb) {
-    console.log(" Checking, if " + entry.name + " already exists. ");
-    //update, if there, create, if not there yet:
+export default async function seedNgos(data) {
+  //for every entry in localDB
+  for (const entry of data) {
     const upsertEntry = await prisma.Ngo.upsert({
       where: {
         name: entry.name,
@@ -22,52 +20,74 @@ export default async function seedNgos(localDb) {
         img_url: entry.img_url,
       },
     });
-    console.log(entry.name + " Has been updated or created. ");
+    // console.log(
+    //   "NGO or group " + entry.name + " has been updated or created. "
+    // );
+
+    for (const locallyStoredKeyword of entry.keywords) {
+      //for every string in keywords[] array of the current entry
+      const updatedNgosKeywords = await prisma.Ngo.update({
+        where: { name: entry.name },
+        data: {
+          keywords: {
+            connect: { name: locallyStoredKeyword },
+          },
+        },
+      });
+      console.log(
+        updatedNgosKeywords + "'s keywords missing entries have been updated."
+      );
+    }
+
+    //create resources, if missing:
+    for (const locallyStoredResource of entry.resources) {
+
+      //for every entry in the resources[] array
+      const upsertResource = await prisma.Resource.upsert({
+        where: {
+          url: locallyStoredResource.url,
+        },
+        update: {
+          ngoId: upsertEntry.id,
+          description: locallyStoredResource.description,
+        },
+        create: {
+          url: locallyStoredResource.url,
+          ngoId: upsertEntry.id,
+          description: locallyStoredResource.description,
+        },
+      });
+      console.log("Added " + locallyStoredResource.url + " of " + entry.name + ", if it was missing. Current Ngo ID : " + upsertEntry.id)
+      //throws an error. But works. (?!)
+
+
+      // for (const locallyStoredResource of entry.resources) {
+      //   //for every entry in the resources[] array
+      //   const upsertResource = await prisma.ngo.resource.upsert({
+      //     where: {
+      //       url: locallyStoredResource.url,
+      //     },
+      //     update: {
+      //       ngoId: existingEntry.id,
+      //       resourceType: ngoResource.resourceType,
+      //     },
+      //     create: {
+      //       url: ngoResource.url,
+      //       ngoId: existingEntry.id,
+      //       resourceType: ngoResource.resourceType,
+      //     },
+      //   });
+
+      //   const updateResource = await prisma.ngo.resource.update({
+      //     where: { name: entry.name },
+      //     data: {
+      //       keywords: {
+      //         connect: { name: locallyStoredKeyword },
+      //       },
+      //     },
+      //   });
+    }
   }
 }
 
-const updatedResource = await prisma.resource.keywords.upsert({
-  where: { name: entry.resource.keyword.name },
-  create: {
-    data: { name: entry.resource.keyword.name }
-  }
-})
-
-// //After all entries have been created or updated on the upper level
-// //update or create resources:
-// for (const entry of localDb) {
-//   const upsertEntry = await prisma.Ngo.findUnique({
-//     where: { name: entry.name },
-//   });
-//   if (upsertEntry) {
-//     for (const ngoResource of entry.Resource) {
-//       console.log(" " + entry.name + " exists. Updating resources : ");
-
-//       const updatedResource = await prisma.resource.update({
-//         where: { id },
-//         data: { keywords: { set: keywords } }
-//       })
-//       console.log(updatedResource)
-
-// const upsertResource = await prisma.ngo.resource.upsert({
-//   where: {
-//     url: ngoResource.url,
-//   },
-//   update: {
-//     ngoId: upsertEntry.id,
-//     resourceType: ngoResource.resourceType,
-//   },
-//   create: {
-//     url: ngoResource.url,
-//     ngoId: upsertEntry.id,
-//     resourceType: ngoResource.resourceType,
-//   },
-// });
-//console.log(upsertResource.url + "Has been added or updated");
-//         }
-//       }
-//     }
-//   }
-// }
-
-console.log(seedNgos(updateData));
+console.log(seedNgos(localDb));

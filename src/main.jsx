@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 import { fetchData } from "./api";
-import updateData from "../seedDocs/updateData.js";
+import localDb from "../seedDocs/localDb.js";
 import initialize from "./assets/search/initialize.js";
 
 function Loader() {
@@ -26,8 +26,8 @@ function AppWrapper() {
         setIndexa(initialize(data));
       }
       if (!data || data === "Failed to fetch") {
-        setCardsData(updateData);
-        setIndexa(initialize(updateData));
+        setCardsData(localDb);
+        setIndexa(initialize(localDb));
       }
       setLoading(false);
     }

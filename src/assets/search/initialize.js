@@ -13,14 +13,14 @@ const idx = lunr(function () {
   }, this);
 });
 
-// Create a lunr index for the allResources array
+// Create a lunr index for the linkedResources array
 const resourceIdx = lunr(function () {
   this.ref("id");
   this.field("description");
   this.field("resourceTypes")
 
   data.forEach(function (entry) {
-    entry.allResources.forEach(function (resource) {
+    entry.linkedResources.forEach(function (resource) {
       this.add(resource);
     }, this);
   }, this);

@@ -19,7 +19,7 @@ function search(data, indexa, term) {
     const resourceResults = resourceIdx.search(query);
     resourceResults.forEach((result) => {
       data.forEach((doc) => {
-        doc.allResources.forEach((resource) => {
+        doc.linkedResources.forEach((resource) => {
           if (resource.id === result.ref) {
             results.push(doc);
           }
@@ -63,7 +63,7 @@ function search(data, indexa, term) {
     });
     resourceResults.forEach((result) => {
       data.forEach((doc) => {
-        doc.allResources.forEach((resource) => {
+        doc.linkedResources.forEach((resource) => {
           if (resource.id === result.ref) {
             results.push(doc);
           }

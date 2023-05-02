@@ -1,18 +1,23 @@
 import Card from "./Card.jsx";
 import { contextData } from "../main.jsx";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 function RenderCards() {
   const data = useContext(contextData);
 
   const windowWidth = window.innerWidth;
 
-  const [gridVar, setGridVar] = useState(3);
+  const [gridVar, setGridVar] = useState("");
+  useEffect(()=>{
+    setGridVar(setColsNumber());
+  },[])
+
+
   //manually added Breakpoints
 
   const setColsNumber = () => {
-    if (windowWidth <= 768) return 1;
-    if (windowWidth <= 823) return 2;
+    if (windowWidth <= 700) return 1;
+    if (windowWidth <= 1200) return 2;
     if (windowWidth > 823) return 3;
   };
 

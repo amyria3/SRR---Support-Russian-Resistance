@@ -12,7 +12,7 @@ async function askPrisma() {
       },
       include: {
         keywords: true,
-        allResources: true,
+        linkedResources: true,
       },
     });
     return dataArray
