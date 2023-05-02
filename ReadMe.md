@@ -21,28 +21,28 @@ export const currentIndexa = React.createContext({});
 ///CONTENT.JSX
 //shares with <Search /> and <Cards /> useState variables:
 
-...with <Search />
-a. setNotSearching useState setter Function, because errors when rendering Cards depenend on if the user is Searching
-b. setSearchResults to share them with cards.
+**Currently working in update-prisma branch**
 
 To-do:
-- redesign all the Icons
-- repair fetch, make project take local data when fetch fails
-- why is db instable
-- fix the card (why growing)
+
+- add tags to seedDocs
 - animate clap-out
+- populate DB
+- remove x in search for other browsers
+- show an adequate error message when no data
+
+- update ResourceType should be an array (√) -> then update seed-scripts, card & indexation √
+
+- redesign all the Icons √
+- repair fetch, make project take local data when fetch fails √
+- fix the card (why growing) √
 - fix seedNgo script √
 - prevent Search from chaotically jumping whenever I am typing √
 - remove x-for (reset-default Button by Chrome) √
 - cards behavior for mobile √
-- CHANGE ^no img on mobile, links on Tap, reset on scroll. Animate (?)
-- remove the same for other browsers
-- populate DB
-- add keywords to seedDocs
-- show an adequate error message when no data
-- fix payPal Icon
+- fix payPal Icon √
 - fix reset when no character in search √
 - fix card √
-- update ResourceType should be an array, then update seed-scripts, card & indexation
+
 
 
