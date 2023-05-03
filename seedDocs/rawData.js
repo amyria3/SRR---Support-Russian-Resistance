@@ -1,4 +1,4 @@
-const radData = [
+const rawData = [
   {
     id: "1bb1b007-784b-43dc-b2db-37ecc2f4f839",
     name: "Nowaya Gazeta",
@@ -54,4 +54,4 @@ const radData = [
   },
 ];
 
-export default radData;
+export default rawData;

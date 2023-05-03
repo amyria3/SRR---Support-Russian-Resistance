@@ -7,7 +7,7 @@ const Content = () => {
   ////get data
   const [notSearching, setNotSearching] = useState(true);
   const [searchResults, setSearchResults] = useState(undefined);
-
+  console.log(searchResults)
   return (
     <section
       id="content"

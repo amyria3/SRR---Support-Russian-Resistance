@@ -16,7 +16,7 @@ const Keywords = ({ keywords, entryId }) => {
   return (
     <div id="keywords_wrapper" key={"keywords/"+entryId} className="flex flex-wrap flex-shrink gap-2 mb-6">
       {keywords.map((element) => {
-        return <Keyword key={element.id} keyword={element.protoKeyword} />;
+        return <Keyword key={element.id} keyword={element.name} />;
       })}
     </div>
   );

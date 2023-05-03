@@ -25,13 +25,16 @@ export const currentIndexa = React.createContext({});
 
 To-do:
 
-- add tags to seedDocs
+
 - animate clap-out
 - populate DB
 - remove x in search for other browsers
 - show an adequate error message when no data
+- add select & delete to search bar
 
-- update ResourceType should be an array (√) -> then update seed-scripts, card & indexation √
+- add tags to seedDocs √
+- update ResourceType should be an array (√)
+- update seed-scripts, card & indexation (√?)
 
 - redesign all the Icons √
 - repair fetch, make project take local data when fetch fails √

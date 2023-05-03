@@ -12,7 +12,11 @@ async function askPrisma() {
       },
       include: {
         keywords: true,
-        linkedResources: true,
+        linkedResources: {
+          include: {
+            usedTags: true,
+          }
+        },
       },
     });
     return dataArray

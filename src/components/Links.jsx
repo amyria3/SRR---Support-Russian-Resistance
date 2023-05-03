@@ -7,28 +7,36 @@ import Paypal from "../assets/icons/Paypal";
 import Telegram from "../assets/icons/Telegram";
 import Webpage from "../assets/icons/Webpage";
 
-const Link = ({ id, url, resourceType, description }) => {
+//0: {id: '73ba5733-31b3-472b-97bc-8b06177843c0', url: 'https://www.instagram.com/novayagazeta/', description: '', ngoId: '3c3f1ac0-ed02-4123-b605-a84324d91d61'}
+//1: {id: '6e3a868a-e268-42b8-ab9a-80e22a73d6e0', url: 'https://t.me/novaya_pishet', description: '', ngoId: '3c3f1ac0-ed02-4123-b605-a84324d91d61'}
 
-  const Icon = ({ resourceType }) => {
-    if (resourceType === "Crypto") {
+
+
+const Link = ({ id, url, description, usedTags }) => {
+
+  const firstTag = usedTags[0].name
+
+  const Icon = ({ firstTag }) => {
+
+    if (firstTag === "Crypto") {
       return <Crypto />;
     }
-    if (resourceType === "Credit card") {
+    if (firstTag === "Credit card") {
       return <Creditcard />;
     }
-    if (resourceType === "Facebook") {
+    if (firstTag === "Facebook") {
       return <Facebook />;
     }
-    if (resourceType === "Instagram") {
+    if (firstTag === "Instagram") {
       return <Instagram />;
     }
-    if (resourceType === "PayPal") {
+    if (firstTag === "PayPal") {
       return <Paypal />;
     }
-    if (resourceType === "Telegram") {
+    if (firstTag === "Telegram") {
       return <Telegram />;
     }
-    if (resourceType === "Webpage") {
+    if (firstTag === "Webpage") {
       return <Webpage />;
     }
   };
@@ -36,7 +44,7 @@ const Link = ({ id, url, resourceType, description }) => {
   return (
     <div
       class="link_wrapper"
-      key={id + "/" + resourceType}
+      key={id + "/" + firstTag}
       className="w-full py-2 h-[30px] border-none"
     >
       <a
@@ -46,10 +54,10 @@ const Link = ({ id, url, resourceType, description }) => {
         className="flex flex-row items-center w-full py-1 h-[34px] my-1 border-none cursor-pointer parent"
       >
         <div id="icon_wrapper" className="w-6 h-6 child">
-          <Icon resourceType={resourceType} />
+          <Icon firstTag={firstTag} />
         </div>
         <div className={clsx("h-[1px] w-full bg-typo dark:bg-dt-typo child child ml-6 mr-3")}></div>
-        <div className="text-base hover:underline child">{description? description : resourceType}</div>
+        <div className="text-base hover:underline child">{description? description : firstTag}</div>
       </a>
     </div>
   );

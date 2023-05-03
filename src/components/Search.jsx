@@ -14,7 +14,7 @@ const Search = ({ setterNotSearching, setterResults }) => {
     console.log("handleReset triggered");
     setterResults(undefined);
     setterNotSearching(true);
-  }
+  } //worksx
 
   function handleInputChange(input) {
     //start typing (character-Index === 0):
