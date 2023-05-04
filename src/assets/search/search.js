@@ -1,8 +1,7 @@
 import lunr from "lunr";
 
 function search(data, indexa, term) {
-
-  console.log("searchScript runs")
+  console.log("searchScript runs");
 
   const results = [];
   const { idx, resourceIdx, keywordIdx } = indexa;
@@ -14,32 +13,8 @@ function search(data, indexa, term) {
 
     // Search top-level fields
     const idxResults = idx.search(query);
-    idxResults.forEach((result) => {
-      results.push(data.find((doc) => doc.id === result.ref));
-    });
-
-    // Search resources
-    const resourceResults = resourceIdx.search(query);
-    resourceResults.forEach((result) => {
-      data.forEach((doc) => {
-        doc.linkedResources.forEach((resource) => {
-          if (resource.id === result.ref) {
-            results.push(doc);
-          }
-        });
-      });
-    });
-
-    // Search keywords
-    const keywordResults = keywordIdx.search(query);
-    keywordResults.forEach((result) => {
-      data.forEach((doc) => {
-        doc.allLinkedKeywords.forEach((keyword) => {
-          if (keyword.id === result.ref) {
-            results.push(doc);
-          }
-        });
-      });
+    idxResults.forEach((idxResult) => {
+      results.push(data.find((element) => element.id === idxResult.ref));
     });
   }
 
@@ -55,48 +30,10 @@ function search(data, indexa, term) {
     idxResults.forEach((result) => {
       results.push(data.find((doc) => doc.id === result.ref));
     });
-
-    // Search resources
-    const resourceResults = resourceIdx.term(function (q) {
-      q.term(lunr.tokenizer(term), {
-        boost: 3,
-        editDistance: 2,
-        prefix: term.length,
-      });
-    });
-    resourceResults.forEach((result) => {
-      data.forEach((doc) => {
-        doc.linkedResources.forEach((resource) => {
-          if (resource.id === result.ref) {
-            results.push(doc);
-          }
-        });
-      });
-    });
-
-    // Search keywords
-    const keywordResults = keywordIdx.term(function (q) {
-      q.term(lunr.tokenizer(term), {
-        boost: 7,
-        editDistance: 2,
-        prefix: term.length,
-      });
-    });
-    keywordResults.forEach((result) => {
-      data.forEach((doc) => {
-        doc.keywords.forEach((keyword) => {
-          if (keyword.id === result.ref) {
-            results.push(doc);
-          }
-        });
-      });
-    });
+    // Remove duplicate results
   }
-
-  console.log("results.length : " + results.length)
-  // Remove duplicate results
   const uniqueResults = Array.from(new Set(results));
-  console.log(uniqueResults)
+  console.log(uniqueResults);
   return uniqueResults;
 }
 
