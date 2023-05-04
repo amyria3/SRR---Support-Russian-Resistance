@@ -30,7 +30,9 @@ To-do:
 - populate DB
 - remove x in search for other browsers
 - show an adequate error message when no data
-- add select & delete to search bar
+- why are some cards rendered twice?!
+- update seedDocs to prevent double entries
+
 
 - add tags to seedDocs √
 - update ResourceType should be an array (√)

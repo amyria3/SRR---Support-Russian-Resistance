@@ -5,6 +5,10 @@ import clsx from "clsx";
 import { useContext } from "react";
 import { contextData, currentIndexa } from "../main.jsx";
 
+
+//Live
+
+
 const Search = ({ setterNotSearching, setterResults }) => {
   const data = useContext(contextData);
   const currentIndex = useContext(currentIndexa);
@@ -12,31 +16,25 @@ const Search = ({ setterNotSearching, setterResults }) => {
 
   function handleReset() {
     console.log("handleReset triggered.");
-    setterResults(undefined);
+    setterResults([]);
     setterNotSearching(true);
   } //works
 
   function handleInputChange(input) {
     console.log("handleInputChange triggered.");
 
-    //start typing (character-Index === 0):
-    if (currentInput.length === 0 && input.length === 1) {
-      setterNotSearching(false);
-      setCurrentInput(input);
-      console.log("1. current Input : " + currentInput);
-    }
-
+    //start typing (character-Index === 0) OR
     //adding or deleting characters (character-Index >= 1):
-    if (currentInput.length > 0 && input.length > 0) {
+    if ((currentInput.length === 0 && input.length === 1)||(currentInput.length > 0 && input.length > 0) ){
+      (currentInput.length === 0 && input.length === 1)&&setterNotSearching(false);
       setCurrentInput(input);
-      console.log("2. current Input : " + currentInput);
+      setterResults(search(data, currentIndex, input))
     }
 
     //backspace (character-Index === 0):
     if (currentInput.length === 1 && input.length === 0) {
       setCurrentInput("");
-      console.log("3. current Input : " + currentInput);
-      console.log("Deleted last character");
+      // console.log("Deleted last character");
       handleReset();
     }
   }

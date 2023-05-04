@@ -3,15 +3,13 @@ import lunr from "lunr";
 function search(data, indexa, term) {
 
   console.log("searchScript runs")
-  console.log("term: " + term)
-
 
   const results = [];
   const { idx, resourceIdx, keywordIdx } = indexa;
   // console.log(idx, resourceIdx, keywordIdx)
 
   //PREFIX MATCHES
-  if (term.length > 0 && term.length <= 5) {
+  if (term.length > 1 && term.length <= 5) {
     const query = term + "*";
 
     // Search top-level fields
@@ -47,7 +45,7 @@ function search(data, indexa, term) {
 
   if (term.length > 4) {
     // Search top-level fields
-    const idxResults = idx.term(function (q) {
+    const idxResults = idx.search(function (q) {
       q.term(lunr.tokenizer(term), {
         boost: 10,
         editDistance: 3,
@@ -86,7 +84,7 @@ function search(data, indexa, term) {
     });
     keywordResults.forEach((result) => {
       data.forEach((doc) => {
-        doc.allLinkedKeywords.forEach((keyword) => {
+        doc.keywords.forEach((keyword) => {
           if (keyword.id === result.ref) {
             results.push(doc);
           }
@@ -95,8 +93,10 @@ function search(data, indexa, term) {
     });
   }
 
+  console.log("results.length : " + results.length)
   // Remove duplicate results
   const uniqueResults = Array.from(new Set(results));
+  console.log(uniqueResults)
   return uniqueResults;
 }
 
