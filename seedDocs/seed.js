@@ -1,5 +1,5 @@
 import seedKeywords from "./seedKeys.js";
-import seedResourceusedTag from "./seedResourceusedTag.js";
+import seedResourceusedTags from "./seedResourceusedTags.js";
 // import seedNgos from "./seedNgo.js";
 
 //
@@ -29,5 +29,5 @@ const ngoKeywords = [
 // import { rawData } from "./rawData.js";
 
 seedKeywords(ngoKeywords);
-seedResourceusedTag(resourceTag);
+seedResourceusedTags(resourceTag);
 // seedNgos(rawData)

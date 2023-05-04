@@ -34,7 +34,7 @@ To-do:
 - update seedDocs to prevent double entries
 
 
-- add usedTag to seedDocs √
+- add usedTags to seedDocs √
 - update ResourceType should be an array (√)
 - update seed-scripts, card & indexation (√?)
 
