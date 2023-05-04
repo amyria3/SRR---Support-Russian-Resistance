@@ -14,7 +14,7 @@ async function askPrisma() {
         keywords: true,
         resources: {
           include: {
-            usedTags: true,
+            usedusedTag: true,
           }
         },
       },

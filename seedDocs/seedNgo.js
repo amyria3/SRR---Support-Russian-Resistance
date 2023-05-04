@@ -70,12 +70,12 @@ export default async function seedNgos(data) {
         //take the newly created / updated resource-Object
         //map over all strings of the remote resource object
 
-        for (const localTag of locallyStoredResource.tags) {
+        for (const localTag of locallyStoredResource.usedTag) {
           //
           const response = await prisma.Resource.update({
             where: { id: upsertResource.id },
             data: {
-              usedTags: {
+              usedusedTag: {
                 connect: { name: localTag },
               },
             },

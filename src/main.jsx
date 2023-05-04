@@ -7,7 +7,7 @@ import localDb from "../seedDocs/localDb.js";
 import initialize from "./assets/search/initialize.js";
 
 function Loader() {
-  return <div>Loading...</div>;
+  return <div className="statusReport">Loading...</div>;
 }
 
 export const contextData = React.createContext([]);
@@ -17,6 +17,7 @@ function AppWrapper() {
   const [loading, setLoading] = useState(true);
   const [cardsData, setCardsData] = useState([]);
   const [indexa, setIndexa] = useState({});
+  const [dataFetchedSuccessfully, setDataFetchedSuccessfully] = useState(false);
 
   useEffect(() => {
     async function fetchDataAsync() {
@@ -24,12 +25,12 @@ function AppWrapper() {
       if (data) {
         setCardsData(data);
         setIndexa(initialize(data));
+        setDataFetchedSuccessfully(true);
+        setLoading(false);
       }
-      if (!data || data === "Failed to fetch") {
-        setCardsData(localDb);
-        setIndexa(initialize(localDb));
-      }
-      setLoading(false);
+      !dataFetchedSuccessfully && loading;
+      setCardsData(localDb);
+      setIndexa(initialize(localDb));
     }
     fetchDataAsync();
   }, []);
@@ -39,9 +40,16 @@ function AppWrapper() {
       {loading ? (
         <Loader />
       ) : (
+
         <contextData.Provider value={cardsData}>
           <currentIndexa.Provider value={indexa}>
             <App />
+            {/* {console.log(cardsData)&&dataFetchedSuccessfully} */}
+            {!dataFetchedSuccessfully && (
+              <div className="statusReport">
+                We are having problems to reach out to the data bank
+              </div>
+            )}
           </currentIndexa.Provider>
         </contextData.Provider>
       )}

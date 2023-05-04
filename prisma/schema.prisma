@@ -25,7 +25,7 @@ model Resource {
   description String?
   ngoId       String
   ngo         Ngo           @relation(fields: [ngoId], references: [id])
-  usedTags    ResourceTag[]
+  usedusedTag    ResourceTag[]
 
   @@map("Used Resources")
 }
@@ -43,5 +43,5 @@ model ResourceTag {
   name          String     @unique
   usedResources Resource[]
 
-  @@map("Tags of resources")
+  @@map("usedTag of resources")
 }

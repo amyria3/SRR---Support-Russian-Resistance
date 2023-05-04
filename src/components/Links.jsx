@@ -10,8 +10,8 @@ import Webpage from "../assets/icons/Webpage";
 //0: {id: '73ba5733-31b3-472b-97bc-8b06177843c0', url: 'https://www.instagram.com/novayagazeta/', description: '', ngoId: '3c3f1ac0-ed02-4123-b605-a84324d91d61'}
 //1: {id: '6e3a868a-e268-42b8-ab9a-80e22a73d6e0', url: 'https://t.me/novaya_pishet', description: '', ngoId: '3c3f1ac0-ed02-4123-b605-a84324d91d61'}
 
-const Link = ({ id, url, description, usedTags }) => {
-  const firstTag = usedTags[0]?.name;
+const Link = ({ id, url, description, usedusedTag }) => {
+  const firstTag = usedusedTag[0]?.name;
 
   const Icon = ({ firstTag }) => {
     if (firstTag === "Crypto") {
@@ -61,17 +61,17 @@ const Link = ({ id, url, description, usedTags }) => {
   );
 };
 
-const Links = (linkedResources, hovered, cardId) => {
+const Links = (resources, hovered, cardId) => {
   return (
     <LinksDiv
-      linkedResources={linkedResources}
+      resources={resources}
       hovered={hovered}
       cardId={cardId}
     />
   );
 };
 
-const LinksDiv = ({ linkedResources, hovered, cardId }) => {
+const LinksDiv = ({ resources, hovered, cardId }) => {
   return (
     <div
       key={cardId}
@@ -80,14 +80,14 @@ const LinksDiv = ({ linkedResources, hovered, cardId }) => {
         hovered ? "flex" : "hidden"
       )}
     >
-      {linkedResources.map((element) => {
-        const { id, url, description, usedTags } = element;
+      {resources.map((element) => {
+        const { id, url, description, usedusedTag } = element;
         return (
           <Link
             key={id}
             url={url}
             description={description}
-            usedTags={usedTags}
+            usedusedTag={usedusedTag}
           />
         );
       })}
