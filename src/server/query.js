@@ -12,7 +12,7 @@ async function askPrisma() {
       },
       include: {
         keywords: true,
-        linkedResources: {
+        resources: {
           include: {
             usedTags: true,
           }

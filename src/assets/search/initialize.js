@@ -13,7 +13,7 @@ const idx = lunr(function () {
   }, this);
 });
 
-// Create a lunr index for the linkedResources array
+// Create a lunr index for the resources array
 const resourceIdx = lunr(function () {
   this.ref("id");
   this.field("description");
@@ -21,7 +21,7 @@ const resourceIdx = lunr(function () {
   this.field("url");
 
   data.forEach(function (entry) {
-    entry.linkedResources.forEach(function (resource) {
+    entry.resources.forEach(function (resource) {
       this.add({
         id: resource.id,
         description: resource.description,

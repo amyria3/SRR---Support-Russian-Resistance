@@ -4,7 +4,7 @@ import { Links } from "./Links";
 import Keywords from "./Keywords.jsx";
 import ClapOut from "../assets/icons/ClapOut.jsx";
 
-const Card = ({ id, name, description, keywords, linkedResources }) => {
+const Card = ({ id, name, description, keywords, resources }) => {
   const [isOpened, setIsOpened] = useState(false);
   const cardRef = useRef(null);
   const [cardHeight, setCardHeight] = useState(288);
@@ -64,7 +64,7 @@ const Card = ({ id, name, description, keywords, linkedResources }) => {
         />
       </div>
       <div id="bottom_frame" className={clsx(isOpened ? "block" : "hidden")}>
-        {Links(linkedResources, isOpened, id)}
+        {Links(resources, isOpened, id)}
       </div>
     </div>
   );
