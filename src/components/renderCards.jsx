@@ -1,17 +1,18 @@
 import Card from "./Card.jsx";
 import { contextData } from "../main.jsx";
 import { useState, useContext, useEffect } from "react";
+import clsx from "clsx";
 
-function RenderCards() {
+function RenderCards({defaultState, searchResults}) {
+
   const data = useContext(contextData);
 
   const windowWidth = window.innerWidth;
 
   const [gridVar, setGridVar] = useState("");
-  useEffect(()=>{
+  useEffect(() => {
     setGridVar(setColsNumber());
-  },[])
-
+  }, []);
 
   //manually added Breakpoints
 
@@ -25,54 +26,115 @@ function RenderCards() {
     setGridVar(setColsNumber());
   });
 
-  const cards = data.map((element, index) => {
+  console.log("searchResults " + JSON.stringify(searchResults))
+  console.log("data" + JSON.stringify(data))
+
+  const defaultCardsSet = data.map((element, index) => {
     return <Card {...element} />;
   });
 
+  const filteredCardsSet = searchResults.map((element, index) => {
+    return <Card {...element} />;
+  });
+
+
+  console.log(filteredCardsSet);
+
   const oneColumn = () => {
     return (
+      <>
       <div
         key="cardsWrapper"
         id="cardsWrapper"
-        className={"flex flex-col gap-8 justify-start"}
+        className={clsx(
+          "flex flex-col gap-8 justify-start",
+          !defaultState && "hidden"
+        )}
       >
-        {cards}
+        {defaultCardsSet}
       </div>
+      <div
+        key="filteredCardsWrapper"
+        id="filteredCardsWrapper"
+        className={clsx(
+          "flex flex-col gap-8 justify-start",
+          defaultState && "hidden"
+        )}
+      >
+        {filteredCardsSet}
+      </div>
+      </>
     );
   };
+
   const twoColumns = () => {
     return (
-      <div
-        key="cardsWrapper"
-        id="cardsWrapper"
-        className={`grid grid-cols-2 gap-8`}
-      >
-        <div className="flex flex-col justify-start gap-8">
-          {cards.filter((_, i) => i % 2 === 0 || i % 2 === 1)}
+      <>
+        {/*this will render once (i hope) but will be hidden when searching*/}
+        <div
+          key="cardsWrapper"
+          id="cardsWrapper"
+          className={clsx("grid grid-cols-2 gap-8", !defaultState && "hidden")}
+        >
+          <div className="flex flex-col justify-start gap-8">
+            {defaultCardsSet.filter((_, i) => i % 2 === 0 || i % 2 === 1)}
+          </div>
+          <div className="flex flex-col justify-start gap-8">
+            {defaultCardsSet.filter((_, i) => i % 2 === 1)}
+          </div>
         </div>
-        <div className="flex flex-col justify-start gap-8">
-          {cards.filter((_, i) => i % 2 === 1)}
+        {/*this will render on search and will be hidden as soon as not searching*/}
+        <div
+          key="filteredCardsWrapper"
+          id="filteredCardsWrapper"
+          className={clsx("grid grid-cols-2 gap-8", defaultState && "hidden")}
+        >
+          <div className="flex flex-col justify-start gap-8">
+            {filteredCardsSet.filter((_, i) => i % 2 === 0 || i % 2 === 1)}
+          </div>
+          <div className="flex flex-col justify-start gap-8">
+            {filteredCardsSet.filter((_, i) => i % 2 === 1)}
+          </div>
         </div>
-      </div>
+      </>
     );
   };
+
   const threeColumns = () => {
     return (
-      <div
-        key="cardsWrapper"
-        id="cardsWrapper"
-        className={"grid grid-cols-3 gap-8"}
-      >
-        <div className="flex flex-col justify-start gap-8">
-          {cards.filter((_, i) => i % 3 === 0)}
+      <>
+        <div
+          key="cardsWrapper"
+          id="cardsWrapper"
+          className={clsx("grid grid-cols-2 gap-8", !defaultState && "hidden")}
+        >
+          <div className="flex flex-col justify-start gap-8">
+            {defaultCardsSet.filter((_, i) => i % 3 === 0)}
+          </div>
+          <div className="flex flex-col justify-start gap-8">
+            {defaultCardsSet.filter((_, i) => i % 3 === 1)}
+          </div>
+          <div className="flex flex-col justify-start gap-8">
+            {defaultCardsSet.filter((_, i) => i % 3 === 2)}
+          </div>
         </div>
-        <div className="flex flex-col justify-start gap-8">
-          {cards.filter((_, i) => i % 3 === 1)}
+        {/*this will render on search and will be hidden as soon as not searching*/}
+        <div
+          key="filteredCardsWrapper"
+          id="filteredCardsWrapper"
+          className={clsx("grid grid-cols-2 gap-8", defaultState && "hidden")}
+        >
+          <div className="flex flex-col justify-start gap-8">
+            {filteredCardsSet.filter((_, i) => i % 3 === 0)}
+          </div>
+          <div className="flex flex-col justify-start gap-8">
+            {filteredCardsSet.filter((_, i) => i % 3 === 1)}
+          </div>
+          <div className="flex flex-col justify-start gap-8">
+            {filteredCardsSet.filter((_, i) => i % 3 === 2)}
+          </div>
         </div>
-        <div className="flex flex-col justify-start gap-8">
-          {cards.filter((_, i) => i % 3 === 2)}
-        </div>
-      </div>
+      </>
     );
   };
 

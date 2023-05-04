@@ -11,32 +11,32 @@ const Search = ({ setterNotSearching, setterResults }) => {
   const [currentInput, setCurrentInput] = useState("");
 
   function handleReset() {
-    console.log("handleReset triggered");
+    console.log("handleReset triggered.");
     setterResults(undefined);
     setterNotSearching(true);
-  } //worksx
+  } //works
 
   function handleInputChange(input) {
+    console.log("handleInputChange triggered.");
+
     //start typing (character-Index === 0):
     if (currentInput.length === 0 && input.length === 1) {
       setterNotSearching(false);
       setCurrentInput(input);
-      // console.log("1. current Input : " + currentInput);
-      setterResults(search(data, currentIndex, currentInput));
+      console.log("1. current Input : " + currentInput);
     }
 
     //adding or deleting characters (character-Index >= 1):
     if (currentInput.length > 0 && input.length > 0) {
       setCurrentInput(input);
-      // console.log("2. current Input : " + currentInput);
-      setterResults(search(data, currentIndex, currentInput));
+      console.log("2. current Input : " + currentInput);
     }
 
     //backspace (character-Index === 0):
     if (currentInput.length === 1 && input.length === 0) {
       setCurrentInput("");
-      // console.log("3. current Input : " + currentInput);
-      // console.log("Deleted last character");
+      console.log("3. current Input : " + currentInput);
+      console.log("Deleted last character");
       handleReset();
     }
   }
@@ -56,7 +56,7 @@ const Search = ({ setterNotSearching, setterResults }) => {
           "font-extralight",
           "hover:shadow-default focus:shadow-default dark:shadow-none",
           "placeholder:text-xl placeholder:text-line dark:placeholder:text-dt-typo",
-          (currentInput.length >= 1)
+          currentInput.length >= 1
             ? "border-interactive shadow-default bg-interactive dark:bg-dt-interactive dark:hover:bg-dt-interactive dark:border-bg-dt-interactive dark:text-typo dark:hover:text-typo dark:font-light"
             : null
         )}
@@ -74,7 +74,9 @@ const Search = ({ setterNotSearching, setterResults }) => {
           form-control"
           type="search"
           placeholder="Search"
-          onInput={(event) => handleInputChange(event.target.value)}
+          onInput={(event) => {
+            handleInputChange(event.target.value);
+          }}
           value={currentInput}
         />
 

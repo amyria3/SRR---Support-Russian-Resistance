@@ -64,7 +64,6 @@ const Card = ({ id, name, description, keywords, linkedResources }) => {
         />
       </div>
       <div id="bottom_frame" className={clsx(isOpened ? "block" : "hidden")}>
-        {  console.log(linkedResources.usedTags)}
         {Links(linkedResources, isOpened, id)}
       </div>
     </div>

@@ -3,11 +3,9 @@ import { useState } from "react";
 import RenderCards from "./RenderCards.jsx";
 
 const Content = () => {
-
   ////get data
   const [notSearching, setNotSearching] = useState(true);
-  const [searchResults, setSearchResults] = useState(undefined);
-  console.log(searchResults)
+  const [filteredData, setFilteredData] = useState([])
   return (
     <section
       id="content"
@@ -15,12 +13,15 @@ const Content = () => {
     >
       <div className="h-[1px] bg-line w-full"></div>
 
+      {/*Search dates the filtered data array up */}
       <Search
         setterNotSearching={setNotSearching}
-        setterResults={setSearchResults}
+        setterResults={setFilteredData}
       />
-
-      <RenderCards />
+      <RenderCards
+        defaultState={notSearching}
+        searchResults={filteredData}
+      />
     </section>
   );
 };

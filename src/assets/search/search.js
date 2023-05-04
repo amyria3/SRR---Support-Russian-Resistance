@@ -1,6 +1,11 @@
 import lunr from "lunr";
 
 function search(data, indexa, term) {
+
+  console.log("searchScript runs")
+  console.log("term: " + term)
+
+
   const results = [];
   const { idx, resourceIdx, keywordIdx } = indexa;
   // console.log(idx, resourceIdx, keywordIdx)
