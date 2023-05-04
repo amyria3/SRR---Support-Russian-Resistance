@@ -77,7 +77,7 @@ function RenderCards({defaultState, searchResults}) {
           className={clsx("grid grid-cols-2 gap-8", !defaultState && "hidden")}
         >
           <div className="flex flex-col justify-start gap-8">
-            {defaultCardsSet.filter((_, i) => i % 2 === 0 || i % 2 === 1)}
+            {defaultCardsSet.filter((_, i) => i % 2 === 1)}
           </div>
           <div className="flex flex-col justify-start gap-8">
             {defaultCardsSet.filter((_, i) => i % 2 === 1)}
