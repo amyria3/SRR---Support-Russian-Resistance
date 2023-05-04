@@ -14,7 +14,7 @@ model Ngo {
   description     String?
   img_url         String
   keywords        ProtoKeyword[]
-  linkedResources Resource[]
+  resources       Resource[]
 
   @@map("Ngos")
 }
