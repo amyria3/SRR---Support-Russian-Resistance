@@ -17,23 +17,32 @@ const idx = lunr(function () {
 const resourceIdx = lunr(function () {
   this.ref("id");
   this.field("description");
-  this.field("resourceTypes")
+  this.field("resourceType");
+  this.field("url");
 
   data.forEach(function (entry) {
     entry.linkedResources.forEach(function (resource) {
-      this.add(resource);
+      this.add({
+        id: resource.id,
+        description: resource.description,
+        resourceType: resource.resourceType,
+        url: resource.url
+      });
     }, this);
   }, this);
 });
 
-// Create a lunr index for the allLinkedKeywords array
+// Create a lunr index for the keywords array
 const keywordIdx = lunr(function () {
   this.ref("id");
   this.field("protoKeyword");
 
   data.forEach(function (entry) {
     entry.keywords.forEach(function (keyword) {
-      this.add(keyword);
+      this.add({
+        id: keyword.id,
+        protoKeyword: keyword.protoKeyword
+      });
     }, this);
   }, this);
 });
