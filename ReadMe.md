@@ -29,10 +29,11 @@ To-do:
 - animate clap-out
 - populate DB
 - remove x in search for other browsers
-- show an adequate error message when no data
-- why are some cards rendered twice?!
-- update seedDocs to prevent double entries
-
+- repair search (!)
+- add a second style for search-status feedback
+- show an adequate error message when no data (√)
+- update seedDocs to prevent double entries √
+- clapOut icon is missing dm-styling
 
 - add usedTags to seedDocs √
 - update ResourceType should be an array (√)
