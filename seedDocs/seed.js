@@ -1,13 +1,13 @@
-// import seedKeyword from "./seedKeyword.js";
+import seedKeyword from "./seedKeyword.js";
 import seedTag from "./seedTag.js";
-// import seedNgo from "./seedNgo.js";
-// import localDB from "./localDb.js";
+import seedNgo from "./seedNgo.js";
+import localDB from "./localDb.js";
 
 const results = {
   tags: false,
   keywords: false,
   ngos: false,
-}
+};
 
 const ngoKeywords = [
   { name: "Human rights" },
@@ -32,9 +32,14 @@ const resourceTags = [
   { name: "PayPal" },
 ];
 
-function different() {
-  seedTag(resourceTags, results.tags)
-  console.log(results.tags)
+async function different() {
+  try {
+    await seedTag(resourceTags);
+    await seedKeyword(ngoKeywords);
+    await seedNgo(localDB);
+  } catch (error) {
+    console.error("Seeding failed with error: ", error);
+  }
 }
 
 different();
