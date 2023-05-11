@@ -1,8 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-
 const prisma = new PrismaClient();
-
-
 
 async function askPrisma() {
 
@@ -23,7 +20,7 @@ async function askPrisma() {
         },
       },
     });
-    console.log("dataArray :", dataArray)
+    // console.log("dataArray has :", dataArray.length + " entries.")
     return dataArray
   } catch (error) {
     console.log('Error occurred in askPrisma:', error);

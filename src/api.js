@@ -6,7 +6,7 @@ async function fetchData() {
     if (!response.ok) {
       throw new Error('Error fetching data');
     }
-    const data = await response.json().data;
+    const data = await response.json();
     console.log("Response : " + JSON.stringify(data));
     return data;
   } catch (error) {
