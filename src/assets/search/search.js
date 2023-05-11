@@ -4,15 +4,15 @@ function search(data, indexa, term) {
   console.log("searchScript runs");
 
   const results = [];
-  const { idx, resourceIdx, keywordIdx } = indexa;
-  // console.log(idx, resourceIdx, keywordIdx)
+  const { idx } = indexa
 
   //PREFIX MATCHES
-  if (term.length > 1 && term.length <= 5) {
+  if (term.length > 1 && term.length < 5) {
     const query = (term + "*").toString;
 
     // Search top-level fields
     const idxResults = idx.search(query);
+    console.log("########IMPORTANT########" + JSON.stringify(idxResults))
     idxResults.forEach((idxResult) => {
       results.push(data.find((element) => element.id === idxResult.ref));
     });

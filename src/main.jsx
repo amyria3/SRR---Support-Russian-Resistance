@@ -21,16 +21,24 @@ function AppWrapper() {
 
   useEffect(() => {
     async function fetchDataAsync() {
-      const data = await fetchData();
-      if (data) {
-        setCardsData(data);
+      setLoading(true)
+      try {
+        let data = undefined
+        data = await fetchData();
         setIndexa(initialize(data));
-        setDataFetchedSuccessfully(true);
-        setLoading(false);
+        setCardsData(data);
+        setDataFetchedSuccessfully(true)
+      } catch (error) {
+        (error.message === "Failed to fetch")&&
+        setCardsData(localDb)&&
+        setIndexa(initialize(localDb))&&
+        setDataFetchedSuccessfully(false)
+        console.log(error.message)
+        console.log("Main.jsx: Loaded local data instead of fetched data.")
+      } finally {
+        "Ready."
+        setLoading(false)
       }
-      !dataFetchedSuccessfully && loading;
-      setCardsData(localDb);
-      setIndexa(initialize(localDb));
     }
     fetchDataAsync();
   }, []);
@@ -40,11 +48,9 @@ function AppWrapper() {
       {loading ? (
         <Loader />
       ) : (
-
         <contextData.Provider value={cardsData}>
           <currentIndexa.Provider value={indexa}>
             <App />
-            {/* {console.log(cardsData)&&dataFetchedSuccessfully} */}
             {!dataFetchedSuccessfully && (
               <div className="statusReport">
                 We are having problems to reach out to the data bank
