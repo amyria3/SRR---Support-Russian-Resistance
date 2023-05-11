@@ -25,7 +25,7 @@ export const currentIndexa = React.createContext({});
 
 To-do:
 
-
+11.Mai 2023
 - animate clap-out
 - populate DB
 - remove x in search for other browsers
