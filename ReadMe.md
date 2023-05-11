@@ -48,6 +48,3 @@ To-do:
 - fix payPal Icon √
 - fix reset when no character in search √
 - fix card √
-
-
-
