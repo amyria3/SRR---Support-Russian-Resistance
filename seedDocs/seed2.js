@@ -1,7 +1,7 @@
-import seedKeywords from "./seedKeywords.js";
-import seedTags from "./seedTags.js";
-import seedNgos from "./seedNgos.js";
-import localDB from "./localDb.js";
+// import seedKeyword from "./seedKeyword.js";
+import seedTag from "./seedTag.js";
+// import seedNgo from "./seedNgo.js";
+// import localDB from "./localDb.js";
 
 const results = {
   tags: false,
@@ -31,12 +31,10 @@ const resourceTags = [
   { name: "Webpage" },
   { name: "PayPal" },
 ];
-//take an ngo from localDb
-// import { rawData } from "./rawData.js";
 
-function main() {
-  seedTags(resourceTags, results.tags)
+function different() {
+  seedTag(resourceTags, results.tags)
   console.log(results.tags)
 }
 
-main();
+different();

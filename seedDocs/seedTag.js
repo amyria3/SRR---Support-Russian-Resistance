@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-export default async function seedTags(data, boolean) {
+export default async function seedTag(data, boolean) {
   for (const entry of data) {
     console.log(entry);
     const existingEntry = await prisma.ResourceTag.create({
