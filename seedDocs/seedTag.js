@@ -3,7 +3,6 @@ const prisma = new PrismaClient();
 
 export default async function seedTag(data) {
   for (const entry of data) {
-    console.log(entry);
     const createdEntry = await prisma.ResourceTag.upsert({
       where: {
         name: entry.name,
@@ -14,5 +13,6 @@ export default async function seedTag(data) {
       update: {
       }
     });
+    console.log("Just finished : " + JSON.stringify(createdEntry))
   }
 }
