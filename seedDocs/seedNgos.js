@@ -5,7 +5,6 @@ import localDb from "./localDb.js";
 
 export default async function seedNgos(data) {
 
-
   //for every entry in localDB
   for (const entry of data) {
     const upsertEntry = await prisma.Ngo.upsert({
@@ -32,7 +31,7 @@ export default async function seedNgos(data) {
         where: { name: entry.name },
         data: {
           keywords: {
-            connect: { name: locallyStoredKeyword },
+            connect: { name: locallyStoredKeyword.name },
           },
         },
       });
@@ -76,7 +75,7 @@ export default async function seedNgos(data) {
             where: { id: upsertResource.id },
             data: {
               usedTags: {
-                connect: { name: localTag },
+                connect: { name: localTag.name },
               },
             },
           });

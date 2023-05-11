@@ -19,7 +19,8 @@ const Content = () => {
         setterNotSearching={setNotSearching}
         setterResults={setFilteredData}
       />
-      <div className={clsx("statusReport", (filteredData.length===0&&!notSearching)?"block":"hidden")}>No search results yet</div>
+      {console.log(JSON.stringify(filteredData))}
+      <div className={clsx("statusReport", ((filteredData.length===0 || filteredData===null)&&!notSearching)?"block":"hidden")}>No search results yet</div>
       <RenderCards
         defaultState={notSearching}
         searchResults={filteredData}

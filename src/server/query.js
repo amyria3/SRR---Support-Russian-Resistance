@@ -3,7 +3,11 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 
+
 async function askPrisma() {
+
+  console.log("Hallo")
+
   try {
     console.log("query.js, asking Prisma");
     const dataArray = await prisma.ngo.findMany({
@@ -19,6 +23,7 @@ async function askPrisma() {
         },
       },
     });
+    console.log("dataArray :", dataArray)
     return dataArray
   } catch (error) {
     console.log('Error occurred in askPrisma:', error);

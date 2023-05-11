@@ -9,7 +9,7 @@ function search(data, indexa, term) {
 
   //PREFIX MATCHES
   if (term.length > 1 && term.length <= 5) {
-    const query = term + "*";
+    const query = (term + "*").toString;
 
     // Search top-level fields
     const idxResults = idx.search(query);
