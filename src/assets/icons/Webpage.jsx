@@ -1,4 +1,4 @@
-const Webpage = ({ currentColor }) => {
+const Webpage = () => {
   return (
       <svg
         width="23"

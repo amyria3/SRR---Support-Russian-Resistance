@@ -6,6 +6,7 @@ import Instagram from "../assets/icons/Instagram";
 import Paypal from "../assets/icons/Paypal";
 import Telegram from "../assets/icons/Telegram";
 import Webpage from "../assets/icons/Webpage";
+import YouTube from "../assets/icons/YouTube";
 
 //0: {id: '73ba5733-31b3-472b-97bc-8b06177843c0', url: 'https://www.instagram.com/novayagazeta/', description: '', ngoId: '3c3f1ac0-ed02-4123-b605-a84324d91d61'}
 //1: {id: '6e3a868a-e268-42b8-ab9a-80e22a73d6e0', url: 'https://t.me/novaya_pishet', description: '', ngoId: '3c3f1ac0-ed02-4123-b605-a84324d91d61'}
@@ -34,6 +35,9 @@ const Link = ({ id, url, description, usedTags }) => {
     }
     if (firstTag === "Webpage") {
       return <Webpage />;
+    }
+    if (firstTag === "YouTube") {
+      return <YouTube />;
     }
   };
 

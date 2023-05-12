@@ -1,4 +1,4 @@
-const Creditcard = () => {
+const PayPal = () => {
   return (
     <svg
       width="25"
@@ -23,4 +23,4 @@ const Creditcard = () => {
   );
 };
 
-export default Creditcard;
+export default PayPal;
