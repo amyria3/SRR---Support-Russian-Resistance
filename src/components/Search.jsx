@@ -34,7 +34,7 @@ const Search = ({ setterNotSearching, setterResults }) => {
     //backspace (character-Index === 0):
     if (currentInput.length === 1 && input.length === 0) {
       setCurrentInput("");
-      // console.log("Deleted last character");
+      console.log("Deleted last character");
       handleReset();
     }
   }

@@ -13,6 +13,6 @@ export default async function seedTag(data) {
       update: {
       }
     });
-    console.log("Just finished : " + JSON.stringify(createdEntry))
+    // console.log("Just finished : " + JSON.stringify(createdEntry))
   }
 }

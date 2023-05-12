@@ -21,9 +21,9 @@ export default async function seedNgo(data) {
         img_url: entry.img_url,
       },
     });
-    console.log(
-      "NGO or group " + entry.name + " has been updated or created. "
-    );
+    // console.log(
+    // "NGO or group " + entry.name + " has been updated or created. "
+    //);
 
     //for every string in keywords[] array of the current entry
     for (const locallyStoredKeyword of entry.keywords) {
@@ -35,9 +35,9 @@ export default async function seedNgo(data) {
           },
         },
       });
-      console.log(
-        updatedNgosKeywords + "'s keywords missing entries have been updated."
-      );
+      // console.log(
+      // updatedNgosKeywords + "'s keywords missing entries have been updated."
+      //);
 
       //create resources, if missing:
       for (const locallyStoredResource of entry.resources) {
@@ -56,14 +56,14 @@ export default async function seedNgo(data) {
             description: locallyStoredResource.description,
           },
         });
-        console.log(
-          "Added " +
-            locallyStoredResource.url +
-            " of " +
-            entry.name +
-            ", if it was missing. Current Ngo ID : " +
-            upsertEntry.id
-        );
+        //  console.log(
+        //   "Added " +
+        //     locallyStoredResource.url +
+        //     " of " +
+        //     entry.name +
+        //     ", if it was missing. Current Ngo ID : " +
+        //     upsertEntry.id
+        // );
         //throws an error. But works. (?!)
 
         //take the newly created / updated resource-Object
@@ -80,18 +80,18 @@ export default async function seedNgo(data) {
             },
           });
 
-          console.log(
-            "Added " +
-              localTag.name +
-              " to " +
-              upsertResource.url +
-              ", if it was missing. Current Ngo ID : " +
-              upsertResource.id
-          );
+          // console.log(
+          //   "Added " +
+          //     localTag.name +
+          //     " to " +
+          //     upsertResource.url +
+          //     ", if it was missing. Current Ngo ID : " +
+          //     upsertResource.id
+          // );
         }
       }
     }
   }
 }
 
-console.log(seedNgo(localDb));
+// console.log(seedNgo(localDb));

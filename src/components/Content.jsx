@@ -1,6 +1,6 @@
 import Search from "./Search.jsx";
 import { useState } from "react";
-import RenderCards from "./RenderCards.jsx";
+import RenderAllCards from "./RenderCards.jsx";
 import clsx from "clsx";
 
 const Content = () => {
@@ -19,9 +19,9 @@ const Content = () => {
         setterNotSearching={setNotSearching}
         setterResults={setFilteredData}
       />
-      {console.log(JSON.stringify(filteredData))}
+      {console.log("CONTENT.jsx, line 22, FILTERED DATA: " + JSON.stringify(filteredData))}
       <div className={clsx("statusReport", ((filteredData.length===0 || filteredData===null)&&!notSearching)?"block":"hidden")}>No search results yet</div>
-      <RenderCards
+      <RenderAllCards
         defaultState={notSearching}
         searchResults={filteredData}
       />

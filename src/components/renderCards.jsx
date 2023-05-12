@@ -3,8 +3,10 @@ import { contextData } from "../main.jsx";
 import { useState, useContext, useEffect } from "react";
 import clsx from "clsx";
 
-function RenderCards({ defaultState, searchResults }) {
+function RenderAllCards({ defaultState, searchResults }) {
   const data = useContext(contextData);
+
+  console.log("RENDER.jsx, line 9: search results : " + JSON.stringify(searchResults))
 
   const windowWidth = window.innerWidth;
 
@@ -23,7 +25,8 @@ function RenderCards({ defaultState, searchResults }) {
 
   const setColsNumber = () => {
     if (windowWidth <= 700) return 1;
-    if (windowWidth > 700) return 3;
+    if (windowWidth > 700 && windowWidth <= 1000) return 2;
+    if (windowWidth > 1000) return 3;
   };
 
   window.addEventListener("resize", () => {
@@ -109,7 +112,7 @@ function RenderCards({ defaultState, searchResults }) {
         <div
           key="cardsWrapper"
           id="cardsWrapper"
-          className={clsx("grid grid-cols-2 gap-8", !defaultState && "hidden")}
+          className={clsx("grid grid-cols-3 gap-8", !defaultState && "hidden")}
         >
           <div className="flex flex-col justify-start gap-8">
             {defaultCardsSet.filter((_, i) => i % 3 === 0)}
@@ -150,6 +153,8 @@ function RenderCards({ defaultState, searchResults }) {
   if (gridVar === 1) {
     return oneColumn();
   }
+
+  return threeColumns()
 }
 
-export default RenderCards;
+export default RenderAllCards;

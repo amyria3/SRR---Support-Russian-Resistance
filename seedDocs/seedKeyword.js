@@ -12,6 +12,6 @@ export default async function seedKeyword(data) {
       update: {},
     });
 
-    console.log(JSON.stringify(existingEntry) + " created or updated");
+    // console.log(JSON.stringify(existingEntry) + " created or updated");
   }
 }

@@ -48,7 +48,7 @@ const idx = lunr(function () {
 // });
 
 const indexa = {idx} //resourceIdx, keywordIdx
-console.log("initialize.js / INDEXA created : " + JSON.stringify(indexa))
+// console.log("initialize.js / INDEXA created : " + JSON.stringify(indexa))
 return indexa
 }
 

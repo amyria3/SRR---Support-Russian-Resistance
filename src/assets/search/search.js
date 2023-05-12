@@ -1,7 +1,7 @@
 import lunr from "lunr";
 
 function search(data, indexa, term) {
-  console.log("searchScript runs");
+  // console.log("searchScript runs");
 
   const results = [];
   const { idx } = indexa
@@ -12,7 +12,7 @@ function search(data, indexa, term) {
 
     // Search top-level fields
     const idxResults = idx.search(query);
-    console.log("########IMPORTANT########" + JSON.stringify(idxResults))
+    // console.log("########IMPORTANT########" + JSON.stringify(idxResults))
     idxResults.forEach((idxResult) => {
       results.push(data.find((element) => element.id === idxResult.ref));
     });
@@ -33,7 +33,7 @@ function search(data, indexa, term) {
     // Remove duplicate results
   }
   const uniqueResults = Array.from(new Set(results));
-  console.log(uniqueResults);
+  // console.log(uniqueResults);
   return uniqueResults;
 }
 

@@ -3,7 +3,7 @@ const prisma = new PrismaClient();
 
 async function askPrisma() {
 
-  console.log("Hallo")
+  console.log("Hallo dear, askPrisma script is running!")
 
   try {
     console.log("query.js, asking Prisma");

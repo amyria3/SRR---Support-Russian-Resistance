@@ -33,8 +33,8 @@ function AppWrapper() {
           setCardsData(localDb) &&
           setIndexa(initialize(localDb)) &&
           setDataFetchedSuccessfully(false);
-        console.log(error.message);
-        console.log("Main.jsx: Loaded local data instead of fetched data.");
+        // console.log(error.message);
+        // console.log("Main.jsx: Loaded local data instead of fetched data.");
       } finally {
         ("Ready.");
         setLoading(false);
