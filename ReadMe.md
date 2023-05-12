@@ -31,6 +31,7 @@ To-do:
 - remove x in search for other browsers
 - repair search (!)
 - add a second style for search-status feedback
+- Add Icons for Twitter & YouTube
 - show an adequate error message when no data (√)
 - update seedDocs to prevent double entries √
 - clapOut icon is missing dm-styling
