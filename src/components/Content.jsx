@@ -7,6 +7,7 @@ const Content = () => {
   ////get data
   const [notSearching, setNotSearching] = useState(true);
   const [filteredData, setFilteredData] = useState([])
+  const [searchTermLength, setSearchTermLength] = useState(0)
   return (
     <section
       id="content"
@@ -19,11 +20,13 @@ const Content = () => {
       <Search
         setterNotSearching={setNotSearching}
         setterResults={setFilteredData}
+        setterTermLength={setSearchTermLength}
       />
 
       {/*console.log("CONTENT.jsx, line 22, FILTERED DATA: " + JSON.stringify(filteredData))*/}
 
-      <div className={clsx("statusReport", ((filteredData.length===0 || filteredData===null || !filteredData)&&!notSearching)?"block":"hidden")}>No search results yet</div>
+      <div className={clsx("searchFeedback", ((filteredData.length===0 || filteredData===null || !filteredData)&&!notSearching&&(searchTermLength<5))?"block":"hidden")}>No search results yet</div>
+      <div className={clsx("searchFeedback", ((filteredData.length===0 || filteredData===null || !filteredData)&&!notSearching&&(searchTermLength>=5))?"block":"hidden")}>Please try another termt</div>
       <RenderAllCards
         defaultState={notSearching}
         searchResults={filteredData}

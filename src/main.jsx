@@ -7,7 +7,7 @@ import localDb from "../seedDocs/localDb.js";
 import initialize from "./assets/search/initialize.js";
 
 function Loader() {
-  return <div className="statusReport">Loading...</div>;
+  return <div className="errorMessage">Loading...</div>;
 }
 
 export const contextData = React.createContext([]);
@@ -50,7 +50,7 @@ function AppWrapper() {
       ) : (
         <contextData.Provider value={cardsData}>
           {!dataFetchedSuccessfully && (
-            <div className="statusReport">
+            <div className="errorMessage ml-2">
               We are having problems to reach out to the data bank
             </div>
           )}

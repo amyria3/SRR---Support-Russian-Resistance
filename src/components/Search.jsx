@@ -9,7 +9,7 @@ import { contextData, currentIndexa } from "../main.jsx";
 //Live
 
 
-const Search = ({ setterNotSearching, setterResults }) => {
+const Search = ({ setterNotSearching, setterResults, setterTermLength }) => {
   const data = useContext(contextData);
   const currentIndex = useContext(currentIndexa);
   const [currentInput, setCurrentInput] = useState("");
@@ -21,7 +21,6 @@ const Search = ({ setterNotSearching, setterResults }) => {
   } //works
 
   function handleInputChange(input) {
-    //console.log("handleInputChange triggered.");
 
     //start typing (character-Index === 0) OR
     //adding or deleting characters (character-Index >= 1):
@@ -29,6 +28,7 @@ const Search = ({ setterNotSearching, setterResults }) => {
       (currentInput.length === 0 && input.length === 1)&&setterNotSearching(false);
       setCurrentInput(input);
       setterResults(search(data, currentIndex, input))
+      setterTermLength(input.length)
     }
 
     //backspace (character-Index === 0):
