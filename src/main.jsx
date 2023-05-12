@@ -7,7 +7,7 @@ import localDb from "../seedDocs/localDb.js";
 import initialize from "./assets/search/initialize.js";
 
 function Loader() {
-  return <div className="errorMessage">Loading...</div>;
+  return <div className="statusFeedback">Loading...</div>;
 }
 
 export const contextData = React.createContext([]);

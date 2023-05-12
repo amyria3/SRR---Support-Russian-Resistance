@@ -25,8 +25,8 @@ const Content = () => {
 
       {/*console.log("CONTENT.jsx, line 22, FILTERED DATA: " + JSON.stringify(filteredData))*/}
 
-      <div className={clsx("searchFeedback", ((filteredData.length===0 || filteredData===null || !filteredData)&&!notSearching&&(searchTermLength<5))?"block":"hidden")}>No search results yet</div>
-      <div className={clsx("searchFeedback", ((filteredData.length===0 || filteredData===null || !filteredData)&&!notSearching&&(searchTermLength>=5))?"block":"hidden")}>Please try another termt</div>
+      <div className={clsx("statusFeedback", ((filteredData.length===0 || filteredData===null || !filteredData)&&!notSearching&&(searchTermLength<5))?"block":"hidden")}>No search results yet</div>
+      <div className={clsx("statusFeedback", ((filteredData.length===0 || filteredData===null || !filteredData)&&!notSearching&&(searchTermLength>=5))?"block":"hidden")}>Please try another termt</div>
       <RenderAllCards
         defaultState={notSearching}
         searchResults={filteredData}

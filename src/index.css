@@ -40,7 +40,7 @@
   .errorMessage {
     @apply text-xl font-extralight text-red fixed ml-8 mt-2;
   }
-  .searchFeedback {
+  .statusFeedback {
     @apply text-xl font-light text-typo fixed ml-8 mt-2;
   }
   .bg-transparent {
