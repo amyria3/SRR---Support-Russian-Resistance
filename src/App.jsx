@@ -3,25 +3,24 @@ import { useState } from "react";
 
 import NavBar from "./components/NavBar";
 import Splash from "./components/Splash";
-import Cards from "./components/Cards";
+import Content from "./components/Content";
 import Toggle from "./components/Toggle";
-// import Search from "./components/Search";
-// import cards_data from "./assets/getData/DummyData";
 
-const App = ({cards_data}) => {
-
+const App = () => {
   const root = document.getElementById("root");
+
+  //DARKMODE THEME
   const userTheme = localStorage.getItem("theme");
   const systemThemeIsDark = window.matchMedia(
     "(prefers color-scheme: dark)"
   ).matches;
-  const [darkmode, setDarkmode] = useState(false);
 
-  //update classList of #root
-  //synchronbise userTheme and darkmode useState Boolean
+  const [darkmode, setDarkmode] = useState(false);
   function themeCheck(setBoolean) {
+    //Update classList of #root depending on userTheme and sestemPreferences.
     if (userTheme === "dark" || (!userTheme && systemThemeIsDark)) {
       root.classList.add("dark");
+      //Synchronise userTheme and darkmode useState-Boolean.
       setBoolean(true);
     }
   }
@@ -41,7 +40,10 @@ const App = ({cards_data}) => {
   }
 
   return (
-    <div id="wrapper" className="px-2 ssm-px-8 sm:px-12 md:px-14 lg:px-20 xl:px-28">
+    <div
+      id="wrapper"
+      className="px-2 ssm-px-8 sm:px-12 md:px-14 lg:px-20 xl:px-28"
+    >
       <NavBar
         children={
           <Toggle
@@ -52,15 +54,7 @@ const App = ({cards_data}) => {
         }
       />
       <Splash />
-      <section
-        id="SearchSection"
-        className="w-full flex flex-col col-start-1 col-end-4 gap-[30px]"
-      >
-        <div className="h-[1px] bg-line w-full"></div>
-        {/* <Search /> */}
-        <div className="h-[1px] bg-line w-full"></div>
-      </section>
-      <Cards cards_data={cards_data} />
+      <Content />
     </div>
   );
 };

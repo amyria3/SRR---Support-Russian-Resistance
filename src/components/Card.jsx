@@ -1,56 +1,70 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import clsx from "clsx";
 import { Links } from "./Links";
+import Keywords from "./Keywords.jsx";
+import ClapOut from "../assets/icons/ClapOut.jsx";
 
-//Type:
-// {
-  //allLinkedKeywords: [{…}]
-// allResources: [{…}]
-// description: ""
-// id:""
-// img_url: ""
-// name: ""
-//}
+const Card = ({ id, name, description, keywords, resources }) => {
+  const [isOpened, setIsOpened] = useState(false);
+  const cardRef = useRef(null);
+  const [cardHeight, setCardHeight] = useState(288);
 
-//width should grow breakpoint: 360px * 2 + margin-x + gap
-const Card = ({ id, name, description, img_url, allResources }) => {
-  const [imgIsHidden, setImgIsHidden] = useState(false);
-
-  console.log(JSON.stringify(allResources))
+  useEffect(() => {
+    if (isOpened) {
+      const height = cardRef.current.getBoundingClientRect().height;
+      setCardHeight(height);
+    }
+  }, [isOpened]);
 
   return (
     <div
       key={id}
-      // keywords={[{...allLinkedKeywords}]}
-      onMouseEnter={() => {
-        setImgIsHidden(true);
-      }}
-      onMouseLeave={() => {
-        setImgIsHidden(false);
-      }}
-      className="h-[480px] lg:min-w-[320px] lg:max-w-[400px]
-      p-0 flex flex-col content-between
-      bg-white-card dark:bg-dt-background-card
-      text-typo dark:text-dt-typo
-      text-sm
-      font-light dark:font-extralight
-      border-solid dark:border-none dark:hover:border-solid rounded-md border-line hover:border-interactive-hover dark:border-dt-interactive border-[1px]
-      hover:shadow-default hover:shadow-default dark:hover:shadow-none"
+      ref={cardRef}
+      className={clsx(
+        "card",
+        "w-full",
+        "flex-col gap-0 rounded-[6px]",
+        isOpened ? "h-auto py-10" : "min-h-64 max-h-96 pt-10 pb-0",
+        "px-8",
+        "bg-white-card dark:bg-dt-background-card",
+        "relative",
+      )}
+      onClick={()=>{isOpened?setIsOpened(false):setIsOpened(true)}}
     >
-      <div id="top" className="flex grow flex-col py-10 px-7 gap-5">
-        <h3 className="text-base font-semibold">{name}</h3>
-        <p>{description}</p>
+      <div
+        id="top_wrapper"
+        className="flex flex-col justify-start gap-[10px] mb-10"
+      >
+        <h3 className="text-base font-semibold mb-2">{name}</h3>
+        <p
+          className={clsx(
+            !isOpened &&
+              "text-ellipsis whitespace-normal line-clamp-2 overflow-hidden",
+            "mb-4"
+          )}
+        >
+          {description + "height : " + cardHeight}
+        </p>
+        <Keywords keywords={keywords} entryId={id} />
       </div>
-
-      <div id="bottom_frame" className="h-[250px] flex flex-row">
-        {imgIsHidden &&
-            Links(allResources, imgIsHidden, id)}
-        {!imgIsHidden && (
-          <img
-            src={img_url}
-            alt=""
-            className="object-cover place-self-end z-99"
-          />
+      <div
+        key={"clapWrapper/" + id}
+        className={clsx(
+          !isOpened ? "absolute bottom-0" : "relative bottom-4",
+          "w-full flex flex-row-reverse", //calculate w-100 - padding instead
+          isOpened ? "mt-6 mb-4" : "pr-16 mb-6"
         )}
+      >
+        <ClapOut
+          color={"rgba(37, 37, 37, 1)"}
+          colorOnHover={"rgba(0, 85, 212, 1)"}
+          fillOnHover={"rgba(192, 208, 234, 1)"}
+          setState={setIsOpened}
+          state={isOpened}
+        />
+      </div>
+      <div id="bottom_frame" className={clsx(isOpened ? "block" : "hidden")}>
+        {Links(resources, isOpened, id)}
       </div>
     </div>
   );

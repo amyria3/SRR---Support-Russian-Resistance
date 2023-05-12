@@ -1,33 +1,42 @@
-import seedKeywords from "./seedKeys.js";
-import seedResourceKeywords from "./seedResources.js";
-import seedNgos from "./seedNgo.js";
+import seedKeyword from "./seedKeyword.js";
+import seedTag from "./seedTag.js";
+import seedNgo from "./seedNgo.js";
+import localDB from "./localDb.js";
 
-//
+
 const ngoKeywords = [
-    { name: "Human rights" },
-    { name: "Women's rights" },
-    { name: "Migration and Refugee" },
-    { name: "Legal assistance" },
-    { name: "Emotional assistance" },
-    { name: "LGTBi" },
-    { name: "Anti-war movement" },
-    { name: "Freedom of speech" },
-    { name: "Medical aid" },
-    { name: "Transparency" },
-  ];
+  { name: "Human rights" },
+  { name: "Women's rights" },
+  { name: "Migration and Refugee" },
+  { name: "Legal assistance" },
+  { name: "Emotional assistance" },
+  { name: "LGTBi" },
+  { name: "Anti-war movement" },
+  { name: "Freedom of speech" },
+  { name: "Medical aid" },
+  { name: "Transparency" },
+];
 
-  const resourceType = [
-    { name: "Facebook" },
-    { name: "Instagram" },
-    { name: "Telegram" },
-    { name: "Bitcoin" },
-    { name: "Credit card" },
-    { name: "Webpage" },
-    { name: "PayPal" },
-  ];
-//take an ngo from localDb
-import { rawData } from "./rawData.js";
+const resourceTags = [
+  { name: "Facebook" },
+  { name: "Instagram" },
+  { name: "Telegram" },
+  { name: "Crypto" },
+  { name: "Credit card" },
+  { name: "Webpage" },
+  { name: "PayPal" },
+  { name: "Twitter" },
+  { name: "YouTube" },
+];
 
-seedKeywords(ngoKeywords);
-seedResourceKeywords(resourceType);
-seedNgos(rawData)
+async function different() {
+  try {
+    await seedTag(resourceTags);
+    // await seedKeyword(ngoKeywords);
+    // await seedNgo(localDB);
+  } catch (error) {
+    console.error("Seeding failed with error: ", error);
+  }
+}
+
+different();

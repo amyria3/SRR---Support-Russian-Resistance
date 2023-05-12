@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Italiana&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Italiana&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -10,8 +11,8 @@
     box-sizing: box-border;
   }
 
-  #html {
-    @apply bg-dt-background;
+  html {
+    @apply bg-white dark:bg-dt-background font-extralight;
     @apply w-full h-full;
     overflow-y: auto;
   }
@@ -29,9 +30,19 @@
     @apply text-typo dark:text-dt-typo;
     overflow-y: auto;
   }
+  h1 {
+    font-family: "Italiana", serif;
+  }
+
 }
 
 @layer components {
+  .statusReport {
+    @apply text-xl font-extralight text-red fixed ml-8 mt-2;
+  }
+  .bg-transparent {
+    background-color: rgba(0, 0, 0, 0);
+  }
   .shadow-default {
     box-shadow: 3px 3px 0px 0px rgba(0, 85, 212, 1);
   }
@@ -41,24 +52,27 @@
   .shadow-dt-transparent {
     box-shadow: 2px 2px 0px 0px rgba(96, 165, 250, 0.5);
   }
-
   .fillIcon {
-   fill: rgba(0, 85, 212, 0.65);
+    stroke: rgba(37, 37, 37, 1);
   }
-
   .parent:hover .child {
-    fill: rgb(0, 102, 255);
-    color: rgb(0, 102, 255);
+    stroke: rgba(0, 102, 255, 1);
+    color: rgba(0, 102, 255, 1);
+    text-decoration: underline;
+  }
+  .dark .fillIcon {
+    stroke: rgba(250, 250, 250, 1);
+  }
+  .dark .parent:hover .child {
+    stroke: rgba(96, 165, 250, 1);
+    color: rgba(96, 165, 250, 1);
     text-decoration: underline;
   }
 
-  .dark .fillIcon {
-    fill: rgba(96, 165, 250, 0.65);
-   }
-
-  .dark .parent:hover .child {
-     fill: rgb(0, 115, 255);
-     color: rgba(96, 165, 250, 1);
-     text-decoration: underline;
-   }
+  .link_wrapper:hover > div {
+    background-color: rgba(0, 102, 255, 1);
+  }
+  .dark .link_wrapper:hover > div {
+    background-color: rgba(96, 165, 250, 1);
+  }
 }

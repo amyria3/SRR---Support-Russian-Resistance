@@ -1,14 +1,12 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-import data from "./rawData.json" assert { type: "json" };
+import localDb from "./localDb.js";
 
+export default async function seedNgo(data) {
 
-//take ngos's name & ask Prisma, if already exists
-export default async function seedNgos(localDb) {
-  for (const entry of localDb) {
-    console.log(" Checking, if " + entry.name + " already exists. ");
-    //update, if there, create, if not there yet:
+  //for every entry in localDB
+  for (const entry of data) {
     const upsertEntry = await prisma.Ngo.upsert({
       where: {
         name: entry.name,
@@ -23,37 +21,77 @@ export default async function seedNgos(localDb) {
         img_url: entry.img_url,
       },
     });
-    console.log(entry.name + " Has been updated or created. ");
+    // console.log(
+    // "NGO or group " + entry.name + " has been updated or created. "
+    //);
 
-    //After all entries have been created or updated on the upper level
-    //update or create resources:
-    for (const entry of localDb) {
-      const existingEntry = await prisma.Ngo.findUnique({
+    //for every string in keywords[] array of the current entry
+    for (const locallyStoredKeyword of entry.keywords) {
+      const updatedNgosKeywords = await prisma.Ngo.update({
         where: { name: entry.name },
+        data: {
+          keywords: {
+            connect: { name: locallyStoredKeyword.name },
+          },
+        },
       });
-      if (existingEntry) {
-        for (const ngoResource of entry.allResources) {
-          console.log(" " + entry.name + " exists. Updating resources : ");
+      // console.log(
+      // updatedNgosKeywords + "'s keywords missing entries have been updated."
+      //);
 
-          const upsertResource = await prisma.resource.upsert({
-            where: {
-              url: ngoResource.url,
-            },
-            update: {
-              ngoId: existingEntry.id,
-              resourceType: ngoResource.resourceType,
-            },
-            create: {
-              url: ngoResource.url,
-              ngoId: existingEntry.id,
-              resourceType: ngoResource.resourceType,
+      //create resources, if missing:
+      for (const locallyStoredResource of entry.resources) {
+        //for every entry in the resources[] array
+        const upsertResource = await prisma.Resource.upsert({
+          where: {
+            url: locallyStoredResource.url,
+          },
+          update: {
+            ngoId: upsertEntry.id,
+            description: locallyStoredResource.description,
+          },
+          create: {
+            url: locallyStoredResource.url,
+            ngoId: upsertEntry.id,
+            description: locallyStoredResource.description,
+          },
+        });
+        //  console.log(
+        //   "Added " +
+        //     locallyStoredResource.url +
+        //     " of " +
+        //     entry.name +
+        //     ", if it was missing. Current Ngo ID : " +
+        //     upsertEntry.id
+        // );
+        //throws an error. But works. (?!)
+
+        //take the newly created / updated resource-Object
+        //map over all strings of the remote resource object
+
+        for (const localTag of locallyStoredResource.usedTags) {
+          //
+          const response = await prisma.Resource.update({
+            where: { id: upsertResource.id },
+            data: {
+              usedTags: {
+                connect: { name: localTag.name },
+              },
             },
           });
-          console.log(upsertResource.url + "Has been added or updated");
+
+          // console.log(
+          //   "Added " +
+          //     localTag.name +
+          //     " to " +
+          //     upsertResource.url +
+          //     ", if it was missing. Current Ngo ID : " +
+          //     upsertResource.id
+          // );
         }
       }
     }
   }
 }
 
-console.log(seedNgos(data))
+// console.log(seedNgo(localDb));
