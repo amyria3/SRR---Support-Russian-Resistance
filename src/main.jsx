@@ -29,12 +29,12 @@ function AppWrapper() {
         setCardsData(data);
         setDataFetchedSuccessfully(true);
       } catch (error) {
-        error.message === "Failed to fetch" &&
-          setCardsData(localDb) &&
-          setIndexa(initialize(localDb)) &&
-          setDataFetchedSuccessfully(false);
-        // console.log(error.message);
-        // console.log("Main.jsx: Loaded local data instead of fetched data.");
+        error.message === "Failed to fetch" && setCardsData(localDb);
+        /*&&
+        setIndexa(initialize(localDb)) &&
+        setDataFetchedSuccessfully(false);
+        console.log(error.message);
+        console.log("Main.jsx: Loaded local data instead of fetched data.");*/
       } finally {
         ("Ready.");
         setLoading(false);

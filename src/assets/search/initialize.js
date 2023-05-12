@@ -1,55 +1,40 @@
 import lunr from "lunr";
 
 function initialize(data) {
+  const idx = lunr(function () {
+    this.ref("id");
+    this.field("name");
+    this.field("description");
+    this.field("keywords");
+    this.field("usedTags");
 
-// Create a lunr index for the top-level fields
-const idx = lunr(function () {
-  this.ref("id");
-  this.field("name");
-  this.field("description");
+    data.forEach(function (entry) {
+      this.add(entry);
 
-  data.forEach(function (entry) {
-    this.add(entry);
-  }, this);
-});
+      // include keywords names in the index
+      entry.keywords.forEach(function (keyword) {
+        this.field("keywords");
+        this.add({
+          id: entry.id,
+          keywords: keyword.name
+        });
+      }, this);
 
-// // Create a lunr index for the resources array
-// const resourceIdx = lunr(function () {
-//   this.ref("id");
-//   this.field("description");
-//   this.field("resourceType");
-//   this.field("url");
+      // include usedTags names in the index
+      entry.resources.forEach(function (resource) {
+        resource.usedTags.forEach(function (usedTag) {
+          this.field("usedTags");
+          this.add({
+            id: entry.id,
+            usedTags: usedTag.name
+          });
+        }, this);
+      }, this);
+    }, this);
+  });
 
-//   data.forEach(function (entry) {
-//     entry.resources.forEach(function (resource) {
-//       this.add({
-//         id: resource.id,
-//         description: resource.description,
-//         resourceType: resource.resourceType,
-//         url: resource.url
-//       });
-//     }, this);
-//   }, this);
-// });
-
-// // Create a lunr index for the keywords array
-// const keywordIdx = lunr(function () {
-//   this.ref("id");
-//   this.field("protoKeyword");
-
-//   data.forEach(function (entry) {
-//     entry.keywords.forEach(function (keyword) {
-//       this.add({
-//         id: keyword.id,
-//         protoKeyword: keyword.protoKeyword
-//       });
-//     }, this);
-//   }, this);
-// });
-
-const indexa = {idx} //resourceIdx, keywordIdx
-// console.log("initialize.js / INDEXA created : " + JSON.stringify(indexa))
-return indexa
+  const indexa = { idx };
+  return indexa;
 }
 
-export default initialize
+export default initialize;

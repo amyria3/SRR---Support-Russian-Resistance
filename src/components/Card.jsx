@@ -24,10 +24,10 @@ const Card = ({ id, name, description, keywords, resources }) => {
         "card",
         "w-full",
         "flex-col gap-0 rounded-[6px]",
-        isOpened ? "h-auto py-10" : "h-72 pt-10 pb-0",
+        isOpened ? "h-auto py-10" : "min-h-64 max-h-96 pt-10 pb-0",
         "px-8",
         "bg-white-card dark:bg-dt-background-card",
-        "relative"
+        "relative",
       )}
       onClick={()=>{isOpened?setIsOpened(false):setIsOpened(true)}}
     >

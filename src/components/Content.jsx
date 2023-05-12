@@ -15,12 +15,15 @@ const Content = () => {
       <div className="h-[1px] bg-line w-full"></div>
 
       {/*Search dates the filtered data array up */}
+
       <Search
         setterNotSearching={setNotSearching}
         setterResults={setFilteredData}
       />
-      {console.log("CONTENT.jsx, line 22, FILTERED DATA: " + JSON.stringify(filteredData))}
-      <div className={clsx("statusReport", ((filteredData.length===0 || filteredData===null)&&!notSearching)?"block":"hidden")}>No search results yet</div>
+
+      {/*console.log("CONTENT.jsx, line 22, FILTERED DATA: " + JSON.stringify(filteredData))*/}
+
+      <div className={clsx("statusReport", ((filteredData.length===0 || filteredData===null || !filteredData)&&!notSearching)?"block":"hidden")}>No search results yet</div>
       <RenderAllCards
         defaultState={notSearching}
         searchResults={filteredData}

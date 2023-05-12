@@ -6,8 +6,6 @@ import clsx from "clsx";
 function RenderAllCards({ defaultState, searchResults }) {
   const data = useContext(contextData);
 
-  console.log("RENDER.jsx, line 9: search results : " + JSON.stringify(searchResults))
-
   const windowWidth = window.innerWidth;
 
   const [gridVar, setGridVar] = useState("");
@@ -15,26 +13,15 @@ function RenderAllCards({ defaultState, searchResults }) {
     setGridVar(setColsNumber());
   }, []);
 
-  //manually added Breakpoints
-
-  // const setColsNumber = () => {
-  //   if (windowWidth <= 700) return 1;
-  //   if (windowWidth > 823 && windowWidth < 1200) return 2;
-  //   if (windowWidth <= 1200) return 3;
-  // };
-
   const setColsNumber = () => {
     if (windowWidth <= 700) return 1;
     if (windowWidth > 700 && windowWidth <= 1000) return 2;
-    if (windowWidth > 1000) return 3;
+    if (windowWidth > 1140) return 3;
   };
 
   window.addEventListener("resize", () => {
     setGridVar(setColsNumber());
   });
-
-  console.log("searchResults " + JSON.stringify(searchResults));
-  console.log("data" + JSON.stringify(data));
 
   const defaultCardsSet = data.map((element, index) => {
     return <Card {...element} />;
@@ -43,8 +30,6 @@ function RenderAllCards({ defaultState, searchResults }) {
   const filteredCardsSet = searchResults.map((element, index) => {
     return <Card {...element} />;
   });
-
-  console.log(filteredCardsSet);
 
   const oneColumn = () => {
     return (
@@ -114,13 +99,13 @@ function RenderAllCards({ defaultState, searchResults }) {
           id="cardsWrapper"
           className={clsx("grid grid-cols-3 gap-8", !defaultState && "hidden")}
         >
-          <div className="flex flex-col justify-start gap-8">
+          <div key="firstA" className="flex flex-col justify-start gap-8">
             {defaultCardsSet.filter((_, i) => i % 3 === 0)}
           </div>
-          <div className="flex flex-col justify-start gap-8">
+          <div key="secondA" className="flex flex-col justify-start gap-8">
             {defaultCardsSet.filter((_, i) => i % 3 === 1)}
           </div>
-          <div className="flex flex-col justify-start gap-8">
+          <div key="thirdA" className="flex flex-col justify-start gap-8">
             {defaultCardsSet.filter((_, i) => i % 3 === 2)}
           </div>
         </div>
@@ -130,14 +115,14 @@ function RenderAllCards({ defaultState, searchResults }) {
           id="filteredCardsWrapper"
           className={clsx("grid grid-cols-3 gap-8", defaultState && "hidden")}
         >
-          <div className="flex flex-col justify-start gap-8">
+          <div key="firstB" className="flex flex-col justify-start gap-8">
+            {filteredCardsSet.filter((_, i) => i % 3 === 0)}
+          </div>
+          <div key="firstC" className="flex flex-col justify-start gap-8">
             {filteredCardsSet.filter((_, i) => i % 3 === 1)}
           </div>
-          <div className="flex flex-col justify-start gap-8">
+          <div key="firstC" className="flex flex-col justify-start gap-8">
             {filteredCardsSet.filter((_, i) => i % 3 === 2)}
-          </div>
-          <div className="flex flex-col justify-start gap-8">
-            {filteredCardsSet.filter((_, i) => i % 3 === 0)}
           </div>
         </div>
       </>
