@@ -4,34 +4,28 @@ alt+v for √
 https://docs.github.com/de/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
 
 
-** How to run the server:**
+**How to run the server:**
+
 node --experimental-modules src/server/server.mjs
 
 **How to run devServer:**
+
 pnpm run dev
 
 
 Notes on the current stage of data-infrastructure:
 
-////MAIN.JSX:
-//initialize  context-variables for indxa & fetched Data
-export const contextData = React.createContext([]);
-export const currentIndexa = React.createContext({});
-
-///CONTENT.JSX
-//shares with <Search /> and <Cards /> useState variables:
-
-**Currently working in update-prisma branch**
 
 To-do:
 
-11.Mai 2023
+12.Mai 2023
 - animate clap-out
 - populate DB
 - remove x in search for other browsers
 - repair search (!)
 - add a second style for search-status feedback
 - Add Icons for Twitter & YouTube
+- fixed Search √
 - show an adequate error message when no data (√)
 - update seedDocs to prevent double entries √
 - clapOut icon is missing dm-styling
