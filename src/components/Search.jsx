@@ -15,13 +15,13 @@ const Search = ({ setterNotSearching, setterResults }) => {
   const [currentInput, setCurrentInput] = useState("");
 
   function handleReset() {
-    console.log("handleReset triggered.");
+    //console.log("handleReset triggered.");
     setterResults([]);
     setterNotSearching(true);
   } //works
 
   function handleInputChange(input) {
-    console.log("handleInputChange triggered.");
+    //console.log("handleInputChange triggered.");
 
     //start typing (character-Index === 0) OR
     //adding or deleting characters (character-Index >= 1):

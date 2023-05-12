@@ -31,7 +31,7 @@ function search(data, indexa, term) {
   function prefixSearch(term) {
     if (term.trim().length > 2) {
       const prefix = (term + "*").toString();
-      console.log("prefix : " + prefix);
+      //console.log("prefix : " + prefix);
       const idxResults = idx.search(prefix, { boost: 18 });
       idxResults.forEach((result) => {
         boostedResults.push(result);
@@ -95,7 +95,7 @@ function search(data, indexa, term) {
     fuzzySearchLong(checkedTerm);
   }
 
-  console.log("RESULTS : " + JSON.stringify(boostedResults))
+  //console.log("RESULTS : " + JSON.stringify(boostedResults))
 
   //remove duplicate entries:
 
@@ -116,7 +116,7 @@ function search(data, indexa, term) {
       }
     }
 
-    console.log("UNIQUE RESULTS : " + JSON.stringify(uniqueResults))
+    //console.log("UNIQUE RESULTS : " + JSON.stringify(uniqueResults))
 
     return uniqueResults;
   }
