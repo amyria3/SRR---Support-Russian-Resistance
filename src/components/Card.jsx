@@ -18,7 +18,7 @@ const Card = ({ id, name, description, keywords, resources, cardKey }) => {
 
   return (
     <div
-      key={cardKey}
+      key={"CardKey/"+cardKey}
       ref={cardRef}
       className={clsx(
         "card",

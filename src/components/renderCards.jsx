@@ -147,7 +147,6 @@ function RenderAllCards({ defaultState, searchResults }) {
         {/*this will render on search and will be hidden as soon as not searching*/}
         <div
           key="filteredCardsWrapperThreeCols"
-          id="filteredCardsWrapper"
           className={clsx("grid grid-cols-3 gap-8", defaultState && "hidden")}
         >
           <div

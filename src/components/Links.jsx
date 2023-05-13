@@ -8,7 +8,8 @@ import Telegram from "../assets/icons/Telegram";
 import Webpage from "../assets/icons/Webpage";
 import YouTube from "../assets/icons/YouTube";
 
-const Link = ({ key, url, description, usedTags }) => {
+//consists of Icon, line, link, linkDivKey will be passed as prop, added to "LinkWrapper/" => key
+const Link = ({ linkDivKey, url, description, usedTags }) => {
   const firstTag = usedTags[0]?.name;
 
   const Icon = ({ firstTag }) => {
@@ -40,7 +41,7 @@ const Link = ({ key, url, description, usedTags }) => {
 
   return (
     <div
-      key={key}
+      key={"LinkWrapper/"+linkDivKey}
       className="link_wrapper w-full py-2 h-[30px] border-none"
     >
       <a
@@ -69,7 +70,7 @@ const Link = ({ key, url, description, usedTags }) => {
 const Links = (resources, hovered, cardId) => {
   return (
     <LinksDiv
-      key={"Linksdiv/" + cardId}
+      linksDivKey={"LinksDiv/" + cardId}
       resources={resources}
       hovered={hovered}
       cardId={cardId}
@@ -77,10 +78,10 @@ const Links = (resources, hovered, cardId) => {
   );
 };
 
-const LinksDiv = ({ resources, hovered, key }) => {
+const LinksDiv = ({ resources, hovered, linksDivKey }) => {
   return (
     <div
-      key={key}
+      key={linksDivKey}
       className={clsx(
         "pr-1 pb-3 flex-col justify-end gap-4 w-full z-99",
         hovered ? "flex" : "hidden"
@@ -91,7 +92,7 @@ const LinksDiv = ({ resources, hovered, key }) => {
           const { id, url, description, usedTags } = element;
           return (
             <Link
-              key={"LinkId/" + id}
+              linkDivKey={"Wrapper/LinkId/" + id}
               url={url}
               description={description}
               usedTags={usedTags}
@@ -102,4 +103,4 @@ const LinksDiv = ({ resources, hovered, key }) => {
   );
 };
 
-export { Links, LinksDiv };
+export { Links };

@@ -1,9 +1,9 @@
 import React from "react";
 
-const Keyword = ({ keyword, key }) => {
+const Keyword = ({ keyword, keyProp }) => {
   return (
     <div
-      key={key}
+      key={keyProp}
       className="flex items-center gap-[6px] py-2 px-3 rounded-[20px] bg-white-card dark:bg-transparent border-solid border-[1px] dark:border-[0.75px] border-line dark:border-dt-typo text-typo dark:text-dt-typo opacity-90 dark:opacity-70 text-xs font-normal dark:text-sm dark:font-light"
     >
       <div className="h-[5px] w-[5px] rounded-full bg-typo dark:bg-dt-typo"></div>
@@ -22,7 +22,7 @@ const Keywords = ({ keywords, entryId }) => {
       className="flex flex-wrap flex-shrink gap-2 mb-6"
     >
       {keywords.map((element) => {
-        return <Keyword key={element.id} keyword={element.name} />;
+        return <Keyword keyProp={element.id} keyword={element.name} />;
       })}
     </div>
   );
