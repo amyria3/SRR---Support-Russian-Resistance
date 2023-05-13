@@ -6,6 +6,8 @@ import clsx from "clsx";
 function RenderAllCards({ defaultState, searchResults }) {
   const data = useContext(contextData);
 
+  console.log("DEBUGGING " + JSON.stringify(searchResults));
+
   const windowWidth = window.innerWidth;
 
   const [gridVar, setGridVar] = useState("");
@@ -23,20 +25,36 @@ function RenderAllCards({ defaultState, searchResults }) {
     setGridVar(setColsNumber());
   });
 
-  const defaultCardsSet = data.map((element, index) => {
-    return <Card {...element} />;
+  const defaultCardsSet = data.map((element) => {
+    return (
+      <Card
+        id={element.id}
+        name={element.name}
+        description={element.description}
+        keywords={element.keywords}
+        resources={element.resources}
+        cardKey={element.id + "A"}
+      />
+    );
   });
 
-  const filteredCardsSet = searchResults.map((element, index) => {
-    return <Card {...element} />;
+  const filteredCardsSet = searchResults.map((element) => {
+    return (
+      <Card
+        name={element.name}
+        description={element.description}
+        keywords={element.keywords}
+        resources={element.resources}
+        cardKey={element.id + "B"}
+      />
+    );
   });
 
   const oneColumn = () => {
     return (
       <>
         <div
-          key="cardsWrapper"
-          id="cardsWrapper"
+          key="cardsWrapperOneCol"
           className={clsx(
             "flex flex-col gap-8 justify-start",
             !defaultState && "hidden"
@@ -45,8 +63,7 @@ function RenderAllCards({ defaultState, searchResults }) {
           {defaultCardsSet}
         </div>
         <div
-          key="filteredCardsWrapper"
-          id="filteredCardsWrapper"
+          key="filteredCardsWrapperOneCol"
           className={clsx(
             "flex flex-col gap-8 justify-start",
             defaultState && "hidden"
@@ -63,27 +80,37 @@ function RenderAllCards({ defaultState, searchResults }) {
       <>
         {/*this will render once (i hope) but will be hidden when searching*/}
         <div
-          key="cardsWrapper"
-          id="cardsWrapper"
+          key="cardsWrapperTwoColsFirst"
           className={clsx("grid grid-cols-2 gap-8", !defaultState && "hidden")}
         >
-          <div className="flex flex-col justify-start gap-8">
+          <div
+            key="TwoColsFirstColA"
+            className="flex flex-col justify-start gap-8"
+          >
             {defaultCardsSet.filter((_, i) => i % 2 === 1)}
           </div>
-          <div className="flex flex-col justify-start gap-8">
+          <div
+            key="TwoColsSecondColA"
+            className="flex flex-col justify-start gap-8"
+          >
             {defaultCardsSet.filter((_, i) => i % 2 === 0)}
           </div>
         </div>
         {/*this will render on search and will be hidden as soon as not searching*/}
         <div
-          key="filteredCardsWrapper"
-          id="filteredCardsWrapper"
+          key="filteredCardsWrapperTwoColsSecond"
           className={clsx("grid grid-cols-2 gap-8", defaultState && "hidden")}
         >
-          <div className="flex flex-col justify-start gap-8">
+          <div
+            key="TwoColsFirstColB"
+            className="flex flex-col justify-start gap-8"
+          >
             {filteredCardsSet.filter((_, i) => i % 2 === 1)}
           </div>
-          <div className="flex flex-col justify-start gap-8">
+          <div
+            key="TwoColsSecondColB"
+            className="flex flex-col justify-start gap-8"
+          >
             {filteredCardsSet.filter((_, i) => i % 2 === 0)}
           </div>
         </div>
@@ -95,33 +122,50 @@ function RenderAllCards({ defaultState, searchResults }) {
     return (
       <>
         <div
-          key="cardsWrapper"
-          id="cardsWrapper"
+          key="cardsWrapperThreeCols"
           className={clsx("grid grid-cols-3 gap-8", !defaultState && "hidden")}
         >
-          <div key="firstA" className="flex flex-col justify-start gap-8">
+          <div
+            key="ThreeColsFirstColA"
+            className="flex flex-col justify-start gap-8"
+          >
             {defaultCardsSet.filter((_, i) => i % 3 === 0)}
           </div>
-          <div key="secondA" className="flex flex-col justify-start gap-8">
+          <div
+            key="ThreeColsSecondColA"
+            className="flex flex-col justify-start gap-8"
+          >
             {defaultCardsSet.filter((_, i) => i % 3 === 1)}
           </div>
-          <div key="thirdA" className="flex flex-col justify-start gap-8">
+          <div
+            key="ThreeColsThirdColA"
+            className="flex flex-col justify-start gap-8"
+          >
             {defaultCardsSet.filter((_, i) => i % 3 === 2)}
           </div>
         </div>
         {/*this will render on search and will be hidden as soon as not searching*/}
         <div
-          key="filteredCardsWrapper"
+          key="filteredCardsWrapperThreeCols"
           id="filteredCardsWrapper"
           className={clsx("grid grid-cols-3 gap-8", defaultState && "hidden")}
         >
-          <div key="firstB" className="flex flex-col justify-start gap-8">
+          <div
+            key="ThreeColsFirstColB"
+            className="flex flex-col justify-start gap-8"
+          >
             {filteredCardsSet.filter((_, i) => i % 3 === 0)}
           </div>
-          <div key="firstC" className="flex flex-col justify-start gap-8">
+          <div
+            key="ThreeColsSecondColB"
+            className="flex flex-col justify-start gap-8"
+          >
             {filteredCardsSet.filter((_, i) => i % 3 === 1)}
           </div>
-          <div key="firstC" className="flex flex-col justify-start gap-8">
+          <div
+            key="ThreeColsThirdColB"
+            className="flex flex-col justify-start gap-8"
+          >
             {filteredCardsSet.filter((_, i) => i % 3 === 2)}
           </div>
         </div>
@@ -139,7 +183,7 @@ function RenderAllCards({ defaultState, searchResults }) {
     return oneColumn();
   }
 
-  return threeColumns()
+  return threeColumns();
 }
 
 export default RenderAllCards;

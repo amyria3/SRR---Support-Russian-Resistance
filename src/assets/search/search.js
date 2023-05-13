@@ -9,7 +9,7 @@ function search(data, indexa, term) {
     if (term.length > 2 && term.length < 12) {
       const idxResults = idx.search(term, { boost: 20 });
       idxResults.forEach((idxResult) => {
-        results.push(data.find((element) => element.id === idxResult.ref));
+        boostedResults.push(data.find((element) => element.id === idxResult.ref));
       });
       const keywordResults = idx.query(function (q) {
         q.term(lunr.tokenizer(term), {
@@ -29,7 +29,7 @@ function search(data, indexa, term) {
   }
 
   function prefixSearch(term) {
-    if (term.trim().length > 2) {
+    if (term.trim().length > 1) {
       const prefix = (term + "*").toString();
       //console.log("prefix : " + prefix);
       const idxResults = idx.search(prefix, { boost: 18 });
@@ -40,7 +40,7 @@ function search(data, indexa, term) {
   }
 
   function fuzzySearchShort(term) {
-    if (term.length > 3) {
+    if (term.length > 2) {
       const idxResults = idx.query(function (q) {
         q.term(lunr.tokenizer(term), {
           boost: 10,
@@ -95,12 +95,15 @@ function search(data, indexa, term) {
     fuzzySearchLong(checkedTerm);
   }
 
-  //console.log("RESULTS : " + JSON.stringify(boostedResults))
+  console.log("Boosted RESULTS length : " + boostedResults.length)
 
   //remove duplicate entries:
 
   // Loop through each search result and add it to the uniqueResults array if its score is higher than the previously stored score
   function sortBoosted() {
+
+    console.log("sorting results")
+
     // sort the boostedResults array in descending order of score
     boostedResults.sort((a, b) => b.score - a.score);
 
@@ -116,7 +119,7 @@ function search(data, indexa, term) {
       }
     }
 
-    //console.log("UNIQUE RESULTS : " + JSON.stringify(uniqueResults))
+    console.log("UNIQUE RESULTS length : " + uniqueResults.length)
 
     return uniqueResults;
   }

@@ -4,7 +4,7 @@ import { Links } from "./Links";
 import Keywords from "./Keywords.jsx";
 import ClapOut from "../assets/icons/ClapOut.jsx";
 
-const Card = ({ id, name, description, keywords, resources }) => {
+const Card = ({ id, name, description, keywords, resources, cardKey }) => {
   const [isOpened, setIsOpened] = useState(false);
   const cardRef = useRef(null);
   const [cardHeight, setCardHeight] = useState(288);
@@ -18,12 +18,12 @@ const Card = ({ id, name, description, keywords, resources }) => {
 
   return (
     <div
-      key={id}
+      key={cardKey}
       ref={cardRef}
       className={clsx(
         "card",
         "w-full",
-        "flex-col gap-0 rounded-[6px]",
+        "flex-col gap-0 rounded-sm dark:rounded-lg",
         isOpened ? "h-auto py-10" : "min-h-64 max-h-96 pt-10 pb-0",
         "px-8",
         "bg-white-card dark:bg-dt-background-card",

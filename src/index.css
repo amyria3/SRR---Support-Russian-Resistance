@@ -38,10 +38,10 @@
 
 @layer components {
   .errorMessage {
-    @apply text-xl font-extralight text-red fixed ml-8 mt-2;
+    @apply text-xl font-extralight text-red ml-8 mt-2;
   }
   .statusFeedback {
-    @apply text-xl font-light text-typo fixed ml-8 mt-2;
+    @apply text-xl font-light text-typo ml-8 mt-2;
   }
   .bg-transparent {
     background-color: rgba(0, 0, 0, 0);

@@ -1,5 +1,8 @@
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+// Note: This script is used to query the Prisma database
+//       and return the data to the server.js script
+
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
 
 async function askPrisma() {
 

@@ -50,7 +50,7 @@ function AppWrapper() {
       ) : (
         <contextData.Provider value={cardsData}>
           {!dataFetchedSuccessfully && (
-            <div className="errorMessage ml-2">
+            <div className="errorMessage m-10">
               We are having problems to reach out to the data bank
             </div>
           )}

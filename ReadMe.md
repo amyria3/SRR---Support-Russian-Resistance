@@ -3,10 +3,17 @@
 alt+v for √
 https://docs.github.com/de/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
 
+**Installation:**
+pnpm i
+pnpm install @prisma/client
 
 **How to run the server:**
 
 node --experimental-modules src/server/server.mjs
+
+**How to run Prisma-request Script:**
+
+node src/server/askPrisma.js (?)
 
 **How to run devServer:**
 
