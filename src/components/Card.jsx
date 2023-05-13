@@ -32,7 +32,7 @@ const Card = ({ id, name, description, keywords, resources, cardKey }) => {
       onClick={()=>{isOpened?setIsOpened(false):setIsOpened(true)}}
     >
       <div
-        id="top_wrapper"
+        key={"topWrapper/"+id}
         className="flex flex-col justify-start gap-[10px] mb-10"
       >
         <h3 className="text-base font-semibold mb-2">{name}</h3>
@@ -63,7 +63,7 @@ const Card = ({ id, name, description, keywords, resources, cardKey }) => {
           state={isOpened}
         />
       </div>
-      <div id="bottom_frame" className={clsx(isOpened ? "block" : "hidden")}>
+      <div key={"bottomFrame/"+id} className={clsx(isOpened ? "block" : "hidden")}>
         {Links(resources, isOpened, id)}
       </div>
     </div>
