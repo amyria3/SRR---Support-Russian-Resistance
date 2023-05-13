@@ -1,11 +1,9 @@
 // Note: This script is used to query the Prisma database
 //       and return the data to the server.js script
-
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
-async function askPrisma() {
-
+async function prismaQuery() {
   console.log("Hallo dear, askPrisma script is running!")
 
   try {
@@ -31,4 +29,4 @@ async function askPrisma() {
   }
 }
 
-export default askPrisma;
+export default prismaQuery;

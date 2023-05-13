@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import askPrisma from './askPrisma.js'
+import prismaQuery from './prismaQuery.js'
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -11,7 +11,7 @@ app.use(cors());
 
 app.get('/api/ngo-data', async (req, res) => {
   //console.log("server.mjs, line 13, going to ask Prisma")
-  const data = await askPrisma();
+  const data = await prismaQuery();
   //console.log("server.mjs, data I received has " + data.length + " entries.")
   //console.log("server.mjs, line 15, just asked Prisma")
   res.json(data);

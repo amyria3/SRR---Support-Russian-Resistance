@@ -6,6 +6,7 @@ https://docs.github.com/de/get-started/writing-on-github/getting-started-with-wr
 **Installation:**
 pnpm i
 pnpm install @prisma/client
+npx prisma generate (!)
 
 **How to run the server:**
 
