@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import clsx from "clsx";
 import { Links } from "./Links";
 import Keywords from "./Keywords.jsx";
@@ -6,20 +6,10 @@ import ClapOut from "../assets/icons/ClapOut.jsx";
 
 const Card = ({ id, name, description, keywords, resources, cardKey }) => {
   const [isOpened, setIsOpened] = useState(false);
-  const cardRef = useRef(null);
-  const [cardHeight, setCardHeight] = useState(288);
-
-  useEffect(() => {
-    if (isOpened) {
-      const height = cardRef.current.getBoundingClientRect().height;
-      setCardHeight(height);
-    }
-  }, [isOpened]);
 
   return (
     <div
       key={"CardKey/"+cardKey}
-      ref={cardRef}
       className={clsx(
         "card",
         "w-full",
@@ -43,7 +33,7 @@ const Card = ({ id, name, description, keywords, resources, cardKey }) => {
             "mb-4"
           )}
         >
-          {description + "height : " + cardHeight}
+          {description}
         </p>
         <Keywords keywords={keywords} entryId={id} />
       </div>
