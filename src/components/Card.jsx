@@ -35,7 +35,7 @@ const Card = ({ id, name, description, keywords, resources, cardKey }) => {
         >
           {description}
         </p>
-        <Keywords keywords={keywords} entryId={id} />
+        <Keywords keywords={keywords} entryId={id}/>
       </div>
       <div
         key={"clapWrapper/" + id}

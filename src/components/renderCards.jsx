@@ -38,7 +38,7 @@ function RenderAllCards({ defaultState, searchResults }) {
     );
   });
 
-  const filteredCardsSet = searchResults.map((element) => {
+  const filteredCardsSet = searchResults?.map((element) => {
     return (
       <Card
         name={element.name}

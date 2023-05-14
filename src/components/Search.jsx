@@ -5,10 +5,6 @@ import clsx from "clsx";
 import { useContext } from "react";
 import { contextData, currentIndexa } from "../main.jsx";
 
-
-//Live
-
-
 const Search = ({ setterNotSearching, setterResults, setterTermLength }) => {
   const data = useContext(contextData);
   const currentIndex = useContext(currentIndexa);
@@ -16,27 +12,43 @@ const Search = ({ setterNotSearching, setterResults, setterTermLength }) => {
 
   function handleReset() {
     //console.log("handleReset triggered.");
-    setCurrentInput("")
+    setCurrentInput("");
     setterResults([]);
     setterNotSearching(true);
   } //works
 
   function handleInputChange(input) {
-
-    //start typing (character-Index === 0) OR
-    //adding or deleting characters (character-Index >= 1):
-    if ((currentInput.length === 0 && input.length === 1)||(currentInput.length > 0 && input.length > 0) ){
-      (currentInput.length === 0 && input.length === 1)&&setterNotSearching(false);
+    //input: HTML property
+    //currentInput: my binding
+    if (
+      (currentInput&&currentInput.length === 0 && input.length === 1) || //start typing
+      (!currentInput && input.length > 0) || //insert a term
+      (currentInput&&currentInput.length > 0 && input.length > 0) //exchange or change a term
+    ) {
+      currentInput.length === 0 && input.length > 0 &&
+      setterNotSearching(false); // set notSearching to false only if first character entered
       setCurrentInput(input);
-      setterResults(search(data, currentIndex, input))
-      setterTermLength(input.length)
+      setterResults(search(data, currentIndex, input));
+      setterTermLength(input.length);
     }
-
-    //backspace (character-Index === 0):
-    if (currentInput.length === 1 && input.length === 0) {
+    //deleting last character backspace (character-Index === 0):
+    //deleting term (CMD-X)
+    if (currentInput.length > 0 && input.length === 0) {
       setCurrentInput("");
-      console.log("Deleted last character");
       handleReset();
+      // console.log("Deleted last character or deleted everything", inputField resetted);
+    }
+  }
+
+  function handlePaste(event) {
+    if (event.key === "v" && (event.metaKey || event.ctrlKey)) {
+      // "Cmd+V" (Mac) or "Ctrl+V" (Windows) was pressed
+      // Retrieve the pasted text
+      const pastedText = event.clipboardData.getData('text');
+      setterNotSearching(false); // set notSearching to false only if first character entered
+      setCurrentInput(pastedText);
+      setterResults(search(data, currentIndex, input));
+
     }
   }
 
@@ -66,7 +78,7 @@ const Search = ({ setterNotSearching, setterResults, setterTermLength }) => {
         }
       `}</style>
         <input
-          id="search"
+          id="searchInput"
           className="h-12 rounded-lg border w-full flex pl-8
           border-none bg-transparent
           appearance-none focus:outline-none
@@ -76,6 +88,7 @@ const Search = ({ setterNotSearching, setterResults, setterTermLength }) => {
           onInput={(event) => {
             handleInputChange(event.target.value);
           }}
+          onKeyDown={handlePaste}
           value={currentInput}
         />
 
