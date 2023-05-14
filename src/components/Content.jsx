@@ -9,7 +9,7 @@ const Content = () => {
   const [filteredData, setFilteredData] = useState([])
   const [searchTermLength, setSearchTermLength] = useState(0)
 
-  const searchUnsuccessful = ((filteredData.length===0 || filteredData===null || !filteredData)&&!notSearching)
+  const searchUnsuccessful = (( filteredData===null || filteredData&&filteredData.length===0 || !filteredData)&&!notSearching)
 
   return (
     <section

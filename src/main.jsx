@@ -29,7 +29,7 @@ function AppWrapper() {
         setCardsData(data);
         setDataFetchedSuccessfully(true);
       } catch (error) {
-        error.message === "Failed to fetch" && setCardsData(localDb);
+        error.message === "Failed to fetch" /*&& setCardsData(localDb);*/
         /*&&
         setIndexa(initialize(localDb)) &&
         setDataFetchedSuccessfully(false);
