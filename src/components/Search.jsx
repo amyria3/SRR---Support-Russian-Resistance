@@ -16,6 +16,7 @@ const Search = ({ setterNotSearching, setterResults, setterTermLength }) => {
 
   function handleReset() {
     //console.log("handleReset triggered.");
+    setCurrentInput("")
     setterResults([]);
     setterNotSearching(true);
   } //works
