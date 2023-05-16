@@ -16,11 +16,15 @@
     @apply w-full h-full;
     overflow-y: auto;
   }
-
-  #root {
+  :root {
     overflow-x: hidden;
     box-sizing: box-border;
     overflow-y: auto;
+    background-color: rgba(240, 239, 239, 1);
+  }
+  :root .dark {
+    position: fixed;
+    background-color: rgba(37, 37, 37, 1)
   }
 
   #wrapper {
