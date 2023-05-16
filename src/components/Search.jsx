@@ -15,10 +15,18 @@ const Search = ({
   const data = useContext(contextData);
   const currentIndex = useContext(currentIndexa);
   const { term, setter } = useContext(searchTermHandler);
+
+
   const inputField = document.getElementById("searchInput");
+  function updateInputField(value) {
+    if (inputField) {
+      inputField.value = value;
+    }
+  }
+
+  useEffect(() => {},[])
 
   function handleReset() {
-    //console.log("handleReset triggered.");
     setter("");
     setterResults([]);
     setterNotSearching(true);
@@ -62,32 +70,13 @@ const Search = ({
       // "Cmd+V" (Mac) or "Ctrl+V" (Windows) was pressed
       // Retrieve the pasted text
       try {
-        const pastedText = event.clipboardData.getData("text");
+        const pastedText = event.clipboardData?.getData("text");
         setterNotSearching && setterNotSearching(false); // set notSearching to false only if first character entered
-        setter(pastedText);
-        console.log("line 69");
-        logInput;
-        console.log(term);
-        setterResults(search(data, currentIndex, input));
+        pastedText&&updateInputField(pastedText);
       } catch (error) {
         console.log(error);
-      } finally {
-        console.log("Pasting finished");
       }
     }
-  }
-
-  function updateInputField(value) {
-    if (inputField) {
-      inputField.value = value;
-    }
-  }
-
-  function logInput() {
-    // if (inputField) {
-    //   console.log(inputField.value)
-    // }
-    console.log("no problem");
   }
 
   return (
