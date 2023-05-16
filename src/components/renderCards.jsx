@@ -3,10 +3,10 @@ import { contextData } from "../main.jsx";
 import { useState, useContext, useEffect } from "react";
 import clsx from "clsx";
 
-function RenderAllCards({ defaultState, searchResults }) {
+function RenderAllCards({ defaultState, searchResults, setterInput }) {
   const data = useContext(contextData);
 
-  console.log("DEBUGGING " + JSON.stringify(searchResults));
+  // console.log("DEBUGGING " + JSON.stringify(searchResults));
 
   const windowWidth = window.innerWidth;
 
@@ -34,6 +34,7 @@ function RenderAllCards({ defaultState, searchResults }) {
         keywords={element.keywords}
         resources={element.resources}
         cardKey={element.id + "A"}
+        setterInputFunction={setterInput}
       />
     );
   });
@@ -46,6 +47,7 @@ function RenderAllCards({ defaultState, searchResults }) {
         keywords={element.keywords}
         resources={element.resources}
         cardKey={element.id + "B"}
+        setterInputFunction={setterInput}
       />
     );
   });

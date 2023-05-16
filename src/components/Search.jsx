@@ -5,36 +5,35 @@ import clsx from "clsx";
 import { useContext } from "react";
 import { contextData, currentIndexa } from "../main.jsx";
 
-const Search = ({ setterNotSearching, setterResults, setterTermLength }) => {
+const Search = ({ setterNotSearching, synchronizedInput, setterSynchronizedInput, setterResults, setterTermLength }) => {
   const data = useContext(contextData);
   const currentIndex = useContext(currentIndexa);
-  const [currentInput, setCurrentInput] = useState("");
 
   function handleReset() {
     //console.log("handleReset triggered.");
-    setCurrentInput("");
+    setterSynchronizedInput("");
     setterResults([]);
     setterNotSearching(true);
   } //works
 
   function handleInputChange(input) {
     //input: HTML property
-    //currentInput: my binding
+    //synchronizedInput: my binding
     if (
-      (currentInput&&currentInput.length === 0 && input.length === 1) || //start typing
-      (!currentInput && input.length > 0) || //insert a term
-      (currentInput&&currentInput.length > 0 && input.length > 0) //exchange or change a term
+      (synchronizedInput&&synchronizedInput.length === 0 && input.length === 1) || //start typing
+      (!synchronizedInput && input.length > 0) || //insert a term
+      (synchronizedInput&&synchronizedInput.length > 0 && input.length > 0) //exchange or change a term
     ) {
-      currentInput.length === 0 && input.length > 0 &&
+      synchronizedInput.length === 0 && input.length > 0 &&
       setterNotSearching(false); // set notSearching to false only if first character entered
-      setCurrentInput(input);
+      setterSynchronizedInput(input);
       setterResults(search(data, currentIndex, input));
       setterTermLength(input.length);
     }
     //deleting last character backspace (character-Index === 0):
     //deleting term (CMD-X)
-    if (currentInput.length > 0 && input.length === 0) {
-      setCurrentInput("");
+    if (synchronizedInput.length > 0 && input.length === 0) {
+      setterSynchronizedInput("");
       handleReset();
       // console.log("Deleted last character or deleted everything", inputField resetted);
     }
@@ -46,7 +45,7 @@ const Search = ({ setterNotSearching, setterResults, setterTermLength }) => {
       // Retrieve the pasted text
       const pastedText = event.clipboardData.getData('text');
       setterNotSearching(false); // set notSearching to false only if first character entered
-      setCurrentInput(pastedText);
+      setterSynchronizedInput(pastedText);
       setterResults(search(data, currentIndex, input));
 
     }
@@ -67,7 +66,7 @@ const Search = ({ setterNotSearching, setterResults, setterTermLength }) => {
           "font-extralight",
           "hover:shadow-default focus:shadow-default dark:shadow-none",
           "placeholder:text-xl placeholder:text-line dark:placeholder:text-dt-typo",
-          currentInput.length >= 1
+          synchronizedInput.length >= 1
             ? "border-interactive shadow-default bg-interactive dark:bg-dt-interactive dark:hover:bg-dt-interactive dark:border-bg-dt-interactive dark:text-typo dark:hover:text-typo dark:font-light"
             : null
         )}
@@ -89,10 +88,10 @@ const Search = ({ setterNotSearching, setterResults, setterTermLength }) => {
             handleInputChange(event.target.value);
           }}
           onKeyDown={handlePaste}
-          value={currentInput}
+          value={synchronizedInput}
         />
 
-        {currentInput !== "" && (
+        {synchronizedInput !== "" && (
           <Button
             className="absolute top-0 right-0"
             onClick={() => {

@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import clsx from "clsx";
 import { Links } from "./Links";
 import Keywords from "./Keywords.jsx";
 import ClapOut from "../assets/icons/ClapOut.jsx";
 
-const Card = ({ id, name, description, keywords, resources, cardKey }) => {
+const Card = ({ id, name, description, keywords, resources, cardKey, setterInputFunction }) => {
   const [isOpened, setIsOpened] = useState(false);
-
   return (
     <div
       key={"CardKey/"+cardKey}
@@ -35,7 +34,7 @@ const Card = ({ id, name, description, keywords, resources, cardKey }) => {
         >
           {description}
         </p>
-        <Keywords keywords={keywords} entryId={id}/>
+        <Keywords keywords={keywords} entryId={id} synchronizeInput={setterInputFunction}/>
       </div>
       <div
         key={"clapWrapper/" + id}
