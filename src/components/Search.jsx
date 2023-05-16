@@ -1,4 +1,3 @@
-import { useState } from "react";
 import search from "../assets/search/search.js";
 import Button from "./Button.jsx";
 import clsx from "clsx";
@@ -12,6 +11,7 @@ const Search = ({
   setterSynchronizedInput,
   setterResults,
   setterTermLength,
+  keywordStringAsProp
 }) => {
   const data = useContext(contextData);
   const currentIndex = useContext(currentIndexa);
@@ -28,12 +28,19 @@ const Search = ({
     if (
       (synchronizedInput && synchronizedInput.length === 0 &&input.length === 1) || //start typing
       (input.length > 0) || //insert a term
-      (synchronizedInput==="" && synchronizedInput.length > 0 && input.length > 0) //exchange or change a term
+      (synchronizedInput==="" && synchronizedInput.length > 0 && input.length > 0)
+      //exchange or change a term
     ) {
-      notSearching && setterNotSearching(false); // set notSearching to false only if first character entered
+      notSearching && setterNotSearching(false); // set notSearching to false if true
       setterSynchronizedInput(input);
       setterResults(search(data, currentIndex, input));
       setterTermLength(input.length);
+    }
+    if (keywordStringAsProp){ //will it update if keywordStringAsProp will be updated?
+      notSearching && setterNotSearching(false); // set notSearching to false if true
+      setterSynchronizedInput(keywordStringAsProp);
+      setterResults(search(data, currentIndex, input));
+      setterTermLength(keywordStringAsProp.length);
     }
     //deleting last character backspace (character-Index === 0):
     //deleting term (CMD-X)

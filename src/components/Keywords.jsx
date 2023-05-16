@@ -1,9 +1,10 @@
 import React from "react";
 
-const Keyword = ({ keyword, keyProp, synchronizeInput }) => {
+const Keyword = ({ keyword, keyProp, setSearchWithKeyword }) => {
+
   return (
     <div
-      onClick={()=>{()=>{document.getElementById("searchInput").value("")};synchronizeInput(`"${keyword}"`)}}
+  onClick={()=>{setSearchWithKeyword(keyword)}}
       key={keyProp}
       className="flex items-center gap-[6px] py-2 px-3
       rounded-[20px] border-solid border-[1px]
@@ -23,7 +24,7 @@ const Keyword = ({ keyword, keyProp, synchronizeInput }) => {
 
 //must receive data.element.keywords & data.element.id as props
 //every keyword receives its own unique Id as prop to set the key.
-const Keywords = ({ keywords, entryId, synchronizeInput }) => {
+const Keywords = ({ keywords, entryId, setSearchWithKeyword }) => {
   return (
     <div
       id="keywords_wrapper"
@@ -31,7 +32,7 @@ const Keywords = ({ keywords, entryId, synchronizeInput }) => {
       className="flex flex-wrap flex-shrink gap-2 mb-6"
     >
       {keywords.map((element) => {
-        return <Keyword keyProp={element.id} keyword={element.name} synchronizeInput={synchronizeInput} />;
+        return <Keyword keyProp={element.id} keyword={element.name} setSearchWithKeyword={setSearchWithKeyword} />;
       })}
     </div>
   );

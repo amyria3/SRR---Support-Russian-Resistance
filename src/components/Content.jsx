@@ -9,6 +9,7 @@ const Content = () => {
   const [currentInput, setCurrentInput] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [searchTermLength, setSearchTermLength] = useState(0);
+  const [keywordSearchTerm, setKeywordSearchTerm] = useState("");
 
   const searchUnsuccessful =
     (filteredData === null ||
@@ -28,12 +29,13 @@ const Content = () => {
         setterNotSearching={setNotSearching}
         setterSynchronizedInput={setCurrentInput}
         synchronizedInput={currentInput}
+        keywordStringAsProp={keywordSearchTerm}
         setterResults={setFilteredData}
         setterTermLength={setSearchTermLength}
       />
 
       {/*console.log("CONTENT.jsx, line 22, FILTERED DATA: " + JSON.stringify(filteredData))*/}
-      {console.log(searchTermLength)}
+      {/*console.log(searchTermLength)*/}
       <div
         className={clsx(
           "statusFeedback",
@@ -53,7 +55,7 @@ const Content = () => {
       <RenderAllCards
         defaultState={notSearching}
         searchResults={filteredData}
-        setterInput={setCurrentInput}
+        keywordSearchSetter={setKeywordSearchTerm}
       />
     </section>
   );

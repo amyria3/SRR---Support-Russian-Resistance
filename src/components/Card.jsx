@@ -4,7 +4,7 @@ import { Links } from "./Links";
 import Keywords from "./Keywords.jsx";
 import ClapOut from "../assets/icons/ClapOut.jsx";
 
-const Card = ({ id, name, description, keywords, resources, cardKey, setterInputFunction }) => {
+const Card = ({ id, name, description, keywords, resources, cardKey, passKeywordName }) => {
   const [isOpened, setIsOpened] = useState(false);
   return (
     <div
@@ -34,7 +34,7 @@ const Card = ({ id, name, description, keywords, resources, cardKey, setterInput
         >
           {description}
         </p>
-        <Keywords keywords={keywords} entryId={id} synchronizeInput={setterInputFunction}/>
+        <Keywords keywords={keywords} entryId={id} setSearchWithKeyword={passKeywordName}/>
       </div>
       <div
         key={"clapWrapper/" + id}
