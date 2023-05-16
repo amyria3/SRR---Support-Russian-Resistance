@@ -18,6 +18,7 @@ function AppWrapper() {
   const [cardsData, setCardsData] = useState([]);
   const [indexa, setIndexa] = useState({});
   const [dataFetchedSuccessfully, setDataFetchedSuccessfully] = useState(false);
+  const [localDataLoaded, setLocalDataLoaded] = useState(false);
 
   useEffect(() => {
     async function fetchDataAsync() {
@@ -30,10 +31,15 @@ function AppWrapper() {
         setDataFetchedSuccessfully(true);
       } catch (error) {
         if (error.message === "Failed to fetch") {
-          console.log(error.message)
+          console.log(error.message);
           setCardsData(localDb);
-          setIndexa(initialize(localDb));
+          const localIndexa = initialize(localDb);
+          setIndexa(localIndexa);
+          console.log("here!");
+          console.log(JSON.stringify(indexa));
+          console.log(JSON.stringify(cardsData));
           setDataFetchedSuccessfully(false);
+          setLocalDataLoaded(true);
           console.log("Main.jsx: Loaded local data instead of fetched data.");
         }
       } finally {
@@ -50,11 +56,20 @@ function AppWrapper() {
         <Loader />
       ) : (
         <contextData.Provider value={cardsData}>
-          {!dataFetchedSuccessfully && (
-            <div className="errorMessage m-10">
-              We are having problems to reach out to the data bank
+          {
+            <div className="fixed top-0 z-50 mt-4 ml-5 mb-10">
+              {!dataFetchedSuccessfully && (
+                <p className="errorMessage">
+                  We are having problems to reach out to the data bank
+                </p>
+              )}
+              {localDataLoaded && (
+                <p className="errorMessage">
+                  We are using local Data
+                </p>
+              )}
             </div>
-          )}
+          }
           <currentIndexa.Provider value={indexa}>
             <App />
           </currentIndexa.Provider>

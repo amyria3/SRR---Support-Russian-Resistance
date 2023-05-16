@@ -7,6 +7,7 @@ import { contextData, currentIndexa } from "../main.jsx";
 
 const Search = ({
   setterNotSearching,
+  notSearching,
   synchronizedInput,
   setterSynchronizedInput,
   setterResults,
@@ -14,7 +15,6 @@ const Search = ({
 }) => {
   const data = useContext(contextData);
   const currentIndex = useContext(currentIndexa);
-
   function handleReset() {
     //console.log("handleReset triggered.");
     setterSynchronizedInput("");
@@ -26,15 +26,11 @@ const Search = ({
     //input: HTML property
     //synchronizedInput: my binding
     if (
-      (synchronizedInput &&
-        synchronizedInput.length === 0 &&
-        input.length === 1) || //start typing
-      (!synchronizedInput && input.length > 0) || //insert a term
-      (synchronizedInput && synchronizedInput.length > 0 && input.length > 0) //exchange or change a term
+      (synchronizedInput && synchronizedInput.length === 0 &&input.length === 1) || //start typing
+      (input.length > 0) || //insert a term
+      (synchronizedInput==="" && synchronizedInput.length > 0 && input.length > 0) //exchange or change a term
     ) {
-      synchronizedInput.length === 0 &&
-        input.length > 0 &&
-        setterNotSearching(false); // set notSearching to false only if first character entered
+      notSearching && setterNotSearching(false); // set notSearching to false only if first character entered
       setterSynchronizedInput(input);
       setterResults(search(data, currentIndex, input));
       setterTermLength(input.length);
@@ -51,15 +47,14 @@ const Search = ({
   function handlePaste(event) {
     if (
       (event.key === "v" && (event.metaKey || event.ctrlKey)) ||
-      (synchronizedInput.length > 3 && input.length > 0)
+      (synchronizedInput.length > 3)
     ) {
       // "Cmd+V" (Mac) or "Ctrl+V" (Windows) was pressed
       // Retrieve the pasted text
-      const pastedText = event.clipboardData.getData("text");
+      try {const pastedText = event.clipboardData.getData("text");
       setterNotSearching(false); // set notSearching to false only if first character entered
       setterSynchronizedInput(pastedText);
-      setterResults(search(data, currentIndex, input));
-    }
+      setterResults(search(data, currentIndex, input));} catch {error} finally {console.log(error)}    }
   }
 
   return (
@@ -95,7 +90,7 @@ const Search = ({
           form-control"
           type="search"
           placeholder="Search"
-          onInput={(event) => {
+          onChange={(event) => {
             handleInputChange(event.target.value);
           }}
           onKeyDown={handlePaste}

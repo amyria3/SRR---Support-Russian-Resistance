@@ -7,37 +7,27 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    box-sizing: box-border;
-  }
-
   html {
     @apply bg-white dark:bg-dt-background font-extralight;
     @apply w-full h-full;
-    overflow-y: auto;
+    overflow-y: scroll;
   }
-  :root {
+  #root {
     overflow-x: hidden;
     box-sizing: box-border;
-    overflow-y: auto;
-    background-color: rgba(240, 239, 239, 1);
   }
-  :root .dark {
-    position: fixed;
-    background-color: rgba(37, 37, 37, 1)
-  }
-
   #wrapper {
     @apply w-full m-0 pt-[82px];
     @apply bg-white dark:bg-dt-background;
     @apply flex flex-col items-start pt-12 gap-[30px];
     @apply text-typo dark:text-dt-typo;
-    overflow-y: auto;
+  }
+  #wrapper * {
+    box-sizing: box-border;
   }
   h1 {
     font-family: "Italiana", serif;
   }
-
 }
 
 @layer components {
@@ -45,7 +35,7 @@
     @apply text-xl font-extralight text-red ml-8 mt-2;
   }
   .statusFeedback {
-    @apply text-xl font-light text-typo ml-8 mt-2;
+    @apply text-xl font-light text-typo ml-8 mb-10;
   }
   .bg-transparent {
     background-color: rgba(0, 0, 0, 0);
@@ -75,7 +65,6 @@
     color: rgba(96, 165, 250, 1);
     text-decoration: underline;
   }
-
   .link_wrapper:hover > div {
     background-color: rgba(0, 102, 255, 1);
   }

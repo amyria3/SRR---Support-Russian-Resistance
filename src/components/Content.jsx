@@ -24,6 +24,7 @@ const Content = () => {
       <div className="h-[1px] bg-line w-full"></div>
       {/*Search dates the filtered data array up */}
       <Search
+        notSearching={notSearching}
         setterNotSearching={setNotSearching}
         setterSynchronizedInput={setCurrentInput}
         synchronizedInput={currentInput}
