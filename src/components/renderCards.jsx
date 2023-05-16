@@ -3,7 +3,7 @@ import { contextData } from "../main.jsx";
 import { useState, useContext, useEffect } from "react";
 import clsx from "clsx";
 
-function RenderAllCards({ defaultState, searchResults, keywordSearchSetter }) {
+function RenderAllCards({ defaultState, searchResults }) {
   const data = useContext(contextData);
 
   // console.log("DEBUGGING " + JSON.stringify(searchResults));
@@ -34,7 +34,6 @@ function RenderAllCards({ defaultState, searchResults, keywordSearchSetter }) {
         keywords={element.keywords}
         resources={element.resources}
         cardKey={element.id + "A"}
-        passKeywordName={keywordSearchSetter}
       />
     );
   });
@@ -47,7 +46,6 @@ function RenderAllCards({ defaultState, searchResults, keywordSearchSetter }) {
         keywords={element.keywords}
         resources={element.resources}
         cardKey={element.id + "B"}
-        passKeywordName={keywordSearchSetter}
       />
     );
   });

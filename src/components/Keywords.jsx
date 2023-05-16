@@ -1,10 +1,18 @@
 import React from "react";
+import { useContext } from "react";
+import { searchTermHandler } from "../main.jsx";
 
-const Keyword = ({ keyword, keyProp, setSearchWithKeyword }) => {
+const Keyword = ({ keyword, keyProp }) => {
+
+  const { setter } = useContext(searchTermHandler);
+  const keywordBinding = keyword.toString()
 
   return (
     <div
-  onClick={()=>{setSearchWithKeyword(keyword)}}
+    onMouseDown={() => {
+      setter(`"${keywordBinding}"`);
+    }}
+
       key={keyProp}
       className="flex items-center gap-[6px] py-2 px-3
       rounded-[20px] border-solid border-[1px]
@@ -23,8 +31,8 @@ const Keyword = ({ keyword, keyProp, setSearchWithKeyword }) => {
 };
 
 //must receive data.element.keywords & data.element.id as props
-//every keyword receives its own unique Id as prop to set the key.
-const Keywords = ({ keywords, entryId, setSearchWithKeyword }) => {
+//every keyword receives it's own unique Id as prop to set the key.
+const Keywords = ({ keywords, entryId }) => {
   return (
     <div
       id="keywords_wrapper"
@@ -32,7 +40,7 @@ const Keywords = ({ keywords, entryId, setSearchWithKeyword }) => {
       className="flex flex-wrap flex-shrink gap-2 mb-6"
     >
       {keywords.map((element) => {
-        return <Keyword keyProp={element.id} keyword={element.name} setSearchWithKeyword={setSearchWithKeyword} />;
+        return <Keyword keyProp={element.id} keyword={element.name} />;
       })}
     </div>
   );

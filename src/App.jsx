@@ -6,7 +6,7 @@ import Splash from "./components/Splash";
 import Content from "./components/Content";
 import Toggle from "./components/Toggle";
 
-const App = () => {
+const App = ({searchQuery}) => {
   const root = document.getElementById("root");
 
   //DARKMODE THEME
@@ -54,7 +54,7 @@ const App = () => {
         }
       />
       <Splash />
-      <Content />
+      <Content searchTerm={searchQuery} />
     </div>
   );
 };

@@ -1,15 +1,16 @@
 import Search from "./Search.jsx";
-import { useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import RenderAllCards from "./renderCards.jsx";
+import { searchTermHandler } from "../main.jsx";
 import clsx from "clsx";
 
 const Content = () => {
   ////get data
   const [notSearching, setNotSearching] = useState(true);
-  const [currentInput, setCurrentInput] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [searchTermLength, setSearchTermLength] = useState(0);
-  const [keywordSearchTerm, setKeywordSearchTerm] = useState("");
+
+  const { term, setter } = useContext(searchTermHandler);
 
   const searchUnsuccessful =
     (filteredData === null ||
@@ -27,9 +28,8 @@ const Content = () => {
       <Search
         notSearching={notSearching}
         setterNotSearching={setNotSearching}
-        setterSynchronizedInput={setCurrentInput}
-        synchronizedInput={currentInput}
-        keywordStringAsProp={keywordSearchTerm}
+        setterSynchronizedInput={setter}
+        synchronizedInput={term}
         setterResults={setFilteredData}
         setterTermLength={setSearchTermLength}
       />
@@ -55,7 +55,6 @@ const Content = () => {
       <RenderAllCards
         defaultState={notSearching}
         searchResults={filteredData}
-        keywordSearchSetter={setKeywordSearchTerm}
       />
     </section>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
@@ -12,6 +12,11 @@ function Loader() {
 
 export const contextData = React.createContext([]);
 export const currentIndexa = React.createContext({});
+export const searchTermHandler = React.createContext({
+  term: "",
+  setter: () => {},
+});
+
 
 function AppWrapper() {
   const [loading, setLoading] = useState(true);
@@ -19,6 +24,7 @@ function AppWrapper() {
   const [indexa, setIndexa] = useState({});
   const [dataFetchedSuccessfully, setDataFetchedSuccessfully] = useState(false);
   const [localDataLoaded, setLocalDataLoaded] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     async function fetchDataAsync() {
@@ -35,9 +41,6 @@ function AppWrapper() {
           setCardsData(localDb);
           const localIndexa = initialize(localDb);
           setIndexa(localIndexa);
-          console.log("here!");
-          console.log(JSON.stringify(indexa));
-          console.log(JSON.stringify(cardsData));
           setDataFetchedSuccessfully(false);
           setLocalDataLoaded(true);
           console.log("Main.jsx: Loaded local data instead of fetched data.");
@@ -56,22 +59,22 @@ function AppWrapper() {
         <Loader />
       ) : (
         <contextData.Provider value={cardsData}>
-          {
-            <div className="fixed top-0 z-50 mt-4 ml-5 mb-10">
-              {!dataFetchedSuccessfully && (
-                <p className="errorMessage">
-                  We are having problems to reach out to the data bank
-                </p>
-              )}
-              {localDataLoaded && (
-                <p className="errorMessage">
-                  We are using local Data
-                </p>
-              )}
-            </div>
-          }
           <currentIndexa.Provider value={indexa}>
-            <App />
+          <searchTermHandler.Provider value={{ term: searchTerm, setter: setSearchTerm }}>
+              {
+                <div className="fixed top-0 z-50 mt-4 ml-5 mb-10">
+                  {!dataFetchedSuccessfully && (
+                    <p className="errorMessage">
+                      We are having problems to reach out to the data bank
+                    </p>
+                  )}
+                  {localDataLoaded && (
+                    <p className="errorMessage">We are using local Data</p>
+                  )}
+                </div>
+              }
+              <App searchQuery={searchTerm}/>
+            </searchTermHandler.Provider>
           </currentIndexa.Provider>
         </contextData.Provider>
       )}
