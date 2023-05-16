@@ -3,7 +3,7 @@ import React from "react";
 const Keyword = ({ keyword, keyProp, synchronizeInput }) => {
   return (
     <div
-      onClick={()=>{synchronizeInput(`"${keyword}"`)}}
+      onClick={()=>{()=>{document.getElementById("searchInput").value("")};synchronizeInput(`"${keyword}"`)}}
       key={keyProp}
       className="flex items-center gap-[6px] py-2 px-3
       rounded-[20px] border-solid border-[1px]
