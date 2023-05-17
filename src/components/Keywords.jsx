@@ -1,28 +1,30 @@
 import React from "react";
 import { useContext } from "react";
 import { searchTermHandler } from "../main.jsx";
+import clsx from "clsx";
 
 const Keyword = ({ keyword, keyProp }) => {
-
-  const { setter } = useContext(searchTermHandler);
-  const keywordBinding = keyword.toString()
+  const { term, setter } = useContext(searchTermHandler);
+  const keywordBinding = keyword.toString();
 
   return (
     <div
-    onMouseDown={() => {
-      setter(`"${keywordBinding}"`);
-    }}
-
+      onMouseDown={() => {
+        setter(`"${keywordBinding}"`);
+      }}
       key={keyProp}
-      className="flex items-center gap-[6px] py-2 px-3
-      rounded-[20px] border-solid border-[1px]
-      cursor-pointer
-      border-line hover:border-interactive-hover
-      dark:border-dt-typo dark:hover:border-dt-interactive
-      bg-white-card hover:bg-interactive
-      dark:bg-transparent dark:hover:bg-dt-background-input
-      hover:text-border-interactive-hover
-      dark:hover:text-border-dt-interactive text-typo dark:text-dt-typo opacity-90 dark:opacity-70 text-xs font-normal dark:text-sm dark:font-light"
+      className={clsx(
+      "flex items-center gap-[6px] py-2 px-3",
+      "rounded-[20px] border-solid border-[1px]",
+      "cursor-pointer",
+      (term===`"${keywordBinding}"`)&&"border-interactive shadow-default bg-interactive dark:bg-dt-interactive dark:hover:bg-dt-interactive dark:border-bg-dt-interactive dark:text-typo dark:hover:text-typo dark:font-light",
+      ("border-line hover:border-interactive-hover",
+      "dark:border-dt-typo dark:hover:border-dt-interactive",
+      "bg-white-card hover:bg-interactive",
+      "dark:bg-transparent dark:hover:bg-dt-background-input",
+      "hover:text-border-interactive-hover",
+      "dark:hover:text-border-dt-interactive text-typo dark:text-dt-typo opacity-90 dark:opacity-70 text-xs font-normal dark:text-sm dark:font-light"))}
+
     >
       <div className="h-[5px] w-[5px] rounded-full bg-typo dark:bg-dt-typo"></div>
       <div className="flex-none">{keyword}</div>

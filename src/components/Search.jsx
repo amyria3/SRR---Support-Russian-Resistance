@@ -10,72 +10,70 @@ const Search = ({
   notSearching,
   setterResults,
   setterTermLength,
-  keywordStringAsProp,
+  // keywordStringAsProp,
 }) => {
+
   const data = useContext(contextData);
   const currentIndex = useContext(currentIndexa);
-  const { term, setter } = useContext(searchTermHandler);
-  const [synchronizedTerm, setSynchronizedTerm] = useState(undefined);
+  const { term, setter } = useContext(searchTermHandler); //defined in Main, my binding
   let htmlInputValue = document.getElementById("searchInput")?.value;
-  const placeholderTest = ""
 
-  console.log("Term : " + term, typeof term);
-  console.log(
-    "synchronizedTerm : " + synchronizedTerm,
-    typeof synchronizedTerm
-  );
-  console.log("htmlInputValue : " + htmlInputValue, typeof htmlInputValue);
+  ////all the search queries from different channels go here:
+  const [synchronizedTerm, setSynchronizedTerm] = useState(undefined);
 
-  ////reset if no input to prevent empty search results
+  ////first reset if no input to prevent empty search results
   useEffect(() => {
-    (term === "" || synchronizedTerm === "" || htmlInputValue === "") &&
-      handleReset();
-  }, [synchronizedTerm, term, htmlInputValue]);
+    term === "" && setter(undefined);
+    (synchronizedTerm === "") && setSynchronizedTerm(undefined);
+    if (htmlInputValue === "") {htmlInputValue = undefined};
+    (!term, !synchronizedTerm, !htmlInputValue) && setterNotSearching(true) && setterResults([]);
+  }, [synchronizedTerm, term, htmlInputValue]); //works
 
+  ////update
   useEffect(() => {
-    term&&notSearching&&setterNotSearching(false);
-    term&&setSynchronizedTerm(term);
-    term&&setterResults(search(data, currentIndex, term));
-    term&&setterTermLength(term.length);
+    term && notSearching && setterNotSearching(false);
+    term && setSynchronizedTerm(term);
+    term && setterResults(search(data, currentIndex, term));
+    term && setterTermLength(term.length);
   }, [term]); //works
 
+  ////reset all binding for queries, if !undefined
   function handleReset() {
-    term&&setter(undefined);
-    synchronizedTerm&&setSynchronizedTerm(undefined);
-    if(htmlInputValue){htmlInputValue = undefined};
+    term && setter(undefined);
+    synchronizedTerm && setSynchronizedTerm(undefined);
+    if (htmlInputValue) {
+      htmlInputValue = undefined;
+    }
     setterResults([]);
     setterNotSearching(true);
-  } //doesn't work
+  } //works
 
   function handleInputChange(input) {
-    //input: HTML property
-    //term: my binding
     if (
       (synchronizedTerm?.length === 0 && input.length === 1) || //start typing
-      input?.length > 0 || //insert a term
-      (synchronizedTerm?.length > 0 && input.length > 0)
-      //exchange or change a term
+      (0 < input?.length) || //continue typing
+      (synchronizedTerm?.length > 0 && input.length > 0) //exchange or change a term
     ) {
       notSearching && setterNotSearching(false); // set notSearching to false if true
       setSynchronizedTerm(input);
       setterResults(search(data, currentIndex, input));
       setterTermLength(input.length);
     }
-    if (keywordStringAsProp) {
-      //will it update if keywordStringAsProp will be updated?
-      notSearching && setterNotSearching(false); // set notSearching to false if true
-      setSynchronizedTerm(keywordStringAsProp);
-      setterResults(search(data, currentIndex, input));
-      setterTermLength(keywordStringAsProp.length);
+    // if (keywordStringAsProp) {
+    //   notSearching && setterNotSearching(false); // set notSearching to false if true
+    //   setSynchronizedTerm(keywordStringAsProp);
+    //   setterResults(search(data, currentIndex, input));
+    //   setterTermLength(keywordStringAsProp.length);
+    // }
+
+    ////deleting last character backspace (character-Index === 0):
+    ////deleting term (CMD-X)
+    if (synchronizedTerm?.length > 0 && input==="") {
+      handleReset();
     }
-      //deleting last character backspace (character-Index === 0):
-      //deleting term (CMD-X)
-      if (synchronizedTerm.length > 0 && input.length === 0) {
-        handleReset();
-        // console.log("Deleted last character or deleted everything", inputField resetted);
-      }
   }
 
+  ////handle past
   function handlePaste(event) {
     if (
       (event.key === "v" && (event.metaKey || event.ctrlKey)) ||
@@ -130,11 +128,10 @@ const Search = ({
             handleInputChange(event.target.value);
           }}
           onKeyDown={handlePaste}
-
-          value={synchronizedTerm}
+          value={synchronizedTerm ? synchronizedTerm : ""}
         />
 
-        {synchronizedTerm && synchronizedTerm !== "" && (
+        {synchronizedTerm && (
           <Button
             className="absolute top-0 right-0"
             onClick={() => {
