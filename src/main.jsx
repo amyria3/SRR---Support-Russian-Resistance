@@ -13,7 +13,7 @@ function Loader() {
 export const contextData = React.createContext([]);
 export const currentIndexa = React.createContext({});
 export const searchTermHandler = React.createContext({
-  term: "",
+  term: undefined,
   setter: () => {},
 });
 
@@ -24,7 +24,7 @@ function AppWrapper() {
   const [indexa, setIndexa] = useState({});
   const [dataFetchedSuccessfully, setDataFetchedSuccessfully] = useState(false);
   const [localDataLoaded, setLocalDataLoaded] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(undefined);
 
   useEffect(() => {
     async function fetchDataAsync() {
