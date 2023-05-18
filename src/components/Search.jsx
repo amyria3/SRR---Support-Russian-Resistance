@@ -99,7 +99,7 @@ const Search = ({
         id="searchWrapper"
         className={clsx(
           "sticky",
-          "h-12 p-[1px] hover:p-0 rounded-sm dark:rounded-md w-full flex",
+          "h-12 rounded-sm dark:rounded-md w-full flex",
           "border border-line dark:border-none",
           "dark:hover:border-solid dark:hover:border-[1px]",
           "hover:border-interactive-hover dark:hover:border-dt-interactive focus:border-interactive",
@@ -109,7 +109,10 @@ const Search = ({
           "hover:shadow-default focus:shadow-default dark:shadow-none",
           "placeholder:text-xl placeholder:text-line dark:placeholder:text-dt-typo",
           synchronizedTerm?.length >= 1
-            ? "border-interactive bg-interactive shadow-default  dark:bg-dt-interactive dark:hover:bg-interactive-hover dark:hover:text-dt-typo dark:border-bg-dt-interactive dark:hover:border-interactive-hover dark:text-typo dark:font-light"
+            ? clsx(
+              "border-interactive bg-interactive shadow-default hover:border-dt-typo hover:bg-interactive-hover hover:text-dt-typo",
+              "dark:bg-dt-interactive dark:hover:bg-interactive-hover dark:hover:text-dt-typo dark:border-bg-dt-interactive dark:hover:border-interactive-hover dark:text-typo dark:font-light"
+            )
             : null
         )}
       >

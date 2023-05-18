@@ -27,7 +27,7 @@ const Keyword = ({ keyword, keyProp }) => {
               /*BACKGROUND properties when selected, light theme: */
               "bg-interactive",
               /*BORDER properties w. selected, l. t. */
-              "border-interactive-hover",
+              "border-interactive-hover hover:border-dt-typo hover:bg-interactive-hover hover:text-dt-typo",
               /*SHADOW p. w. selected ... l. t. */
               "shadow-default",
               /*BACKGROUND properties ... dark theme: */
