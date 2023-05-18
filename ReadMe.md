@@ -26,13 +26,12 @@ Notes on the current stage of data-infrastructure:
 
 To-do:
 
-12.Mai 2023
-- animate clap-out
-- populate DB
-- add logics for unselecting a keyword
+- add a proper pop-up or smth. similar for error-communication
+- toggle hover Effect √
+- add logics for unselecting a keyword √ (yay!)
 - fix keywords styling √
 - remove x in search for other browsers
-- repair search √
+- repair search √ (yay!)
 - add a second style for search-status feedback √
 - Add Icons for Twitter & YouTube (√)
 - fixed Search √
@@ -43,6 +42,9 @@ To-do:
 - add usedTags to seedDocs √
 - update ResourceType should be an array (√)
 - update seed-scripts, card & indexation (√?)
+
+- (!) animate clap-out
+- (!) populate DB
 
 - redesign all the Icons √
 - repair fetch, make project take local data when fetch fails √
