@@ -67,7 +67,7 @@ const Keyword = ({ keyword, keyProp }) => {
     >
       <div className={clsx("h-[5px] w-[5px] rounded-full bg-typo dark:bg-dt-typo", selected&&"hidden")}></div>
       <div className="flex-none">{keyword}</div>
-      <div className={clsx(selected?"flex-none":"hidden")}>x</div>
+      <div className={clsx("relative left-[5px] font-light", selected?"flex-none":"hidden")}>x</div>
     </div>
   );
 };
