@@ -49,18 +49,42 @@
   .shadow-dt-transparent {
     box-shadow: 2px 2px 0px 0px rgba(96, 165, 250, 0.5);
   }
-  .fillIcon {
-    stroke: rgba(37, 37, 37, 1);
-  }
-  .link_wrapper_a:hover .child {
+
+  /* .link_wrapper:hover .child {
     stroke: rgba(0, 102, 255, 1);
     color: rgba(0, 102, 255, 1);
     text-decoration: underline;
   }
-  lins_wrapper:hover .line {
+  */
+
+  .fillIcon {
+    stroke: rgba(37, 37, 37, 1);
+  }
+  /* .link_wrapper_a:hover .fillIcon {
+    stroke: rgba(0, 102, 255, 1);
+  }*/
+  .link_wrapper_a:hover .child {
+    stroke: rgba(0, 102, 255, 1);
+    /* color: rgba(0, 102, 255, 1); */
+    text-decoration: underline;
+  }
+
+  .link_wrapper:hover .line {
     background-color: rgba(0, 102, 255, 1);
   }
+
   .dark .fillIcon {
     stroke: rgba(250, 250, 250, 1);
+  }
+  .dark .link_wrapper_a:hover .fillIcon {
+    stroke: rgba(96, 165, 250, 1);
+  }
+  .dark .link_wrapper_a:hover .child {
+    stroke: rgba(96, 165, 250, 1);
+    /* color: rgba(96, 165, 250, 1); */
+    text-decoration: underline;
+  }
+  .dark .link_wrapper:hover .line {
+    background-color: rgba(96, 165, 250, 1);
   }
 }

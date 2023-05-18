@@ -42,13 +42,14 @@ const Link = ({ linkDivKey, url, description, usedTags }) => {
   return (
     <div
       key={"LinkWrapper/"+linkDivKey}
-      className="link_wrapper w-full py-2 px-6 border-none rounded-md hover:bg-interactive-week"
+      className="link_wrapper w-full border-none rounded-md hover:bg-interactive-week"
     >
       <a
         target="_blank"
         rel="noopener noreferrer"
         href={url}
-        className="link_wrapper_a flex flex-row items-center py-1 border-none cursor-pointer parent"
+        className="link_wrapper_a flex flex-row items-center py-3 px-6
+        rounded-md cursor-pointer border-none parent"
       >
         <div key={"firstDiv/"+linkDivKey} className="icon_wrapper w-6 h-6 child">
           <Icon firstTag={firstTag} />
