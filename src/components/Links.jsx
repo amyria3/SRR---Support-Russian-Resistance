@@ -42,21 +42,21 @@ const Link = ({ linkDivKey, url, description, usedTags }) => {
   return (
     <div
       key={"LinkWrapper/"+linkDivKey}
-      className="link_wrapper w-full py-2 h-[30px] border-none"
+      className="link_wrapper w-full py-2 px-6 border-none rounded-md hover:bg-interactive-week"
     >
       <a
         target="_blank"
         rel="noopener noreferrer"
         href={url}
-        className="flex flex-row items-center w-full py-1 h-[34px] my-1 border-none cursor-pointer parent"
+        className="link_wrapper_a flex flex-row items-center py-1 border-none cursor-pointer parent"
       >
-        <div key="firstDiv" id="icon_wrapper" className="w-6 h-6 child">
+        <div key="firstDiv" className="icon_wrapper w-6 h-6 child">
           <Icon firstTag={firstTag} />
         </div>
         <div
           key="secondDiv"
           className={clsx(
-            "h-[1px] w-full bg-typo dark:bg-dt-typo child child ml-6 mr-3"
+            "line h-[1px] flex-grow bg-typo dark:bg-dt-typo ml-6 mr-3"
           )}
         ></div>
         <div key="thirdDiv" className="text-base hover:underline child">

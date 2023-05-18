@@ -31,7 +31,7 @@ const Keyword = ({ keyword, keyProp }) => {
               /*SHADOW p. w. selected ... l. t. */
               "shadow-default",
               /*BACKGROUND properties ... dark theme: */
-              "dark:bg-dt-interactive dark:hover:bg-interactive-hover dark:text-typo dark:hover:text-dt-typo",
+              "dark:bg-dt-interactive dark:hover:bg-interactive-week dark:text-typo dark:hover:text-dt-typo",
               /*BORDER properties ... d. t. */
               "dark:border-dt-interactive dark:hover:border-interactive-hover",
               /*SHADOW p. w. selected ... d. t. */
@@ -55,11 +55,11 @@ const Keyword = ({ keyword, keyProp }) => {
               /*SHADOW p. default l. t. */
               "shadow-none hover:shadow-default",
               /*BACKGROUND p. default dark theme: */
-              "dark:bg-dt-background-card dark:hover:bg-dt-background-input dark:text-dt-typo",
+              "dark:bg-dt-background-card dark:hover:bg-interactive-week dark:text-dt-typo",
               /*TYPO p. default, light theme: */
               "dark:text-dt-typo hover:text-bg-dt-typo",
               /*BORDER p. default d. t. */
-              "dark:border-none dark:hover:border-dt-interactive",
+              "dark:border-none dark:hover:border-interactive-hover",
               /*SHADOW p. default ... d. t. */
               "shadow-none dark:hover:shadow-none"
             )

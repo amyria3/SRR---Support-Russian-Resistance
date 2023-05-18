@@ -52,7 +52,7 @@ const Card = ({ id, name, description, keywords, resources, cardKey }) => {
           state={isOpened}
         />
       </div>
-      <div key={"bottomFrame/"+id} className={clsx(isOpened ? "block" : "hidden")}>
+      <div key={"bottomFrame/"+id} className={clsx("mb-2",isOpened ? "block" : "hidden")}>
         {Links(resources, isOpened, id)}
       </div>
     </div>
