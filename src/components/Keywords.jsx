@@ -9,7 +9,7 @@ const Keyword = ({ keyword, keyProp }) => {
   const selected = (term && term === `"${keywordBinding}"`)
 
   function handleClick(){
-    if (selected){setter("");setter(undefined)}
+    if (selected){setter("")}
     else setter(`"${keywordBinding}"`)}
 
   return (

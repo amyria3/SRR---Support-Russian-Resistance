@@ -23,8 +23,16 @@ const Search = ({
 
   ////first reset if no input to prevent empty search results
   useEffect(() => {
+    //synchronize after unselecting a keyword per click
+    synchronizedTerm&&synchronizedTerm!==""&&term===""&&setSynchronizedTerm("")
+
+    //change term from "" to undefined:
     term === "" && setter(undefined);
+
+    //change synchronizedTerm from "" to undefined:
     (synchronizedTerm === "") && setSynchronizedTerm(undefined);
+
+    //change htmlInputValue from "" to undefined:
     if (htmlInputValue === "") {htmlInputValue = undefined};
     (!term, !synchronizedTerm, !htmlInputValue) && setterNotSearching(true) && setterResults([]);
   }, [synchronizedTerm, term, htmlInputValue]); //works
