@@ -24,43 +24,43 @@ const Keyword = ({ keyword, keyProp }) => {
         "border-solid border-[1px]",
         selected
           ? clsx(
-              /*BACKGROUND properties when selected, light theme: */
+              /*BACKGROUND when selected, light theme: */
               "bg-interactive",
-              /*BORDER properties w. selected, l. t. */
+              /*BORDER  w. s., l. t. */
               "border-interactive-hover hover:border-dt-typo hover:bg-interactive-hover hover:text-dt-typo",
-              /*SHADOW p. w. selected ... l. t. */
+              /*SHADOW p. w. s.  ... l. t. */
               "shadow-default",
-              /*BACKGROUND properties ... dark theme: */
+              /*BACKGROUND w. s. ... dark theme: */
               "dark:bg-dt-interactive dark:hover:bg-interactive-week dark:text-typo dark:hover:text-dt-typo",
-              /*BORDER properties ... d. t. */
+              /*BORDER w. s. ... d. t. */
               "dark:border-dt-interactive dark:hover:border-interactive-hover",
-              /*SHADOW p. w. selected ... d. t. */
+              /*SHADOW w. s. ... d. t. */
               "dark:shadow-none"
             )
           : clsx(
-              /*BORDER properties light theme: */
+              /*BORDER properties w.s. light theme: */
               "border-line",
-              /*SHADOW properties light theme: */
+              /*SHADOW. l. t.: */
               "shadow-none hover:shadow-default",
-              /*BORDER properties dark theme */
-              "dark:border-none" /*must be like background*/,
-              /*SHADOW properties dark theme: */
+              /*BORDER l. t.; */
+
+              /*SHADOW l. t.: */
               "dark:hover:shadow-none",
-              /*BACKGROUND p. default, light theme: */
+              /*BACKGROUND d. t.: */
               "bg-none hover:bg-interactive",
-              /*TYPO p. default, light theme: */
+              /*TYPO l. t.: */
               "text-typo",
-              /*BORDER p. default, l. t. */
+              /*BORDER l. t. */
               "border-line hover:border-interactive-hover",
-              /*SHADOW p. default l. t. */
+              /*SHADOW l. t. */
               "shadow-none hover:shadow-default",
-              /*BACKGROUND p. default dark theme: */
+              /*BACKGROUND d. t.: */
               "dark:bg-dt-background-card dark:hover:bg-interactive-week dark:text-dt-typo",
-              /*TYPO p. default, light theme: */
+              /*TYPO d. t.: */
               "dark:text-dt-typo hover:text-bg-dt-typo",
-              /*BORDER p. default d. t. */
-              "dark:border-none dark:hover:border-interactive-hover",
-              /*SHADOW p. default ... d. t. */
+              /*BORDER d. t. */
+              "dark:hover:border-interactive-hover",
+              /*SHADOW d. t. */
               "shadow-none dark:hover:shadow-none"
             )
       )}

@@ -50,16 +50,16 @@ const Link = ({ linkDivKey, url, description, usedTags }) => {
         href={url}
         className="link_wrapper_a flex flex-row items-center py-1 border-none cursor-pointer parent"
       >
-        <div key="firstDiv" className="icon_wrapper w-6 h-6 child">
+        <div key={"firstDiv/"+linkDivKey} className="icon_wrapper w-6 h-6 child">
           <Icon firstTag={firstTag} />
         </div>
         <div
-          key="secondDiv"
+          key={"secondDiv"+linkDivKey}
           className={clsx(
-            "line h-[1px] flex-grow bg-typo dark:bg-dt-typo ml-6 mr-3"
+            "line h-[1px] flex-grow bg-typo dark:bg-dt-typo ml-8 mr-7 mt-1"
           )}
         ></div>
-        <div key="thirdDiv" className="text-base hover:underline child">
+        <div key={"thirdDiv"+linkDivKey} className="text-base hover:underline child">
           {description ? description : firstTag}
         </div>
       </a>
@@ -70,7 +70,7 @@ const Link = ({ linkDivKey, url, description, usedTags }) => {
 const Links = (resources, hovered, cardId) => {
   return (
     <LinksDiv
-      linksDivKey={"LinksDiv/" + cardId}
+      linksDivKey={"LinksDiv/"+cardId}
       resources={resources}
       hovered={hovered}
       cardId={cardId}
@@ -92,7 +92,7 @@ const LinksDiv = ({ resources, hovered, linksDivKey }) => {
           const { id, url, description, usedTags } = element;
           return (
             <Link
-              linkDivKey={"Wrapper/LinkId/" + id}
+              linkDivKey={"LinkId/" + id}
               url={url}
               description={description}
               usedTags={usedTags}
