@@ -59,12 +59,6 @@ const Search = ({
       setterResults(search(data, currentIndex, input));
       setterTermLength(input.length);
     }
-    // if (keywordStringAsProp) {
-    //   notSearching && setterNotSearching(false); // set notSearching to false if true
-    //   setSynchronizedTerm(keywordStringAsProp);
-    //   setterResults(search(data, currentIndex, input));
-    //   setterTermLength(keywordStringAsProp.length);
-    // }
 
     ////deleting last character backspace (character-Index === 0):
     ////deleting term (CMD-X)
@@ -100,14 +94,14 @@ const Search = ({
           "h-12 p-[1px] hover:p-0 rounded-sm dark:rounded-md w-full flex",
           "border border-line dark:border-none",
           "dark:hover:border-solid dark:hover:border-[1px]",
-          "hover:border-interactive-hover dark:border-dt-interactive focus:border-interactive",
+          "hover:border-interactive-hover dark:hover:border-dt-interactive focus:border-interactive",
           "bg-none hover:bg-interactive dark:bg-dt-background-card dark:hover:bg-dt-background-input",
           "text-typo dark:text-dt-typo",
           "font-extralight",
           "hover:shadow-default focus:shadow-default dark:shadow-none",
           "placeholder:text-xl placeholder:text-line dark:placeholder:text-dt-typo",
-          term?.length >= 1
-            ? "border-interactive shadow-default bg-interactive dark:bg-dt-interactive dark:hover:bg-dt-interactive dark:border-bg-dt-interactive dark:text-typo dark:hover:text-typo dark:font-light"
+          synchronizedTerm?.length >= 1
+            ? "border-interactive bg-interactive shadow-default  dark:bg-dt-interactive dark:hover:bg-dt-interactive dark:border-bg-dt-interactive dark:text-typo dark:hover:text-typo dark:font-light"
             : null
         )}
       >

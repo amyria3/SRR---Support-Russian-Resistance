@@ -14,17 +14,53 @@ const Keyword = ({ keyword, keyProp }) => {
       }}
       key={keyProp}
       className={clsx(
-      "flex items-center gap-[6px] py-2 px-3",
-      "rounded-[20px] border-solid border-[1px]",
-      "cursor-pointer",
-      (term===`"${keywordBinding}"`)&&"border-interactive shadow-default bg-interactive dark:bg-dt-interactive dark:hover:bg-dt-interactive dark:border-bg-dt-interactive dark:text-typo dark:hover:text-typo dark:font-light",
-      ("border-line hover:border-interactive-hover",
-      "dark:border-dt-typo dark:hover:border-dt-interactive",
-      "bg-white-card hover:bg-interactive",
-      "dark:bg-transparent dark:hover:bg-dt-background-input",
-      "hover:text-border-interactive-hover",
-      "dark:hover:text-border-dt-interactive text-typo dark:text-dt-typo opacity-90 dark:opacity-70 text-xs font-normal dark:text-sm dark:font-light"))}
-
+        "flex items-center gap-[6px] py-2 pl-3 pr-[18px] rounded-[20px]",
+        "cursor-pointer",
+        "font-normal text-xs",
+        "dark:font-light dark:text-sm",
+        "border-solid border-[1px]",
+        term && term === `"${keywordBinding}"`
+          ? clsx(
+              /*BACKGROUND properties when selected, light theme: */
+              "bg-interactive",
+              /*BORDER properties w. selected, l. t. */
+              "border-interactive-hover",
+              /*SHADOW p. w. selected ... l. t. */
+              "shadow-default",
+              /*BACKGROUND properties ... dark theme: */
+              "dark:bg-dt-interactive dark:text-typo",
+              /*BORDER properties ... d. t. */
+              "dark:border-dt-interactive",
+              /*SHADOW p. w. selected ... d. t. */
+              "dark:shadow-none"
+            )
+          : clsx(
+              /*BORDER properties light theme: */
+              "border-line",
+              /*SHADOW properties light theme: */
+              "shadow-none hover:shadow-default",
+              /*BORDER properties dark theme */
+              "dark:border-none" /*must be like background*/,
+              /*SHADOW properties dark theme: */
+              "dark:hover:shadow-none",
+              /*BACKGROUND p. default, light theme: */
+              "bg-none hover:bg-interactive",
+              /*TYPO p. default, light theme: */
+              "text-typo",
+              /*BORDER p. default, l. t. */
+              "border-line hover:border-interactive-hover",
+              /*SHADOW p. default l. t. */
+              "shadow-none hover:shadow-default",
+              /*BACKGROUND p. default dark theme: */
+              "dark:bg-dt-background-card dark:hover:bg-dt-background-input dark:text-dt-typo",
+              /*TYPO p. default, light theme: */
+              "dark:text-dt-typo hover:text-bg-dt-typo",
+              /*BORDER p. default d. t. */
+              "dark:border-none dark:hover:border-dt-interactive",
+              /*SHADOW p. default ... d. t. */
+              "shadow-none dark:hover:shadow-none"
+            )
+      )}
     >
       <div className="h-[5px] w-[5px] rounded-full bg-typo dark:bg-dt-typo"></div>
       <div className="flex-none">{keyword}</div>

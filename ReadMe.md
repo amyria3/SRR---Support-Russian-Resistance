@@ -29,10 +29,11 @@ To-do:
 12.Mai 2023
 - animate clap-out
 - populate DB
+- fix keywords styling
 - remove x in search for other browsers
-- repair search (!)
-- add a second style for search-status feedback
-- Add Icons for Twitter & YouTube
+- repair search √
+- add a second style for search-status feedback √
+- Add Icons for Twitter & YouTube (√)
 - fixed Search √
 - show an adequate error message when no data (√)
 - update seedDocs to prevent double entries √
