@@ -101,7 +101,7 @@ const Search = ({
           "hover:shadow-default focus:shadow-default dark:shadow-none",
           "placeholder:text-xl placeholder:text-line dark:placeholder:text-dt-typo",
           synchronizedTerm?.length >= 1
-            ? "border-interactive bg-interactive shadow-default  dark:bg-dt-interactive dark:hover:bg-dt-interactive dark:border-bg-dt-interactive dark:text-typo dark:hover:text-typo dark:font-light"
+            ? "border-interactive bg-interactive shadow-default  dark:bg-dt-interactive dark:hover:bg-interactive-hover dark:hover:text-dt-typo dark:border-bg-dt-interactive dark:hover:border-interactive-hover dark:text-typo dark:font-light"
             : null
         )}
       >

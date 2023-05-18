@@ -29,7 +29,8 @@ To-do:
 12.Mai 2023
 - animate clap-out
 - populate DB
-- fix keywords styling
+- add logics for unselecting a keyword
+- fix keywords styling √
 - remove x in search for other browsers
 - repair search √
 - add a second style for search-status feedback √

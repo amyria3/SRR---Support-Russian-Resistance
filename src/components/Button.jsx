@@ -1,12 +1,18 @@
-// import clsx from "clsx";
+import clsx from "clsx";
 
 function Button({onClick, label}) {
   return (
     <button
       onClick={onClick}
       className={
-        "text-typo-default relative bottom-0 right-0 h-12 hover:text-white hover:mb-1 hover:mr-1 bg-interactive hover:bg-interactive-hover text-xl font-[200] leading-[26px] flex flex-row justify-center items-center content-center py-4 px-8 w-80 rounded-[10px] shadow-transparent hover:shadow-default"
-      }
+        clsx(
+        "text-typo-default hover:text-white",
+        "bg-interactive hover:bg-interactive-hover",
+        "dark:hover:bg-interactive dark:hover:border-solid dark:hover:border-[1px] dark:hover:border-dt-interactive",
+        "text-xl font-[200] leading-[26px]",
+        "relative bottom-1 right-1 h-12",
+        "flex flex-row justify-center items-center content-center py-4 px-8 w-80 rounded-md"
+  )}
     >
       {label}
     </button>

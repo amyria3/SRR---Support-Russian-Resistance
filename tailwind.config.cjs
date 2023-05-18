@@ -22,6 +22,7 @@ module.exports = {
         DEFAULT: "rgba(0, 85, 212, 0.25)",
         mid: "rgba(0, 85, 212, 0.5)",
         hover: "rgba(0, 85, 212, 1)",
+        intersect: "rgba(72, 145, 241, 1)"
       },
       line: {
         DEFAULT: "rgba(37, 37, 37, 0.5)",

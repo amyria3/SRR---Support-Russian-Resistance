@@ -6,12 +6,15 @@ import clsx from "clsx";
 const Keyword = ({ keyword, keyProp }) => {
   const { term, setter } = useContext(searchTermHandler);
   const keywordBinding = keyword.toString();
+  const selected = (term && term === `"${keywordBinding}"`)
+
+  function handleClick(){
+    if (selected){setter("");setter(undefined)}
+    else setter(`"${keywordBinding}"`)}
 
   return (
     <div
-      onMouseDown={() => {
-        setter(`"${keywordBinding}"`);
-      }}
+      onMouseDown={handleClick}
       key={keyProp}
       className={clsx(
         "flex items-center gap-[6px] py-2 pl-3 pr-[18px] rounded-[20px]",
@@ -19,7 +22,7 @@ const Keyword = ({ keyword, keyProp }) => {
         "font-normal text-xs",
         "dark:font-light dark:text-sm",
         "border-solid border-[1px]",
-        term && term === `"${keywordBinding}"`
+        selected
           ? clsx(
               /*BACKGROUND properties when selected, light theme: */
               "bg-interactive",
@@ -28,9 +31,9 @@ const Keyword = ({ keyword, keyProp }) => {
               /*SHADOW p. w. selected ... l. t. */
               "shadow-default",
               /*BACKGROUND properties ... dark theme: */
-              "dark:bg-dt-interactive dark:text-typo",
+              "dark:bg-dt-interactive dark:hover:bg-interactive-hover dark:text-typo dark:hover:text-dt-typo",
               /*BORDER properties ... d. t. */
-              "dark:border-dt-interactive",
+              "dark:border-dt-interactive dark:hover:border-interactive-hover",
               /*SHADOW p. w. selected ... d. t. */
               "dark:shadow-none"
             )
@@ -62,8 +65,9 @@ const Keyword = ({ keyword, keyProp }) => {
             )
       )}
     >
-      <div className="h-[5px] w-[5px] rounded-full bg-typo dark:bg-dt-typo"></div>
+      <div className={clsx("h-[5px] w-[5px] rounded-full bg-typo dark:bg-dt-typo", selected&&"hidden")}></div>
       <div className="flex-none">{keyword}</div>
+      <div className={clsx(selected?"flex-none":"hidden")}>x</div>
     </div>
   );
 };
