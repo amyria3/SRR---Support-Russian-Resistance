@@ -40,6 +40,7 @@
   .bg-transparent {
     background-color: rgba(0, 0, 0, 0);
   }
+
   .shadow-default {
     box-shadow: 3px 3px 0px 0px rgba(0, 85, 212, 1);
   }
@@ -50,29 +51,19 @@
     box-shadow: 2px 2px 0px 0px rgba(96, 165, 250, 0.5);
   }
 
-  /* .link_wrapper:hover .child {
-    stroke: rgba(0, 102, 255, 1);
-    color: rgba(0, 102, 255, 1);
-    text-decoration: underline;
-  }
-  */
-
+  /*Icon light-theme*/
   .fillIcon {
     stroke: rgba(37, 37, 37, 1);
   }
-  /* .link_wrapper_a:hover .fillIcon {
-    stroke: rgba(0, 102, 255, 1);
-  }*/
   .link_wrapper_a:hover .child {
     stroke: rgba(0, 102, 255, 1);
-    /* color: rgba(0, 102, 255, 1); */
     text-decoration: underline;
   }
-
   .link_wrapper:hover .line {
     background-color: rgba(0, 102, 255, 1);
   }
 
+  /*Icon dark-theme*/
   .dark .fillIcon {
     stroke: rgba(250, 250, 250, 1);
   }
@@ -81,10 +72,30 @@
   }
   .dark .link_wrapper_a:hover .child {
     stroke: rgba(96, 165, 250, 1);
-    /* color: rgba(96, 165, 250, 1); */
     text-decoration: underline;
   }
   .dark .link_wrapper:hover .line {
     background-color: rgba(96, 165, 250, 1);
+  }
+
+  /*clapOut Component light-theme*/
+  .clapOutSvg {
+    fill: rgba(255, 255, 255, 0.5);
+    stroke: rgba(37, 37, 37, 1);
+  }
+  .svgClapOutWrapper:hover .clapOutSvg {
+    fill: rgba(96, 165, 250, 1);
+    stroke: rgba(0, 85, 212, 1);
+    filter: drop-shadow(3px 3px 0px 0px rgba(0, 85, 212, 1));
+  }
+
+  /*clapOut Component dark-theme*/
+  .dark .clapOutSvg {
+    fill: rgba(250, 250, 250, 0.05);
+    stroke: rgba(250, 250, 250, 1);
+  }
+  .dark .svgClapOutWrapper:hover .clapOutSvg {
+    fill: rgba(0, 85, 212, 0.1); /*interactive-week*/
+    stroke: rgba(0, 85, 212, 1);
   }
 }

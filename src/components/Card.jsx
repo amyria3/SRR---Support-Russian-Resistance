@@ -45,11 +45,6 @@ const Card = ({ id, name, description, keywords, resources, cardKey }) => {
         )}
       >
         <ClapOut
-          color={"rgba(37, 37, 37, 1)"}
-          colorOnHover={"rgba(0, 85, 212, 1)"}
-          fillOnHover={"rgba(192, 208, 234, 1)"}
-          setState={setIsOpened}
-          state={isOpened}
         />
       </div>
       <div key={"bottomFrame/"+id} className={clsx("mb-2",isOpened ? "block" : "hidden")}>

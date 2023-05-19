@@ -110,7 +110,7 @@ const Search = ({
           "placeholder:text-xl placeholder:text-line dark:placeholder:text-dt-typo",
           synchronizedTerm?.length >= 1
             ? clsx(
-              "border-interactive bg-interactive shadow-default hover:border-dt-typo hover:bg-interactive-hover hover:text-dt-typo",
+              "bg-interactive hover:shadow-default border-interactive  hover:border-solid hover:border-dt-typo hover:bg-interactive-hover hover:text-dt-typo",
               "dark:bg-dt-interactive dark:hover:text-dt-typo dark:hover:bg-interactive-week dark:hover:border-interactive-hover dark:text-typo dark:font-light"
             )
             : null
