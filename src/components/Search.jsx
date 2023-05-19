@@ -102,7 +102,7 @@ const Search = ({
           "h-12 rounded-sm dark:rounded-md w-full flex",
           "border border-line dark:border-none",
           "dark:hover:border-solid dark:hover:border-[1px]",
-          "hover:border-interactive-hover dark:hover:border-dt-interactive focus:border-interactive",
+          "dark:hover:border-dt-interactive focus:border-interactive",
           "bg-none hover:bg-interactive dark:bg-dt-background-card dark:hover:bg-dt-background-input",
           "text-typo dark:text-dt-typo",
           "font-extralight",
@@ -110,10 +110,10 @@ const Search = ({
           "placeholder:text-xl placeholder:text-line dark:placeholder:text-dt-typo",
           synchronizedTerm?.length >= 1
             ? clsx(
-              "bg-interactive hover:shadow-default border-interactive  hover:border-solid hover:border-dt-typo hover:bg-interactive-hover hover:text-dt-typo",
+              "bg-interactive hover:shadow-default border-interactive hover:border-solid hover:border-dt-typo hover:bg-interactive-hover hover:text-dt-typo",
               "dark:bg-dt-interactive dark:hover:text-dt-typo dark:hover:bg-interactive-week dark:hover:border-interactive-hover dark:text-typo dark:font-light"
             )
-            : null
+            : "hover:border-interactive-hover"
         )}
       >
         <style>{`
