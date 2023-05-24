@@ -7,6 +7,7 @@ import Paypal from "../assets/icons/Paypal";
 import Telegram from "../assets/icons/Telegram";
 import Webpage from "../assets/icons/Webpage";
 import YouTube from "../assets/icons/YouTube";
+import Apple from "../assets/icons/Apple";
 
 //consists of Icon, line, link, linkDivKey will be passed as prop, added to "LinkWrapper/" => key
 const Link = ({ linkDivKey, url, description, usedTags }) => {
@@ -36,6 +37,9 @@ const Link = ({ linkDivKey, url, description, usedTags }) => {
     }
     if (firstTag === "YouTube") {
       return <YouTube />;
+    }
+    if (firstTag === "ApplePay") {
+      return <Apple />;
     }
   };
 
