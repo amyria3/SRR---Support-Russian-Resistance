@@ -28,9 +28,12 @@ Notes on the current stage of data-infrastructure:
 
 
 To-do:
+- update NEON-Vercel Connection
 - add Children's rights label
-- add applePay Icon
+- add Animation
+- add more flexible typo-Settings
 - add a proper pop-up or smth. similar for error-communication
+- add applePay Icon √
 - toggle hover Effect √
 - add logics for unselecting a keyword √ (yay!)
 - fix keywords styling √
@@ -41,7 +44,7 @@ To-do:
 - fixed Search √
 - show an adequate error message when no data (√)
 - update seedDocs to prevent double entries √
-- clapOut icon is missing dm-styling
+- clapOut icon is missing dm-styling √
 
 - add usedTags to seedDocs √
 - update ResourceType should be an array (√)
