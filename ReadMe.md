@@ -45,14 +45,11 @@ To-do:
 - show an adequate error message when no data (√)
 - update seedDocs to prevent double entries √
 - clapOut icon is missing dm-styling √
-
 - add usedTags to seedDocs √
 - update ResourceType should be an array (√)
 - update seed-scripts, card & indexation (√?)
-
 - (!) animate clap-out
-- (!) populate DB
-
+- (!) populate DB √
 - redesign all the Icons √
 - repair fetch, make project take local data when fetch fails √
 - fix the card (why growing) √
