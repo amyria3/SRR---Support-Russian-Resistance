@@ -28,7 +28,8 @@ Notes on the current stage of data-infrastructure:
 
 
 To-do:
-
+- add Children's rights label
+- add applePay Icon
 - add a proper pop-up or smth. similar for error-communication
 - toggle hover Effect √
 - add logics for unselecting a keyword √ (yay!)
