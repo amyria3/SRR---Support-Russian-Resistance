@@ -19,7 +19,7 @@ const localDb = [
   {
     id: "13see40diqjlhltnr1k",
     img_url: "",
-    name: "Soldiers mothers",
+    name: "Soldier's mothers",
     description:
       "Soldiers Mothers is a human rights organization that has existed since 1991 and focuses on military service members. The NGO originally campaigned against mistreatment and for the investigation of crimes in the Russian army. Today, Soldiers Mothers counsels pacifists, drafted young men, and conscripted soldiers. Soldiers Mothers is based on the European Convention on Human Rights and the Constitution of the RF",
     keywords: [
@@ -105,7 +105,7 @@ const localDb = [
   },
   {
     id: "13see40diqjlhltnr26",
-    name: "Recruits School",
+    name: "Recruit's School",
     img_url: "",
     description:
       "The human rights and educational project Recruits School appeared in 2009 in Chelyabinsk. The goals are:      `Training of conscripts, their parents, servicemen and alternative servicemen how they can independently, without the help of expensive lawyers, cope with arising problems and protect their right; providing advice on military conscription and timely free qualified legal assistance. In 2014, this project was transformed into an autonomous non-profit human rights organization Recruits School.",
@@ -325,8 +325,8 @@ const localDb = [
     description:
       "AvtozakLive is a human rights media project from Russia. They educate about the current status of repressions by the state and possible protective measures.",
     keywords: [
-      { id: "13see40c4bmli1pe0qo", name: "Human rights" },
       { id: "13see40c4bmli1pe0qp", name: "Freedom of speech" },
+      { id: "13see40c4bmli1pe0qo", name: "Human rights" }
     ],
     resources: [
       {
@@ -348,7 +348,7 @@ const localDb = [
         url: "https://www.patreon.com/avtozak",
         description: "",
         ngoId: "",
-        usedTags: [{ id: "", name: "Credit Card" }],
+        usedTags: [{ id: "", name: "Credit card" }],
       },
       {
         id: "13see40c4bmli1pe0qt",

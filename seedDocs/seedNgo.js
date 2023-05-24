@@ -21,9 +21,7 @@ export default async function seedNgo(data) {
         img_url: entry.img_url,
       },
     });
-    // console.log(
-    // "NGO or group " + entry.name + " has been updated or created. "
-    //);
+    console.log(upsertEntry.name + " created or updated.");
 
     //for every string in keywords[] array of the current entry
     for (const locallyStoredKeyword of entry.keywords) {
@@ -35,9 +33,7 @@ export default async function seedNgo(data) {
           },
         },
       });
-      // console.log(
-      // updatedNgosKeywords + "'s keywords missing entries have been updated."
-      //);
+      console.log(locallyStoredKeyword.name + " of " + upsertEntry.name + " created or updated.");
 
       //create resources, if missing:
       for (const locallyStoredResource of entry.resources) {
@@ -56,19 +52,6 @@ export default async function seedNgo(data) {
             description: locallyStoredResource.description,
           },
         });
-        //  console.log(
-        //   "Added " +
-        //     locallyStoredResource.url +
-        //     " of " +
-        //     entry.name +
-        //     ", if it was missing. Current Ngo ID : " +
-        //     upsertEntry.id
-        // );
-        //throws an error. But works. (?!)
-
-        //take the newly created / updated resource-Object
-        //map over all strings of the remote resource object
-
         for (const localTag of locallyStoredResource.usedTags) {
           //
           const response = await prisma.Resource.update({
@@ -79,15 +62,6 @@ export default async function seedNgo(data) {
               },
             },
           });
-
-          // console.log(
-          //   "Added " +
-          //     localTag.name +
-          //     " to " +
-          //     upsertResource.url +
-          //     ", if it was missing. Current Ngo ID : " +
-          //     upsertResource.id
-          // );
         }
       }
     }
