@@ -546,7 +546,7 @@ const localDb = [
         url: "https://www.youtube.com/channel/UCKu6lWazXw5mvaYH0GDJiNQ",
         description: "",
         ngoId: "",
-        usedTags: [{ id: "", name: "Youtube" }],
+        usedTags: [{ id: "", name: "YouTube" }],
       },
       {
         id: "13see40c4bmli1pe0rs",
