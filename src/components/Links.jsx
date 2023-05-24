@@ -38,7 +38,7 @@ const Link = ({ linkDivKey, url, description, usedTags }) => {
     if (firstTag === "YouTube") {
       return <YouTube />;
     }
-    if (firstTag === "Apple") {
+    if (firstTag === "ApplePay") {
       return <Apple />;
     }
   };
