@@ -24,10 +24,8 @@ node src/server/askPrisma.js (?)
 pnpm run dev
 
 
-Notes on the current stage of data-infrastructure:
+**To-do:**
 
-
-To-do:
 - update NEON-Vercel Connection
 - add Children's rights label
 - add Animation
