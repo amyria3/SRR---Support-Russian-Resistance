@@ -53,33 +53,6 @@ const localDb = [
     ],
   },
   {
-    id: "13see40diqjlhltnr1s",
-    name: "Novaja Gazeta",
-    img_url: "",
-    description:
-      "Nowaya Gazeta is an independent investigative newspaper. It is published in Moscow, in regions within Russia, and in some foreign countries. (Wikipedia, 14.04.2023)",
-    keywords: [
-      { id: "13see40diqjlhltnr1t", name: "Transparency" },
-      { id: "13see40diqjlhltnr1u", name: "Freedom of speech" },
-    ],
-    resources: [
-      {
-        id: "13see40diqjlhltnr1v",
-        url: "https://www.instagram.com/novayagazeta/",
-        description: "",
-        ngoId: "",
-        usedTags: [{ id: "", name: "Webpage" }],
-      },
-      {
-        id: "13see40diqjlhltnr1w",
-        url: "https://t.me/novaya_pishet",
-        description: "",
-        ngoId: "",
-        usedTags: [{ id: "", name: "Telegram" }],
-      },
-    ],
-  },
-  {
     id: "13see40diqjlhltnr1x",
     name: "OWD info",
     img_url: "",
@@ -528,13 +501,6 @@ const localDb = [
     ],
     resources: [
       {
-        id: "13see40c4bmli1pe0rp",
-        url: "https://spherequeer.org/en/",
-        description: "",
-        ngoId: "",
-        usedTags: [{ id: "", name: "Webpage" }],
-      },
-      {
         id: "13see40c4bmli1pe0rq",
         url: "https://spherequeer.org/en/",
         description: "",
@@ -561,6 +527,33 @@ const localDb = [
         description: "",
         ngoId: "",
         usedTags: [{ id: "", name: "Facebook" }],
+      },
+    ],
+  },
+  {
+    id: "13see40diqjlhltnr1s",
+    name: "Novaja Gazeta",
+    img_url: "",
+    description:
+      "Nowaya Gazeta is an independent investigative newspaper. It is published in Moscow, in regions within Russia, and in some foreign countries. (Wikipedia, 14.04.2023)",
+    keywords: [
+      { id: "13see40diqjlhltnr1t", name: "Transparency" },
+      { id: "13see40diqjlhltnr1u", name: "Freedom of speech" },
+    ],
+    resources: [
+      {
+        id: "13see40diqjlhltnr1v",
+        url: "https://www.instagram.com/novayagazeta/",
+        description: "",
+        ngoId: "",
+        usedTags: [{ id: "", name: "Webpage" }],
+      },
+      {
+        id: "13see40diqjlhltnr1w",
+        url: "https://t.me/novaya_pishet",
+        description: "",
+        ngoId: "",
+        usedTags: [{ id: "", name: "Telegram" }],
       },
     ],
   },

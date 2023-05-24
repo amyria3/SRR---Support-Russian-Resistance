@@ -27,13 +27,14 @@ const resourceTags = [
   { name: "PayPal" },
   { name: "Twitter" },
   { name: "YouTube" },
+  { name: "ApplePay" },
 ];
 
 async function different() {
   try {
     await seedTag(resourceTags);
-    // await seedKeyword(ngoKeywords);
-    // await seedNgo(localDB);
+    await seedKeyword(ngoKeywords);
+    await seedNgo(localDB);
   } catch (error) {
     console.error("Seeding failed with error: ", error);
   }
