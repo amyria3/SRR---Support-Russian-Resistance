@@ -32,8 +32,8 @@ const resourceTags = [
 
 async function different() {
   try {
-    await seedTag(resourceTags);
-    await seedKeyword(ngoKeywords);
+    // await seedTag(resourceTags);
+    // await seedKeyword(ngoKeywords);
     await seedNgo(localDB);
   } catch (error) {
     console.error("Seeding failed with error: ", error);
